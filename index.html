@@ -401,13 +401,10 @@
   .btn-ghost::after{content:"";position:absolute;inset:2px;z-index:-1;border-radius:inherit;background:#0d141e;}
   .btn-ghost:hover{background:#0d141e;box-shadow:0 0 0 1px rgba(127,220,255,.5),0 12px 38px -8px rgba(56,198,244,.7);}
 
-  /* 1b. hero stat cards — spinning neon contour */
-  .stat{isolation:isolate;background:transparent;border:none;backdrop-filter:none;}
-  .stat::before{content:"";position:absolute;inset:-2px;z-index:-2;border-radius:inherit;
-    background:conic-gradient(from 90deg,rgba(47,125,246,.05),#2f7df6,#38c6f4,#7fdcff,rgba(47,125,246,.05));
-    animation:spin 7s linear infinite;}
-  .stat::after{content:"";position:absolute;inset:1.5px;z-index:-1;border-radius:16.5px;
-    background:linear-gradient(160deg,rgba(17,27,41,.97),rgba(9,15,24,.97));}
+  /* 1b. hero stat cards — clean neon frame with glow */
+  .stat{background:linear-gradient(160deg,rgba(19,30,46,.88),rgba(9,15,24,.92));
+    border:1px solid rgba(96,190,255,.38);
+    box-shadow:0 0 20px -6px rgba(56,198,244,.4),0 10px 26px -14px rgba(0,0,0,.6),inset 0 1px 0 rgba(255,255,255,.07);}
 
   /* 2. promo cards with video backgrounds (CapCut style) */
   .promo-card{position:relative;overflow:hidden;border-radius:var(--radius-card);border:1px solid rgba(127,220,255,.14);
@@ -444,22 +441,27 @@
   .brand-card:hover::after{left:120%;}
 
   /* 5. about cards — neon contour + soft bg */
-  .about-card{border:none;background:transparent;isolation:isolate;}
-  .about-card::before{content:"";position:absolute;inset:-2px;z-index:-2;border-radius:inherit;
+  .about-card{border:none;background:transparent;isolation:isolate;
+    box-shadow:0 22px 44px -18px rgba(21,60,140,.4),0 6px 14px -8px rgba(21,60,140,.22);}
+  .about-card:hover{box-shadow:0 28px 54px -18px rgba(38,110,220,.45),0 8px 18px -8px rgba(21,60,140,.28);}
+  .about-card::before{content:"";position:absolute;inset:-100%;z-index:-2;
     background:conic-gradient(from 0deg,rgba(56,198,244,.1),#2f7df6,#38c6f4,#7fdcff,rgba(56,198,244,.1));
     animation:spin 8s linear infinite;}
   .about-card::after{content:"";position:absolute;inset:1.5px;z-index:-1;border-radius:20.5px;
-    background:linear-gradient(180deg,#ffffff 0%,#edf4fc 100%);}
+    background:linear-gradient(180deg,#ffffff 0%,#e9f1fb 100%);
+    box-shadow:inset 0 1.5px 0 #ffffff,inset 0 -14px 28px rgba(47,125,246,.07);}
 
   /* 6. review card + rating pills — neon contour + soft bg */
-  .review-card{border:none;background:transparent;isolation:isolate;}
-  .review-card::before{content:"";position:absolute;inset:-2px;z-index:-2;border-radius:inherit;
+  .review-card{border:none;background:transparent;isolation:isolate;
+    box-shadow:0 22px 44px -18px rgba(21,60,140,.4),0 6px 14px -8px rgba(21,60,140,.22);}
+  .review-card::before{content:"";position:absolute;inset:-100%;z-index:-2;
     background:conic-gradient(from 120deg,rgba(56,198,244,.1),#2f7df6,#38c6f4,#7fdcff,rgba(56,198,244,.1));
     animation:spin 8s linear infinite;}
   .review-card::after{content:"";position:absolute;inset:1.5px;z-index:-1;border-radius:20.5px;
-    background:linear-gradient(180deg,#ffffff,#edf4fc);}
+    background:linear-gradient(180deg,#ffffff,#e9f1fb);
+    box-shadow:inset 0 1.5px 0 #ffffff,inset 0 -14px 28px rgba(47,125,246,.07);}
   .review-link{position:relative;border:none;background:transparent;isolation:isolate;overflow:hidden;}
-  .review-link::before{content:"";position:absolute;inset:-1.5px;z-index:-2;border-radius:inherit;
+  .review-link::before{content:"";position:absolute;inset:-100%;z-index:-2;
     background:conic-gradient(from 0deg,#2f7df6,#38c6f4,#7fdcff,#2f7df6);animation:spin 5s linear infinite;}
   .review-link::after{content:"";position:absolute;inset:1.5px;z-index:-1;border-radius:14.5px;
     background:linear-gradient(180deg,#ffffff,#edf4fc);}
@@ -479,11 +481,13 @@
   .hero-master{position:absolute;right:0;bottom:0;z-index:1;height:87%;max-height:620px;
     pointer-events:none;display:none;}
   .hero-master img{height:100%;width:auto;object-fit:contain;object-position:bottom right;
-    -webkit-mask-image:radial-gradient(115% 105% at 62% 48%,#000 52%,transparent 76%);
-    mask-image:radial-gradient(115% 105% at 62% 48%,#000 52%,transparent 76%);}
+    -webkit-mask-image:linear-gradient(90deg,transparent,#000 24%),linear-gradient(180deg,transparent,#000 18%);
+    -webkit-mask-composite:source-in;
+    mask-image:linear-gradient(90deg,transparent,#000 24%),linear-gradient(180deg,transparent,#000 18%);
+    mask-composite:intersect;}
   @media (min-width:1250px){.hero-master{display:block;}}
   @media (prefers-reduced-motion:reduce){
-    .btn-ghost::before,.stat::before,.about-card::before,.review-card::before,.review-link::before{animation:none;}
+    .btn-ghost::before,.about-card::before,.review-card::before,.review-link::before{animation:none;}
   }
 </style>
   <link rel="canonical" href="https://gbosochi.ru/">
