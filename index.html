@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gaz service — установка и обслуживание ГБО в Сочи</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@500;600;700;800&family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg-deep:#080d14;
+    --bg-deep-soft:#0d141e;
+    --card-dark:#121b27;
+    --blue:#2f7df6;
+    --blue-soft:#6aa5ff;
+    --cyan:#38c6f4;
+    --cyan-soft:#7fdcff;
+    --text-white:#f2f6fb;
+    --text-muted:#93a1b5;
+    --bg-light:#eef2f7;
+    --card-light:#ffffff;
+    --text-dark:#0d1420;
+    --text-dark-muted:#586576;
+    --border-light:#dde5ee;
+    --radius-pill:999px;
+    --radius-card:22px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Nunito Sans',sans-serif;
+    background:var(--bg-light);
+    color:var(--text-dark);
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,.display{font-family:'Rubik',sans-serif;font-weight:700;line-height:1.12;letter-spacing:-0.01em;}
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;}
+  .container{max-width:1140px;margin:0 auto;padding:0 24px;}
+  .accent{color:var(--cyan);}
+
+  /* ===== neon-contour button (signature V2) ===== */
+  .btn{
+    position:relative;display:inline-flex;align-items:center;justify-content:center;gap:10px;
+    padding:16px 32px;border-radius:var(--radius-pill);
+    font-family:'Rubik',sans-serif;font-weight:600;font-size:16px;
+    border:none;cursor:pointer;overflow:hidden;isolation:isolate;color:#fff;
+    transition:transform .18s ease, box-shadow .25s ease;
+  }
+  .btn:hover{transform:translateY(-2px);}
+  .btn-blue{background:#0d141e;box-shadow:0 0 0 1px rgba(127,220,255,.3), 0 8px 30px -8px rgba(56,198,244,.5);}
+  .btn-blue::before{content:"";position:absolute;inset:-2px;z-index:-2;border-radius:inherit;
+    background:conic-gradient(from 0deg,#2f7df6,#38c6f4,#7fdcff,#5b8cff,#2f7df6);
+    animation:spin 4s linear infinite;}
+  .btn-blue::after{content:"";position:absolute;inset:2px;z-index:-1;border-radius:inherit;background:#0d141e;}
+  .btn-blue:hover{box-shadow:0 0 0 1px rgba(127,220,255,.5), 0 12px 38px -8px rgba(56,198,244,.7);}
+  @keyframes spin{to{transform:rotate(360deg);}}
+  .btn-ghost{
+    position:relative;color:var(--text-white);background:transparent;border:none;
+  }
+  .btn-ghost::before{content:"";position:absolute;inset:0;z-index:-1;border-radius:inherit;padding:1.5px;
+    background:linear-gradient(120deg,var(--cyan),var(--blue));
+    -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;}
+  .btn-ghost:hover{background:rgba(56,198,244,.1);}
+
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:8px;
+    font-family:'Rubik',sans-serif;font-weight:600;font-size:12.5px;
+    letter-spacing:.12em;text-transform:uppercase;color:var(--blue);
+  }
+  .eyebrow::before{content:"";width:22px;height:2px;background:linear-gradient(90deg,var(--blue),var(--cyan));border-radius:2px;}
+  .hero .eyebrow{color:var(--cyan-soft);}
+
+  /* ===== scroll reveal ===== */
+  [data-reveal]{opacity:0;transform:translateY(26px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1);}
+  [data-reveal].in{opacity:1;transform:none;}
+  [data-reveal].d1{transition-delay:.08s;}
+  [data-reveal].d2{transition-delay:.16s;}
+  [data-reveal].d3{transition-delay:.24s;}
+  [data-reveal].d4{transition-delay:.32s;}
+  @media (prefers-reduced-motion:reduce){
+    [data-reveal]{opacity:1 !important;transform:none !important;}
+    .btn-blue::before{animation:none;}
+  }
+
+  /* ===== HEADER ===== */
+  header{position:sticky;top:0;z-index:50;background:rgba(8,13,20,.72);backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,.06);}
+  .header-inner{display:flex;align-items:center;justify-content:space-between;height:78px;}
+  .logo{display:flex;align-items:center;gap:12px;}
+  .logo-mark{width:42px;height:42px;border-radius:13px;background:radial-gradient(circle at 30% 25%,#1a2635,#0a0f16);display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 0 0 1px rgba(127,220,255,.18),0 6px 18px -6px rgba(47,125,246,.5);}
+  .logo-mark svg{width:40px;height:40px;}
+  .logo-text{font-family:'Rubik',sans-serif;font-weight:700;font-size:19px;color:var(--text-white);line-height:1;}
+  .logo-text span{display:block;font-family:'Nunito Sans',sans-serif;font-weight:600;font-size:9.5px;letter-spacing:.18em;color:var(--text-muted);text-transform:uppercase;margin-top:4px;}
+  .header-actions{display:flex;align-items:center;gap:10px;}
+  .icon-btn{position:relative;width:48px;height:48px;border-radius:var(--radius-pill);display:flex;align-items:center;justify-content:center;color:#fff;flex-shrink:0;overflow:hidden;isolation:isolate;}
+  .icon-btn::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(135deg,var(--blue),var(--cyan));}
+  .icon-btn::after{content:"";position:absolute;inset:0;border-radius:inherit;box-shadow:0 0 0 0 rgba(56,198,244,.6);animation:pulse 2.6s ease-out infinite;}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(56,198,244,.5);}70%{box-shadow:0 0 0 12px rgba(56,198,244,0);}100%{box-shadow:0 0 0 0 rgba(56,198,244,0);}}
+  .burger{width:48px;height:48px;border-radius:14px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;background:transparent;border:none;cursor:pointer;}
+  .burger span{width:22px;height:3px;background:var(--cyan);border-radius:3px;transition:.25s;}
+  .burger.is-open span:nth-child(1){transform:translateY(8px) rotate(45deg);}
+  .burger.is-open span:nth-child(2){opacity:0;}
+  .burger.is-open span:nth-child(3){transform:translateY(-8px) rotate(-45deg);}
+
+  .nav-overlay{position:fixed;inset:0;top:78px;z-index:40;background:rgba(6,10,15,.7);backdrop-filter:blur(6px);opacity:0;pointer-events:none;transition:opacity .25s ease;}
+  .nav-overlay.is-open{opacity:1;pointer-events:auto;}
+  .nav-panel{max-width:1140px;margin:0 auto;padding:16px 24px;}
+  .nav-card{background:rgba(18,27,39,.9);border:1px solid rgba(127,220,255,.12);border-radius:var(--radius-card);padding:8px;}
+  .nav-link{display:flex;align-items:center;justify-content:space-between;padding:15px 16px;font-family:'Rubik',sans-serif;font-weight:600;font-size:17px;color:var(--text-white);border-radius:14px;cursor:pointer;}
+  .nav-link.active{color:var(--cyan);}
+  .nav-link:hover{background:rgba(255,255,255,.04);}
+  .nav-sub{display:none;padding:0 8px 8px;}
+  .nav-sub.is-open{display:block;}
+  .nav-sub a{display:block;padding:12px 16px;font-size:15px;color:var(--text-muted);border-radius:12px;font-family:'Nunito Sans',sans-serif;font-weight:600;}
+  .nav-sub a:hover{color:var(--cyan-soft);background:rgba(56,198,244,.06);}
+  .chevron{transition:transform .25s ease;color:var(--text-muted);}
+  .nav-link.open .chevron{transform:rotate(180deg);}
+
+  /* ===== HERO ===== */
+  .hero{position:relative;background:var(--bg-deep);color:var(--text-white);overflow:hidden;}
+  .hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;}
+  .hero-bg{position:absolute;inset:0;z-index:1;
+    background:
+      linear-gradient(180deg, rgba(8,13,20,.5) 0%, rgba(8,13,20,.82) 62%, rgba(8,13,20,1) 100%),
+      radial-gradient(ellipse at 75% 15%, rgba(56,198,244,.18), transparent 55%),
+      radial-gradient(ellipse at 15% 85%, rgba(47,125,246,.16), transparent 52%);}
+  /* animated grid overlay */
+  .hero-grid{position:absolute;inset:0;z-index:1;opacity:.35;
+    background-image:linear-gradient(rgba(127,220,255,.09) 1px,transparent 1px),linear-gradient(90deg,rgba(127,220,255,.09) 1px,transparent 1px);
+    background-size:54px 54px;
+    mask-image:radial-gradient(ellipse at 70% 30%,#000 20%,transparent 70%);
+    -webkit-mask-image:radial-gradient(ellipse at 70% 30%,#000 20%,transparent 70%);
+    animation:gridfloat 20s linear infinite;}
+  @keyframes gridfloat{to{background-position:54px 54px;}}
+  .hero-inner{position:relative;z-index:2;padding:70px 0 60px;}
+  .hero h1{font-size:clamp(30px,5.2vw,50px);font-weight:800;max-width:840px;margin:18px 0 20px;}
+  .hero h1 .grad{background:linear-gradient(100deg,var(--cyan-soft),var(--blue-soft));-webkit-background-clip:text;background-clip:text;color:transparent;}
+  .hero p.lead{font-size:clamp(15px,2vw,18px);line-height:1.65;color:#c2cdda;max-width:580px;margin-bottom:32px;}
+  .hero-ctas{display:flex;flex-wrap:wrap;gap:14px;margin-bottom:52px;}
+  .hero-stats{display:flex;flex-wrap:wrap;gap:14px;max-width:760px;}
+  .stat{flex:1;min-width:150px;position:relative;padding:20px 22px;border-radius:18px;
+    background:rgba(255,255,255,.045);border:1px solid rgba(127,220,255,.14);backdrop-filter:blur(8px);overflow:hidden;}
+  .stat::after{content:"";position:absolute;top:0;left:0;width:100%;height:1px;background:linear-gradient(90deg,transparent,rgba(127,220,255,.6),transparent);}
+  .stat .num{font-family:'Rubik',sans-serif;font-weight:800;font-size:30px;color:#fff;line-height:1;}
+  .stat .num .suffix{color:var(--cyan);}
+  .stat .lbl{font-size:13px;color:var(--text-muted);margin-top:8px;line-height:1.35;}
+
+  /* sticky bottom bar */
+  .sticky-bar{position:fixed;bottom:0;left:0;right:0;z-index:45;background:rgba(255,255,255,.92);backdrop-filter:blur(12px);border-top:1px solid var(--border-light);display:flex;box-shadow:0 -6px 24px rgba(9,20,40,.1);}
+  .sticky-bar a{flex:1;display:flex;align-items:center;justify-content:center;gap:8px;padding:15px 0;font-family:'Rubik',sans-serif;font-weight:600;font-size:14px;}
+  .sticky-bar a svg{width:18px;height:18px;}
+  .sticky-bar a.call{color:var(--blue);}
+  .sticky-bar a.write{color:var(--cyan);}
+  .sticky-bar-spacer{height:64px;}
+
+  /* ===== PROMO BAR ===== */
+  .promo-bar{position:relative;z-index:30;background:linear-gradient(100deg,#0d141e,#12233a);border-bottom:1px solid rgba(127,220,255,.16);overflow:hidden;}
+  .promo-bar::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 15% 50%,rgba(56,198,244,.16),transparent 55%);pointer-events:none;}
+  .promo-inner{position:relative;display:flex;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap;padding:11px 24px;text-align:center;}
+  .promo-inner .txt{color:#eaf3fb;font-family:'Rubik',sans-serif;font-weight:600;font-size:14.5px;}
+  .promo-inner .txt b{color:var(--cyan-soft);}
+  .promo-code{display:inline-flex;align-items:center;gap:8px;cursor:pointer;border:1px dashed rgba(127,220,255,.5);border-radius:10px;padding:5px 12px;background:rgba(56,198,244,.08);transition:.2s;}
+  .promo-code:hover{background:rgba(56,198,244,.18);border-color:var(--cyan);}
+  .promo-code .code{font-family:'Rubik',sans-serif;font-weight:800;letter-spacing:.08em;color:#fff;font-size:14.5px;}
+  .promo-code .copy{font-size:11px;color:var(--text-muted);}
+  .promo-code.copied .copy{color:var(--cyan);}
+
+  /* ===== DISCOUNT / QR SECTION ===== */
+  .discount-sec{background:var(--bg-deep);color:#fff;}
+  .discount-card{border-radius:var(--radius-card);overflow:hidden;border:1px solid rgba(127,220,255,.16);
+    background:linear-gradient(135deg,rgba(18,27,39,.95),rgba(12,26,45,.95));display:grid;grid-template-columns:1.3fr 1fr;}
+  .discount-left{padding:44px;}
+  .discount-left .big{font-family:'Rubik',sans-serif;font-weight:800;font-size:clamp(30px,5vw,46px);line-height:1;margin:10px 0 6px;}
+  .discount-left .big .pct{background:linear-gradient(100deg,var(--cyan-soft),var(--blue-soft));-webkit-background-clip:text;background-clip:text;color:transparent;}
+  .discount-left p{color:#c6d2e2;font-size:15.5px;line-height:1.6;margin:14px 0 22px;max-width:420px;}
+  .discount-code-row{display:flex;align-items:center;gap:14px;flex-wrap:wrap;}
+  .code-chip{display:inline-flex;align-items:center;gap:10px;cursor:pointer;border:1.5px dashed var(--cyan);border-radius:14px;padding:12px 18px;background:rgba(56,198,244,.1);transition:.2s;}
+  .code-chip:hover{background:rgba(56,198,244,.2);}
+  .code-chip .lbl{font-size:11.5px;color:var(--text-muted);text-transform:uppercase;letter-spacing:.08em;}
+  .code-chip .code{font-family:'Rubik',sans-serif;font-weight:800;font-size:20px;color:#fff;letter-spacing:.06em;}
+  .code-chip.copied{border-style:solid;}
+  .discount-right{background:rgba(255,255,255,.03);border-left:1px solid rgba(127,220,255,.1);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:34px 24px;gap:14px;}
+  .qr-tabs{display:flex;gap:6px;}
+  .qr-tab{padding:7px 13px;border-radius:10px;font-family:'Rubik',sans-serif;font-weight:600;font-size:12.5px;color:var(--text-muted);cursor:pointer;border:1px solid transparent;transition:.2s;background:rgba(255,255,255,.04);}
+  .qr-tab.active{color:#0d141e;background:var(--cyan-soft);}
+  .qr-box{width:190px;height:190px;background:#fff;border-radius:16px;padding:12px;display:flex;align-items:center;justify-content:center;}
+  .qr-box img{width:100%;height:100%;image-rendering:auto;}
+  .qr-hint{font-size:12.5px;color:var(--text-muted);text-align:center;max-width:210px;line-height:1.4;}
+  .qr-hint b{color:var(--cyan-soft);}
+  @media (max-width:760px){.discount-card{grid-template-columns:1fr;}.discount-right{border-left:none;border-top:1px solid rgba(127,220,255,.1);}}
+
+  /* ===== SECTION generic ===== */
+  section{padding:76px 0;position:relative;}
+  .section-head{max-width:680px;margin-bottom:42px;}
+  .section-head h2{font-size:clamp(24px,3.6vw,34px);color:var(--text-dark);margin-top:12px;}
+  .dark-sec .section-head h2{color:#fff;}
+  .section-head p{color:var(--text-dark-muted);font-size:16px;margin-top:14px;line-height:1.65;}
+  .dark-sec .section-head p{color:var(--text-muted);}
+
+  /* glass card base */
+  .glass{position:relative;border-radius:var(--radius-card);overflow:hidden;
+    background:var(--card-light);border:1px solid var(--border-light);
+    transition:transform .3s cubic-bezier(.2,.7,.2,1), box-shadow .3s ease, border-color .3s ease;}
+  .glass:hover{transform:translateY(-4px);border-color:var(--cyan);box-shadow:0 18px 40px -14px rgba(21,60,140,.28);}
+  /* spotlight follow-cursor */
+  .spot{position:relative;}
+  .spot::before{content:"";position:absolute;inset:0;border-radius:inherit;opacity:0;transition:opacity .3s;pointer-events:none;
+    background:radial-gradient(240px circle at var(--mx,50%) var(--my,50%),rgba(56,198,244,.14),transparent 60%);}
+  .spot:hover::before{opacity:1;}
+
+  /* ===== SERVICES ===== */
+  .services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px;}
+  .service-card{padding:28px;}
+  .service-card .ic{width:50px;height:50px;border-radius:15px;background:linear-gradient(135deg,rgba(47,125,246,.14),rgba(56,198,244,.18));display:flex;align-items:center;justify-content:center;color:var(--blue);box-shadow:inset 0 0 0 1px rgba(56,198,244,.15);}
+  .service-card h3{font-size:18.5px;margin:18px 0 8px;color:var(--text-dark);}
+  .service-card p{font-size:14.5px;color:var(--text-dark-muted);line-height:1.6;}
+
+  /* ===== PRICES ===== */
+  .price-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;}
+  .price-card{overflow:hidden;}
+  .price-card-media{aspect-ratio:16/9;position:relative;background:linear-gradient(135deg,#e0ebff,#d6f3ff);display:flex;align-items:center;justify-content:center;overflow:hidden;}
+  .price-card-media svg{width:92px;height:92px;color:var(--blue);position:relative;z-index:1;}
+  .price-card-media video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:2;}
+  .price-card-media::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 70% 20%,rgba(255,255,255,.7),transparent 55%);z-index:1;}
+  .price-card-body{padding:22px;}
+  .price-card-body .label{font-size:13px;color:var(--text-dark-muted);}
+  .price-card-body .type{font-family:'Rubik',sans-serif;font-weight:600;font-size:16px;color:var(--blue);margin:2px 0 14px;}
+  .price-card-body .price{font-family:'Rubik',sans-serif;font-weight:800;font-size:23px;color:var(--text-dark);}
+  .price-note{margin-top:18px;font-size:13px;color:var(--text-dark-muted);}
+  .dark-sec .price-note{color:var(--text-muted);}
+
+  /* ===== BUSINESS ===== */
+  .business{background:var(--bg-deep);color:var(--text-white);}
+  .business-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:44px;align-items:center;}
+  .media-frame{position:relative;border-radius:var(--radius-card);overflow:hidden;aspect-ratio:4/3;background:#0d141e;border:1px solid rgba(127,220,255,.14);}
+  .media-frame video,.media-frame img{width:100%;height:100%;object-fit:cover;}
+  .media-frame .ph{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;color:var(--text-muted);
+    background:linear-gradient(135deg,#0f1a28,#0b1420);}
+  .media-frame .ph svg{width:40px;height:40px;color:var(--cyan);opacity:.8;}
+  .media-frame .ph span{font-size:12.5px;letter-spacing:.03em;}
+  .media-badge{position:absolute;top:14px;left:14px;z-index:2;display:flex;align-items:center;gap:7px;padding:7px 12px;border-radius:999px;background:rgba(8,13,20,.6);backdrop-filter:blur(6px);border:1px solid rgba(127,220,255,.2);font-size:11.5px;color:var(--cyan-soft);font-family:'Rubik',sans-serif;font-weight:600;letter-spacing:.04em;}
+  .media-badge .dot{width:7px;height:7px;border-radius:50%;background:var(--cyan);box-shadow:0 0 8px var(--cyan);animation:blink 1.6s ease-in-out infinite;}
+  @keyframes blink{50%{opacity:.35;}}
+  .business h2{font-size:clamp(22px,3.2vw,29px);margin-bottom:14px;}
+  .business h2 em{font-style:normal;color:var(--cyan);}
+  .business ul{list-style:none;display:grid;gap:11px;margin-top:6px;}
+  .business ul li{display:flex;align-items:center;gap:11px;color:#c6d2e2;font-size:15px;}
+  .business ul li svg{width:20px;height:20px;color:var(--cyan);flex-shrink:0;}
+
+  /* ===== METHANE ===== */
+  .methane{background:var(--bg-light);}
+  .methane-box{padding:40px;}
+  .methane h2{font-size:clamp(22px,3.2vw,28px);color:var(--text-dark);}
+  .methane h2 span{color:var(--blue);display:block;margin-top:4px;}
+  .methane-list{margin-top:24px;display:grid;gap:16px;}
+  .methane-item{display:flex;gap:14px;align-items:flex-start;}
+  .methane-item .check{width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,var(--blue),var(--cyan));color:#fff;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;box-shadow:0 4px 12px -3px rgba(47,125,246,.6);}
+  .methane-item p{font-size:15px;color:var(--text-dark-muted);line-height:1.65;}
+
+  /* ===== BRANDS ===== */
+  .brands-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;}
+  .brand-card{position:relative;border:1px solid var(--border-light);border-radius:16px;background:var(--card-light);height:90px;display:flex;align-items:center;justify-content:center;font-family:'Rubik',sans-serif;font-weight:700;font-size:15px;color:var(--text-dark);letter-spacing:.02em;transition:.25s;overflow:hidden;}
+  .brand-card:hover{color:var(--blue);border-color:var(--cyan);transform:translateY(-3px);box-shadow:0 12px 26px -12px rgba(21,60,140,.3);}
+
+  /* ===== STEPS ===== */
+  .steps-wrap{display:grid;grid-template-columns:1fr 1fr;gap:46px;align-items:start;}
+  .steps-media{position:sticky;top:100px;}
+  .step{display:flex;gap:18px;padding:22px 0;border-bottom:1px solid var(--border-light);}
+  .dark-sec .step{border-color:rgba(255,255,255,.08);}
+  .step:last-child{border-bottom:none;}
+  .step-num{font-family:'Rubik',sans-serif;font-weight:800;font-size:15px;color:#fff;width:44px;height:44px;border-radius:50%;flex-shrink:0;background:linear-gradient(135deg,var(--blue),var(--cyan));display:flex;align-items:center;justify-content:center;box-shadow:0 6px 16px -5px rgba(47,125,246,.6);}
+  .step h3{font-size:17.5px;margin-bottom:6px;color:var(--text-dark);}
+  .dark-sec .step h3{color:#fff;}
+  .step p{font-size:14.5px;color:var(--text-dark-muted);line-height:1.6;}
+  .dark-sec .step p{color:var(--text-muted);}
+
+  /* ===== ABOUT ===== */
+  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+  .about-card{padding:30px;}
+  .about-card h3{font-size:18.5px;color:var(--blue);margin-bottom:10px;}
+  .about-card p{font-size:15px;color:var(--text-dark-muted);line-height:1.65;}
+  .mission{margin-top:20px;border-radius:var(--radius-card);padding:44px;color:#fff;position:relative;overflow:hidden;border:1px solid rgba(127,220,255,.14);
+    background:linear-gradient(135deg, rgba(8,13,20,.78), rgba(15,30,60,.9)),url('https://images.unsplash.com/photo-1487754180451-c456f719a1fc?q=80&w=1400&auto=format&fit=crop') center/cover;}
+  .mission h3{font-size:clamp(20px,3vw,25px);margin-bottom:14px;}
+  .mission p{color:#c6d2e2;font-size:15.5px;line-height:1.7;max-width:660px;}
+
+  /* ===== FORM ===== */
+  .form-section{position:relative;color:#fff;overflow:hidden;background:var(--bg-deep);}
+  .form-section .fs-bg{position:absolute;inset:0;z-index:0;background:linear-gradient(160deg, rgba(8,13,20,.82), rgba(10,20,40,.95)),url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=1600&auto=format&fit=crop') center/cover;}
+  .form-section .container{position:relative;z-index:1;}
+  .form-wrap{max-width:540px;}
+  .form-wrap h2{font-size:clamp(22px,3.4vw,30px);margin-bottom:10px;}
+  .form-wrap p.lead{color:var(--text-muted);margin-bottom:30px;font-size:15.5px;}
+  .field{margin-bottom:16px;}
+  .field label{display:block;font-size:13px;color:var(--text-muted);margin-bottom:8px;font-weight:600;}
+  .field input{width:100%;padding:16px;border-radius:16px;border:1px solid rgba(255,255,255,.16);background:rgba(255,255,255,.055);color:#fff;font-family:'Nunito Sans',sans-serif;font-size:15px;transition:.2s;}
+  .field input::placeholder{color:#6d7b8f;}
+  .field input:focus{outline:none;border-color:var(--cyan);box-shadow:0 0 0 3px rgba(56,198,244,.18);background:rgba(255,255,255,.08);}
+  .consent{font-size:12.5px;color:#7f8da1;margin:18px 0;line-height:1.55;}
+  .consent a{color:var(--cyan-soft);text-decoration:underline;}
+  .btn-block{width:100%;}
+
+  /* ===== REVIEWS ===== */
+  .review-card{padding:30px;max-width:660px;position:relative;}
+  .review-top{display:flex;align-items:center;gap:14px;margin-bottom:16px;}
+  .avatar{width:50px;height:50px;border-radius:50%;background:linear-gradient(135deg,var(--blue),var(--cyan));display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-family:'Rubik',sans-serif;font-size:18px;box-shadow:0 6px 16px -5px rgba(47,125,246,.6);}
+  .review-top .name{font-family:'Rubik',sans-serif;font-weight:600;font-size:15.5px;color:var(--text-dark);}
+  .review-top .date{font-size:13px;color:var(--text-dark-muted);}
+  .quote-mark{position:absolute;top:26px;right:28px;color:var(--cyan-soft);font-size:40px;font-family:'Rubik',sans-serif;line-height:1;opacity:.5;}
+  .review-card p.text{font-size:15.5px;color:var(--text-dark-muted);line-height:1.65;margin-bottom:16px;}
+  .stars{color:#ffb43a;font-size:15px;letter-spacing:2px;}
+  .stars span{color:var(--text-dark-muted);margin-left:6px;letter-spacing:0;font-size:14px;}
+  .review-links{display:flex;flex-wrap:wrap;gap:12px;margin-top:22px;}
+  .review-link{display:flex;align-items:center;gap:10px;border:1px solid var(--border-light);border-radius:16px;padding:14px 20px;font-family:'Rubik',sans-serif;font-weight:600;font-size:14px;background:var(--card-light);transition:.25s;}
+  .review-link:hover{border-color:var(--cyan);transform:translateY(-2px);box-shadow:0 10px 24px -12px rgba(21,60,140,.3);}
+
+  /* ===== CONTACTS ===== */
+  .contacts{background:var(--bg-deep);color:#fff;}
+  .contacts-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:0;border-radius:var(--radius-card);overflow:hidden;border:1px solid rgba(127,220,255,.14);}
+  .contacts-panel{background:var(--card-dark);padding:40px;}
+  .contacts-panel h2{font-size:clamp(22px,3.2vw,27px);margin-bottom:26px;}
+  .contact-row{display:flex;gap:14px;margin-bottom:22px;}
+  .contact-row .ic{width:22px;height:22px;color:var(--cyan);flex-shrink:0;margin-top:2px;}
+  .contact-row .lbl{font-size:11.5px;color:var(--text-muted);margin-bottom:4px;text-transform:uppercase;letter-spacing:.08em;font-weight:700;}
+  .contact-row .val{font-size:16px;color:#fff;font-weight:600;font-family:'Rubik',sans-serif;}
+  .social-row{display:flex;gap:10px;margin:26px 0;}
+  .social-row a{width:46px;height:46px;border-radius:14px;background:rgba(255,255,255,.06);display:flex;align-items:center;justify-content:center;color:#fff;transition:.2s;border:1px solid transparent;}
+  .social-row a:hover{background:rgba(56,198,244,.16);color:var(--cyan-soft);border-color:rgba(127,220,255,.3);transform:translateY(-2px);}
+  .map-embed{min-height:440px;background:#0d141e;}
+  .map-embed iframe{width:100%;height:100%;min-height:440px;border:0;filter:grayscale(.12) contrast(1.03);}
+
+  footer{background:#060a10;color:#6d7b8f;padding:30px 0;font-size:13px;text-align:center;}
+
+  @media (max-width:880px){
+    .business-grid,.about-grid,.steps-wrap,.contacts-grid{grid-template-columns:1fr;}
+    .business-media,.steps-media{position:static;}
+    .media-frame{order:-1;}
+  }
+
+  /* ===== promo bar ===== */
+  .promo-bar{position:relative;z-index:30;background:linear-gradient(100deg,#0d141e,#12233a);border-bottom:1px solid rgba(127,220,255,.15);color:#fff;}
+  .promo-inner{display:flex;align-items:center;gap:18px;padding:12px 24px;max-width:1140px;margin:0 auto;flex-wrap:wrap;justify-content:center;}
+  .promo-text{font-family:'Rubik',sans-serif;font-weight:600;font-size:14.5px;display:flex;align-items:center;gap:9px;}
+  .promo-text b{color:var(--cyan);font-weight:800;}
+  .promo-spark{width:20px;height:20px;color:var(--cyan);flex-shrink:0;}
+  .promo-code{display:inline-flex;align-items:center;gap:8px;cursor:pointer;border:1px dashed rgba(127,220,255,.5);border-radius:10px;padding:5px 12px;background:rgba(56,198,244,.08);font-family:'Rubik',sans-serif;font-weight:700;font-size:14px;letter-spacing:.08em;color:#fff;transition:.2s;}
+  .promo-code:hover{background:rgba(56,198,244,.18);border-color:var(--cyan);}
+  .promo-code .copy-ic{width:14px;height:14px;color:var(--cyan-soft);}
+  .promo-code.copied{background:rgba(30,158,106,.22);border-color:#1e9e6a;}
+  @media (max-width:620px){.promo-text{font-size:13px;}.promo-inner{gap:12px;padding:10px 16px;}}
+
+
+  /* ===== qr promo in contacts ===== */
+  .qr-promo{background:rgba(56,198,244,.06);border:1px solid rgba(127,220,255,.16);border-radius:16px;padding:14px;margin:6px 0 22px;}
+  .qr-promo-tabs{display:flex;gap:6px;margin-bottom:12px;}
+  .qr-t{flex:1;padding:7px 6px;border-radius:9px;font-family:'Rubik',sans-serif;font-weight:600;font-size:12.5px;color:var(--text-muted);cursor:pointer;border:1px solid transparent;background:rgba(255,255,255,.04);transition:.2s;}
+  .qr-t.active{color:#0d141e;background:var(--cyan-soft);}
+  .qr-promo-body{display:flex;gap:16px;align-items:center;}
+  .qr-promo img{width:96px;height:96px;border-radius:12px;background:#fff;padding:6px;flex-shrink:0;}
+  .qr-title{font-family:'Rubik',sans-serif;font-weight:600;font-size:15px;color:#fff;margin-bottom:6px;}
+  .qr-title b{color:var(--cyan);}
+  .qr-desc{font-size:12.5px;color:var(--text-muted);line-height:1.5;}
+  @media (max-width:420px){.qr-promo-body{flex-direction:column;text-align:center;}}
+
+</style>
+  <link rel="canonical" href="https://gbosochi.ru/">
+  <meta name="description" content="Установка и обслуживание ГБО в Сочи от 85 000 ₽ с гарантией 3 года. Газ на авто за 1 день, климат, автоэлектрика, диагностика. Скидка 5% по промокоду САЙТ.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Gaz service — установка ГБО в Сочи">
+  <meta property="og:description" content="Установка и обслуживание ГБО в Сочи от 85 000 ₽ с гарантией 3 года. Скидка 5% по промокоду САЙТ.">
+  <meta property="og:url" content="https://gbosochi.ru/">
+  <meta property="og:site_name" content="Gaz service">
+  <meta property="og:image" content="https://gbosochi.ru/assets/video/hero-poster.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"AutoRepair",
+    "name":"Gaz service",
+    "description":"Установка и обслуживание ГБО, климатические системы, автоэлектрика в Сочи",
+    "url":"https://gbosochi.ru/",
+    "telephone":"+79275021415",
+    "priceRange":"от 85000 ₽",
+    "address":{"@type":"PostalAddress","streetAddress":"ул. Фурманова, 2/2","addressLocality":"Сочи","addressRegion":"Краснодарский край","postalCode":"354024","addressCountry":"RU"},
+    "openingHours":"Mo-Su 09:00-",
+    "aggregateRating":{"@type":"AggregateRating","ratingValue":"5.0","reviewCount":"5"}
+  }
+  </script>
+</head>
+<body>
+
+<!-- ===== PROMO BAR ===== -->
+<div class="promo-bar">
+  <div class="promo-inner">
+    <span class="txt">🎁 Скидка <b>5%</b> на все работы — назовите промокод</span>
+    <span class="promo-code" id="promoCode" title="Нажмите, чтобы скопировать">
+      <span class="code">САЙТ</span>
+      <span class="copy">копировать</span>
+    </span>
+  </div>
+</div>
+
+
+<!-- ===== HEADER ===== -->
+<header>
+  <div class="container header-inner">
+    <a href="#top" class="logo">
+      <span class="logo-mark">
+        <svg viewBox="0 0 144 144" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="72" cy="72" r="60" fill="#0a0f16"/>
+          <circle cx="72" cy="72" r="34" fill="none" stroke="#fff" stroke-width="6"/>
+          <circle cx="72" cy="72" r="8" fill="#fff"/>
+          <path d="M72 80 L72 106" stroke="#fff" stroke-width="6" stroke-linecap="round"/>
+          <path d="M66 74 L44 62" stroke="#fff" stroke-width="6" stroke-linecap="round"/>
+          <path d="M78 74 L100 62" stroke="#fff" stroke-width="6" stroke-linecap="round"/>
+          <path d="M72 44 C72 44 66 52 66 57 C66 60.8 68.7 63.5 72 63.5 C75.3 63.5 78 60.8 78 57 C78 52 72 44 72 44 Z" fill="#7fdcff"/>
+        </svg>
+      </span>
+      <span class="logo-text">Gaz service<span>ГБО · КЛИМАТ · СОЧИ</span></span>
+    </a>
+    <div class="header-actions">
+      <a href="tel:+79275021415" class="icon-btn" aria-label="Позвонить">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M6.6 10.8C8 13.6 10.4 16 13.2 17.4L15.4 15.2C15.7 14.9 16.1 14.8 16.5 15C17.8 15.5 19.2 15.7 20.6 15.7C21.1 15.7 21.5 16.1 21.5 16.6V20.4C21.5 20.9 21.1 21.3 20.6 21.3C10.6 21.3 2.7 13.4 2.7 3.4C2.7 2.9 3.1 2.5 3.6 2.5H7.4C7.9 2.5 8.3 2.9 8.3 3.4C8.3 4.8 8.5 6.2 9 7.5C9.1 7.9 9 8.3 8.8 8.6L6.6 10.8Z" stroke="#fff" stroke-width="1.8" stroke-linejoin="round"/></svg>
+      </a>
+      <button class="burger" id="burgerBtn" aria-label="Меню"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<div class="nav-overlay" id="navOverlay">
+  <div class="nav-panel">
+    <div class="nav-card">
+      <a href="#top" class="nav-link active">Главная</a>
+      <div class="nav-link" id="servicesToggle">Услуги
+        <svg class="chevron" width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M6 9L12 15L18 9" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </div>
+      <div class="nav-sub" id="servicesSub">
+        <a href="#prices">Установка ГБО</a>
+        <a href="#steps">Обслуживание и ремонт ГБО</a>
+        <a href="#form">Регистрация ГБО</a>
+        <a href="#services">Обслуживание климатических систем</a>
+        <a href="#services">Диагностика и ТО</a>
+        <a href="#services">Автоэлектрика и выезд</a>
+      </div>
+      <a href="#about" class="nav-link">О компании</a>
+      <a href="#promos" class="nav-link">Акции</a>
+      <a href="#reviews" class="nav-link">Отзывы</a>
+      <a href="#contacts" class="nav-link">Контакты</a>
+    </div>
+  </div>
+</div>
+
+<!-- ===== HERO ===== -->
+<section class="hero" id="top">
+  <video class="hero-video" autoplay muted loop playsinline poster="assets/video/hero-poster.jpg"><source src="assets/video/hero.mp4" type="video/mp4"></video>
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="container hero-inner">
+    <span class="eyebrow" data-reveal>Сертифицированный автосервис в Сочи</span>
+    <h1 class="d1" data-reveal>Газовое оборудование, климат и диагностика <span class="grad">без лишних поездок по сервисам</span></h1>
+    <p class="lead" class="d2" data-reveal>Ставим и обслуживаем ГБО, чиним автокондиционеры, делаем компьютерную диагностику. Работают мастера с профильным опытом. Приезжайте, посмотрим машину и честно скажем, что нужно.</p>
+    <div class="hero-ctas" class="d3" data-reveal>
+      <a href="#prices" class="btn btn-blue">Смотреть цены</a>
+      <a href="#form" class="btn btn-ghost">Записаться</a>
+    </div>
+    <div class="hero-stats" class="d4" data-reveal>
+      <div class="stat"><div class="num" data-count="5"><span class="suffix">,0</span></div><div class="lbl">рейтинг на 2ГИС и Яндексе</div></div>
+      <div class="stat"><div class="num" data-count="3"><span class="suffix"> года</span></div><div class="lbl">гарантия на установку ГБО</div></div>
+      <div class="stat"><div class="num" data-count="1"><span class="suffix"> день</span></div><div class="lbl">на установку под ключ</div></div>
+      <div class="stat"><div class="num" data-count="70"><span class="suffix">%</span></div><div class="lbl">экономия на топливе</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SERVICES ===== -->
+<section id="services">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow" data-reveal>Услуги</span>
+      <h2 class="d1" data-reveal>Что мы делаем</h2>
+      <p class="d2" data-reveal>Занимаемся газовым оборудованием от и до, плюс климат и диагностика. Всё в одном месте, не придётся ездить по разным сервисам.</p>
+    </div>
+    <div class="services-grid">
+      <div class="glass spot service-card" data-reveal>
+        <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M14 7h4a2 2 0 0 1 2 2v9M6 21V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v16M3 21h18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+        <h3>Установка ГБО</h3>
+        <p>Монтаж газобаллонного оборудования на пропане и метане с официальным оформлением.</p>
+      </div>
+      <div class="glass spot service-card" class="d1" data-reveal>
+        <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18v3h3l6.3-6.3a4 4 0 0 0 5.4-5.4L15 12l-3-3 2.7-2.7z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg></div>
+        <h3>Обслуживание и ремонт ГБО</h3>
+        <p>Диагностика, регулировка, замена компонентов, профилактическое обслуживание.</p>
+      </div>
+      <div class="glass spot service-card" class="d2" data-reveal>
+        <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M9 12l2 2 4-5M12 3l7 3v5c0 5-3.5 8.5-7 10-3.5-1.5-7-5-7-10V6l7-3z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg></div>
+        <h3>Регистрация ГБО</h3>
+        <p>Помощь с оформлением документов и постановкой на учёт в ГИБДД.</p>
+      </div>
+      <div class="glass spot service-card" class="d1" data-reveal>
+        <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M5.6 18.4l2.1-2.1M16.3 7.7l2.1-2.1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="12" cy="12" r="3.2" stroke="currentColor" stroke-width="1.8"/></svg></div>
+        <h3>Климатические системы</h3>
+        <p>Заправка и обслуживание автомобильных кондиционеров, поиск и устранение неисправностей.</p>
+      </div>
+      <div class="glass spot service-card" class="d2" data-reveal>
+        <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="13" rx="2" stroke="currentColor" stroke-width="1.8"/><path d="M8 21h8M12 17v4M7 10l2.5 2.5L15 8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <h3>Диагностика и ТО</h3>
+        <p>Компьютерная диагностика двигателя и плановое техническое обслуживание.</p>
+      </div>
+      <div class="glass spot service-card" data-reveal>
+        <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M13 2L4.5 13H11l-1 9 8.5-11H12l1-9z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg></div>
+        <h3>Автоэлектрика · выезд</h3>
+        <p>Занимаемся всем, что связано с электрикой автомобиля: компьютерная диагностика, поиск неисправностей, ремонт проводки, стартеров, генераторов, освещения. Ставим доп. оборудование. Быстрый ремонт любой сложности, есть выезд к машине.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PRICES ===== -->
+<section id="prices" style="background:var(--bg-light);">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow" data-reveal>Цены</span>
+      <h2 class="d1" data-reveal>Установка ГБО в Сочи <span style="color:var(--blue);">от 85 000 ₽</span> с гарантией на 3 года</h2>
+      <p class="d2" data-reveal>Получите независимость от цен на бензин уже сегодня. Ставим ГБО с гарантией и официальным оформлением в ГАИ.</p>
+    </div>
+    <div class="price-grid">
+      <div class="glass price-card" data-reveal>
+        <div class="price-card-media"><video autoplay muted loop playsinline poster="assets/video/car-1-sedan-poster.jpg"><source src="assets/video/car-1-sedan.mp4" type="video/mp4"></video><svg viewBox="0 0 64 64" fill="none"><path d="M6 40h4l4-10a4 4 0 0 1 4-3h28a4 4 0 0 1 4 3l4 10h4v8H6z" stroke="currentColor" stroke-width="2.5"/><circle cx="18" cy="48" r="4" stroke="currentColor" stroke-width="2.5"/><circle cx="46" cy="48" r="4" stroke="currentColor" stroke-width="2.5"/></svg></div>
+        <div class="price-card-body"><div class="label">Автомобили</div><div class="type">с 4-цилиндровым двигателем</div><div class="price">от 85 000 ₽</div></div>
+      </div>
+      <div class="glass price-card" class="d1" data-reveal>
+        <div class="price-card-media"><video autoplay muted loop playsinline poster="assets/video/car-2-crossover-poster.jpg"><source src="assets/video/car-2-crossover.mp4" type="video/mp4"></video><svg viewBox="0 0 64 64" fill="none"><path d="M4 40h4l5-11a4 4 0 0 1 4-2.5h30a4 4 0 0 1 4 2.5l5 11h4v8H4z" stroke="currentColor" stroke-width="2.5"/><circle cx="17" cy="48" r="4" stroke="currentColor" stroke-width="2.5"/><circle cx="47" cy="48" r="4" stroke="currentColor" stroke-width="2.5"/></svg></div>
+        <div class="price-card-body"><div class="label">Автомобили</div><div class="type">с 6-цилиндровым двигателем</div><div class="price">от 110 000 ₽</div></div>
+      </div>
+      <div class="glass price-card" class="d2" data-reveal>
+        <div class="price-card-media"><video autoplay muted loop playsinline poster="assets/video/car-3-suv-poster.jpg"><source src="assets/video/car-3-suv.mp4" type="video/mp4"></video><svg viewBox="0 0 64 64" fill="none"><path d="M3 40h4l5.5-12a4.5 4.5 0 0 1 4-2.5h31a4.5 4.5 0 0 1 4 2.5l5.5 12h4v8H3z" stroke="currentColor" stroke-width="2.5"/><circle cx="16" cy="48" r="4" stroke="currentColor" stroke-width="2.5"/><circle cx="48" cy="48" r="4" stroke="currentColor" stroke-width="2.5"/></svg></div>
+        <div class="price-card-body"><div class="label">Автомобили</div><div class="type">с 8-цилиндровым двигателем</div><div class="price">от 140 000 ₽</div></div>
+      </div>
+    </div>
+    <p class="price-note" data-reveal>Точная стоимость зависит от модели авто и комплекта оборудования. Уточняйте у мастера.</p>
+  </div>
+</section>
+
+<!-- ===== BUSINESS ===== -->
+<section class="business dark-sec" id="business">
+  <div class="container business-grid">
+    <div data-reveal>
+      <span class="eyebrow">Специальные условия</span>
+      <h2 style="margin-top:12px;">Установка ГБО на <em>коммерческий транспорт</em> и спецтехнику по лучшим ценам</h2>
+      <p style="color:#c6d2e2;font-size:15.5px;margin:14px 0 20px;">Gaz service — надёжный партнёр для бизнеса. Помогаем автопаркам экономить на топливе.</p>
+      <ul>
+        <li><svg viewBox="0 0 24 24" fill="none"><path d="M4 12l6 6L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Таксопарки</li>
+        <li><svg viewBox="0 0 24 24" fill="none"><path d="M4 12l6 6L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Автопарки Газелей</li>
+        <li><svg viewBox="0 0 24 24" fill="none"><path d="M4 12l6 6L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Грузовой автотранспорт</li>
+        <li><svg viewBox="0 0 24 24" fill="none"><path d="M4 12l6 6L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Спецтехника</li>
+      </ul>
+    </div>
+    <div class="media-frame" class="d1" data-reveal>
+      <div class="media-badge"><span class="dot"></span>ВИДЕО</div>
+      <video autoplay muted loop playsinline poster="assets/video/b2b-fleet-poster.jpg"><source src="assets/video/b2b-fleet.mp4" type="video/mp4"></video>
+    </div>
+  </div>
+</section>
+
+<!-- ===== METHANE ===== -->
+<section class="methane" id="methane">
+  <div class="container">
+    <div class="glass methane-box" data-reveal>
+      <span class="eyebrow">Акция</span>
+      <h2 style="margin-top:12px;">Установка ГБО на метане за 1 день <span>экономия до 70% на топливе</span></h2>
+      <div class="methane-list">
+        <div class="methane-item"><div class="check"><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12l6 6L20 6" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></div><p>Метан дешевле любого другого топлива. Обычно установка окупается за 20–30 тысяч км, дальше вы просто экономите на каждой заправке.</p></div>
+        <div class="methane-item"><div class="check"><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12l6 6L20 6" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></div><p>Экологичнее бензина: продукты сгорания метана — углекислый газ и вода.</p></div>
+        <div class="methane-item"><div class="check"><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12l6 6L20 6" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></div><p>Безопаснее бензина и пропана: при утечке метан легче воздуха и быстро выветривается.</p></div>
+      </div>
+      <a href="#form" class="btn btn-blue" style="margin-top:28px;">Оставить заявку</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PROMOS / АКЦИИ ===== -->
+<section id="promos">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow" data-reveal>Акции</span>
+      <h2 class="d1" data-reveal>Выгодные предложения</h2>
+      <p class="d2" data-reveal>Действующие акции Gaz service. Уточняйте условия при записи.</p>
+    </div>
+    <div class="services-grid">
+      <div class="glass spot service-card" data-reveal>
+        <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M9 12l2 2 4-4M7.8 4.5a2 2 0 0 1 1.4-.6 2 2 0 0 0 1.4-.6l1-1a2 2 0 0 1 2.8 0l1 1a2 2 0 0 0 1.4.6 2 2 0 0 1 1.9 1.9 2 2 0 0 0 .6 1.4l1 1a2 2 0 0 1 0 2.8l-1 1a2 2 0 0 0-.6 1.4 2 2 0 0 1-1.9 1.9 2 2 0 0 0-1.4.6l-1 1a2 2 0 0 1-2.8 0l-1-1a2 2 0 0 0-1.4-.6 2 2 0 0 1-1.9-1.9 2 2 0 0 0-.6-1.4l-1-1a2 2 0 0 1 0-2.8l1-1A2 2 0 0 0 5.9 6.4 2 2 0 0 1 7.8 4.5z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></div>
+        <h3>Скидка на ТО после установки ГБО</h3>
+        <p>Поставили у нас газ — техобслуживание дальше идёт со скидкой.</p>
+      </div>
+      <div class="glass spot service-card" data-reveal>
+        <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="13" rx="2" stroke="currentColor" stroke-width="1.8"/><path d="M7 10l2.5 2.5L15 8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <h3>Бесплатная диагностика при установке</h3>
+        <p>Перед монтажом ГБО проверяем двигатель бесплатно.</p>
+      </div>
+      <div class="glass spot service-card" data-reveal>
+        <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M3 13l2-5a2 2 0 0 1 2-1.3h10A2 2 0 0 1 19 8l2 5v5h-3M3 18v-5m0 5h3m0 0a2 2 0 1 0 4 0m8 0a2 2 0 1 0-4 0" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></div>
+        <h3>Спеццена для таксопарков и автопарков</h3>
+        <p>Оборудуем автопарк газом по особым условиям. Считаем под ваш объём.</p>
+      </div>
+      <div class="glass spot service-card" data-reveal>
+        <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 2v20M12 6l3-3M12 6L9 3M4.5 9l3.5 2M4.5 15l3.5-2M19.5 9L16 11M19.5 15L16 13" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <h3>Зимняя заправка кондиционера со скидкой</h3>
+        <p>Сезонное предложение: обслуживаем и заправляем кондиционер зимой дешевле.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== BRANDS ===== -->
+<section id="brands">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow" data-reveal>Оборудование</span>
+      <h2 class="d1" data-reveal>Работаем только с лучшими</h2>
+      <p class="d2" data-reveal>Ставим проверенные марки ГБО. Ремонтируем оборудование любого производителя.</p>
+    </div>
+    <div class="brands-grid">
+      <div class="brand-card" data-reveal>OMVL</div>
+      <div class="brand-card" data-reveal>DIGITRONIC</div>
+      <div class="brand-card" class="d1" data-reveal>STAG</div>
+      <div class="brand-card" class="d1" data-reveal>Alpha</div>
+      <div class="brand-card" class="d2" data-reveal>LOVATO</div>
+      <div class="brand-card" class="d2" data-reveal>LANDIRENZO</div>
+      <div class="brand-card" data-reveal>TOMASETTO</div>
+      <div class="brand-card" class="d1" data-reveal>ATIKER</div>
+      <div class="brand-card" class="d2" data-reveal>KME</div>
+      <div class="brand-card" class="d3" data-reveal>LPG TECH</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== STEPS ===== -->
+<section id="steps" style="background:var(--bg-light);">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow" data-reveal>Процесс</span>
+      <h2 class="d1" data-reveal>Установка ГБО за 4 шага</h2>
+    </div>
+    <div class="steps-wrap">
+      <div class="steps-media" data-reveal>
+        <div class="media-frame" style="aspect-ratio:16/9;">
+          <div class="media-badge"><span class="dot"></span>ВИДЕО</div>
+          <video autoplay muted loop playsinline poster="assets/video/install-process-poster.jpg"><source src="assets/video/install-process.mp4" type="video/mp4"></video>
+        </div>
+      </div>
+      <div>
+        <div class="step" data-reveal><div class="step-num">01</div><div><h3>Проверка работы двигателя</h3><p>С помощью диагностического оборудования проверяем работу двигателя.</p></div></div>
+        <div class="step" class="d1" data-reveal><div class="step-num">02</div><div><h3>Монтаж газовой подачи</h3><p>Комплект газовой подачи устанавливается в двигатель или в зону под капотом.</p></div></div>
+        <div class="step" class="d2" data-reveal><div class="step-num">03</div><div><h3>Установка баллонов с газом</h3><p>Закрепляем баллонную часть оборудования на иномарки и отечественные автомобили.</p></div></div>
+        <div class="step" class="d3" data-reveal><div class="step-num">04</div><div><h3>Фиксация элементов</h3><p>Ставим элементы для заправки и передвижения газа по системе.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ABOUT ===== -->
+<section id="about">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow" data-reveal>О компании</span>
+      <h2 class="d1" data-reveal>Автосервис, которому <span class="accent" style="color:var(--blue);">можно доверять</span></h2>
+      <p class="d2" data-reveal>Высококлассный сервис и честный ремонт для вашего автомобиля в Сочи.</p>
+    </div>
+    <div class="about-grid">
+      <div class="glass about-card" data-reveal>
+        <h3>С чего всё началось</h3>
+        <p>Начинали мы с газового оборудования. Для Сочи тема живая, топливо тут недешёвое, и водители быстро считают, сколько уходит на бензин. С этого и пошли, а дальше стали делать климат и диагностику, потому что клиенты сами просили.</p>
+      </div>
+      <div class="glass about-card" class="d1" data-reveal>
+        <h3>Обслуживаем машины любых марок</h3>
+        <p>От бюджетных седанов до премиальных внедорожников — берёмся за любую марку и модель. Так было с самого начала, так работаем и сейчас.</p>
+      </div>
+    </div>
+    <div class="mission" class="d1" data-reveal>
+      <h3>Наша миссия</h3>
+      <p>Хотим, чтобы машина не отнимала у вас нервы и деньги. Вовремя проверить, вовремя починить, чтобы вы занимались своими делами, а не стояли в очереди на сервис.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FORM ===== -->
+<section class="form-section" id="form">
+  <div class="fs-bg"></div>
+  <div class="container">
+    <div class="form-wrap">
+      <span class="eyebrow" data-reveal style="color:var(--cyan-soft);">Заявка</span>
+      <h2 class="d1" data-reveal style="margin-top:12px;">Нужна консультация?</h2>
+      <p class="lead" class="d2" data-reveal>Оставьте заявку и получите бесплатную консультацию специалиста.</p>
+      <form class="d2" data-reveal onsubmit="event.preventDefault(); this.reset(); alert('Заявка отправлена (демо-форма шаблона).');">
+        <div class="field"><label for="carBrand">Марка авто</label><input id="carBrand" type="text" placeholder="Марка авто"></div>
+        <div class="field"><label for="phone">Номер телефона</label><input id="phone" type="tel" placeholder="+7 (___) ___-__-__"></div>
+        <div class="field"><label for="name">Ваше имя</label><input id="name" type="text" placeholder="Введите имя"></div>
+        <p class="consent">Нажимая на кнопку, вы соглашаетесь на обработку <a href="#">персональных данных</a>.</p>
+        <button type="submit" class="btn btn-blue btn-block">Заказать консультацию</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ===== REVIEWS ===== -->
+<section id="reviews" style="background:var(--bg-light);">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow" data-reveal>Отзывы</span>
+      <h2 class="d1" data-reveal>Отзывы клиентов</h2>
+    </div>
+    <div class="glass review-card" data-reveal>
+      <span class="quote-mark">&rdquo;</span>
+      <div class="review-top">
+        <div class="avatar">Я</div>
+        <div><div class="name">Ярослав Назаров</div><div class="date">8 августа 2026</div></div>
+      </div>
+      <p class="text">Обращался в данный сервис, были проблемы с кондиционером. Оперативно договорились о визите, в течение часа подъехал, заправили кондиционер, проверили систему, выявили и устранили неисправность. Рекомендую!</p>
+      <div class="stars">★★★★★ <span>5.0</span></div>
+    </div>
+    <div class="review-links" class="d1" data-reveal>
+      <a class="review-link" href="https://2gis.ru/sochi/firm/70000001116706346" target="_blank" rel="noopener">★★★★★ 5.0 · 2ГИС</a>
+      <a class="review-link" href="https://yandex.ru/maps/org/gaz_service/71149657998/reviews/" target="_blank" rel="noopener">★★★★★ 5.0 · Яндекс</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CONTACTS ===== -->
+<section class="contacts dark-sec" id="contacts">
+  <div class="container">
+    <div class="contacts-grid" data-reveal>
+      <div class="contacts-panel">
+        <h2>Контакты</h2>
+        <div class="contact-row">
+          <svg class="ic" viewBox="0 0 24 24" fill="none"><path d="M6.6 10.8C8 13.6 10.4 16 13.2 17.4L15.4 15.2C15.7 14.9 16.1 14.8 16.5 15C17.8 15.5 19.2 15.7 20.6 15.7C21.1 15.7 21.5 16.1 21.5 16.6V20.4C21.5 20.9 21.1 21.3 20.6 21.3C10.6 21.3 2.7 13.4 2.7 3.4C2.7 2.9 3.1 2.5 3.6 2.5H7.4C7.9 2.5 8.3 2.9 8.3 3.4C8.3 4.8 8.5 6.2 9 7.5C9.1 7.9 9 8.3 8.8 8.6L6.6 10.8Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+          <div><div class="lbl">Телефон · Александр</div><div class="val"><a href="tel:+79275021415">+7 927 502-14-15</a></div></div>
+        </div>
+        <div class="contact-row">
+          <svg class="ic" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.8"/><path d="M12 7v5l3 2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+          <div><div class="lbl">Режим работы</div><div class="val">Открыто с 9:00 · по записи</div></div>
+        </div>
+        <div class="contact-row">
+          <svg class="ic" viewBox="0 0 24 24" fill="none"><path d="M12 22s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12z" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="10" r="2.4" stroke="currentColor" stroke-width="1.8"/></svg>
+          <div><div class="lbl">Адрес</div><div class="val">Сочи, ул. Фурманова, 2/2</div></div>
+        </div>
+        <div class="contact-row">
+          <svg class="ic" viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.8"/><path d="M3 7l9 6 9-6" stroke="currentColor" stroke-width="1.8"/></svg>
+          <div><div class="lbl">Почта</div><div class="val">info@gbosochi.ru</div></div>
+        </div>
+        <div class="social-row">
+          <a href="#" aria-label="Instagram"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.8"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a>
+          <a href="https://t.me/+79275021415" target="_blank" rel="noopener" aria-label="Telegram"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M21 4L2.5 11.5l6 2 2 6 3-4 4.5 3.5L21 4z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg></a>
+          <a href="https://wa.me/79275021415?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%21%20%D0%9F%D0%B8%D1%88%D1%83%20%D1%81%20%D1%81%D0%B0%D0%B9%D1%82%D0%B0%2C%20%D1%85%D0%BE%D1%87%D1%83%20%D1%81%D0%BA%D0%B8%D0%B4%D0%BA%D1%83%205%25%20%D0%BF%D0%BE%20%D0%BF%D1%80%D0%BE%D0%BC%D0%BE%D0%BA%D0%BE%D0%B4%D1%83%20%D0%A1%D0%90%D0%99%D0%A2" target="_blank" rel="noopener" aria-label="WhatsApp"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M20 12a8 8 0 1 1-15.3-3.3L4 20l11.4-.7A8 8 0 0 1 20 12z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg></a>
+          <a href="#" aria-label="Avito"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.8"/></svg></a>
+          <a href="#max-soon" aria-label="Max (скоро)" title="Max — скоро" style="opacity:.5;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4 20V6l8 7 8-7v14" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg></a>
+        </div>
+        <div class="qr-promo" id="qrPromo">
+          <div class="qr-promo-tabs">
+            <button class="qr-t active" data-qr="whatsapp">WhatsApp</button>
+            <button class="qr-t" data-qr="telegram">Telegram</button>
+            <button class="qr-t" data-qr="email">Почта</button>
+          </div>
+          <div class="qr-promo-body">
+            <img id="qrImg" src="assets/qr-whatsapp.png" alt="QR-код для связи со скидкой 5% по промокоду САЙТ">
+            <div>
+              <div class="qr-title">Скидка 5% по промокоду <b>САЙТ</b></div>
+              <p class="qr-desc" id="qrDesc">Наведите камеру на QR — откроется WhatsApp с готовым сообщением «пишу с сайта». Или назовите промокод при звонке.</p>
+            </div>
+          </div>
+        </div>
+        <a href="#form" class="btn btn-blue btn-block">Оставить заявку</a>
+      </div>
+      <div class="map-embed">
+        <iframe src="https://www.openstreetmap.org/export/embed.html?bbox=39.7859%2C43.5559%2C39.7959%2C43.5599&layer=mapnik&marker=43.5579%2C39.7909" loading="lazy" title="Карта — Gaz service, ул. Фурманова 2/2, Сочи"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer><div class="container">© 2026 Gaz service · Сочи, ул. Фурманова, 2/2 · gbosochi.ru · Установка и обслуживание ГБО</div></footer>
+
+<div class="sticky-bar-spacer"></div>
+<div class="sticky-bar">
+  <a href="tel:+79275021415" class="call"><svg viewBox="0 0 24 24" fill="none"><path d="M6.6 10.8C8 13.6 10.4 16 13.2 17.4L15.4 15.2C15.7 14.9 16.1 14.8 16.5 15C17.8 15.5 19.2 15.7 20.6 15.7C21.1 15.7 21.5 16.1 21.5 16.6V20.4C21.5 20.9 21.1 21.3 20.6 21.3C10.6 21.3 2.7 13.4 2.7 3.4C2.7 2.9 3.1 2.5 3.6 2.5H7.4C7.9 2.5 8.3 2.9 8.3 3.4C8.3 4.8 8.5 6.2 9 7.5C9.1 7.9 9 8.3 8.8 8.6L6.6 10.8Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>Позвонить</a>
+  <a href="https://wa.me/79275021415?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%21%20%D0%9F%D0%B8%D1%88%D1%83%20%D1%81%20%D1%81%D0%B0%D0%B9%D1%82%D0%B0%2C%20%D1%85%D0%BE%D1%87%D1%83%20%D1%81%D0%BA%D0%B8%D0%B4%D0%BA%D1%83%205%25%20%D0%BF%D0%BE%20%D0%BF%D1%80%D0%BE%D0%BC%D0%BE%D0%BA%D0%BE%D0%B4%D1%83%20%D0%A1%D0%90%D0%99%D0%A2" target="_blank" rel="noopener" class="write"><svg viewBox="0 0 24 24" fill="none"><path d="M21 11.5a8.4 8.4 0 0 1-8.9 8.4 8.7 8.7 0 0 1-3.6-.7L3 20l1-4.8A8.4 8.4 0 0 1 12.6 3a8.4 8.4 0 0 1 8.4 8.5z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>Написать</a>
+</div>
+
+<script>
+  const burgerBtn=document.getElementById('burgerBtn'),navOverlay=document.getElementById('navOverlay');
+  burgerBtn.addEventListener('click',()=>{burgerBtn.classList.toggle('is-open');navOverlay.classList.toggle('is-open');});
+  navOverlay.addEventListener('click',e=>{if(e.target===navOverlay){burgerBtn.classList.remove('is-open');navOverlay.classList.remove('is-open');}});
+  document.querySelectorAll('.nav-overlay a').forEach(a=>a.addEventListener('click',()=>{burgerBtn.classList.remove('is-open');navOverlay.classList.remove('is-open');}));
+  const st=document.getElementById('servicesToggle'),ss=document.getElementById('servicesSub');
+  st.addEventListener('click',()=>{st.classList.toggle('open');ss.classList.toggle('is-open');});
+
+  // scroll reveal
+  const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.14});
+  document.querySelectorAll('[data-reveal]').forEach(el=>io.observe(el));
+
+  // cursor spotlight
+  document.querySelectorAll('.spot').forEach(c=>{
+    c.addEventListener('pointermove',e=>{const r=c.getBoundingClientRect();c.style.setProperty('--mx',(e.clientX-r.left)+'px');c.style.setProperty('--my',(e.clientY-r.top)+'px');});
+  });
+
+  // count-up
+  const cUp=(el)=>{const t=parseFloat(el.getAttribute('data-count'));let n=0;const step=Math.max(1,Math.ceil(t/28));const suffix=el.querySelector('.suffix')?.outerHTML||'';
+    const tick=()=>{n+=step;if(n>=t){n=t;}el.innerHTML=n+suffix;if(n<t)requestAnimationFrame(tick);};tick();};
+  const io2=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){cUp(e.target);io2.unobserve(e.target);}});},{threshold:.6});
+  document.querySelectorAll('[data-count]').forEach(el=>io2.observe(el));
+</script>
+
+
+<script>
+  (function(){
+    // copy promo code
+    var pc=document.getElementById('promoCode');
+    if(pc){pc.addEventListener('click',function(){
+      try{navigator.clipboard&&navigator.clipboard.writeText('САЙТ');}catch(e){}
+      var cp=pc.querySelector('.copy');if(!cp)return;
+      var old=cp.textContent;pc.classList.add('copied');cp.textContent='скопировано ✓';
+      setTimeout(function(){pc.classList.remove('copied');cp.textContent=old;},1600);
+    });}
+    // QR tabs
+    var qrData={
+      whatsapp:{img:'assets/qr-whatsapp.png',desc:'Наведите камеру на QR — откроется WhatsApp с готовым сообщением «пишу с сайта». Или назовите промокод при звонке.'},
+      telegram:{img:'assets/qr-telegram.png',desc:'QR откроет чат в Telegram. Напишите нам и назовите промокод <b>САЙТ</b> — дадим скидку 5%.'},
+      email:{img:'assets/qr-email.png',desc:'QR откроет готовое письмо с темой «Заявка с сайта». Проверьте адрес почты — он появится после подтверждения.'}
+    };
+    var img=document.getElementById('qrImg'),desc=document.getElementById('qrDesc');
+    document.querySelectorAll('.qr-t').forEach(function(t){
+      t.addEventListener('click',function(){
+        document.querySelectorAll('.qr-t').forEach(function(x){x.classList.remove('active');});
+        t.classList.add('active');
+        var d=qrData[t.getAttribute('data-qr')];
+        if(d&&img){img.src=d.img;desc.innerHTML=d.desc;}
+      });
+    });
+  })();
+</script>
+
+</body>
+</html>

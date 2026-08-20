@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://gbosochi.ru/sitemap.xml
+Host: gbosochi.ru
