@@ -215,6 +215,34 @@
   .service-card .ic{width:50px;height:50px;border-radius:15px;background:linear-gradient(135deg,rgba(47,125,246,.14),rgba(56,198,244,.18));display:flex;align-items:center;justify-content:center;color:var(--blue);box-shadow:inset 0 0 0 1px rgba(56,198,244,.15);}
   .service-card h3{font-size:18.5px;margin:18px 0 8px;color:var(--text-dark);}
   .service-card p{font-size:14.5px;color:var(--text-dark-muted);line-height:1.6;}
+  /* video-background service card — финальный стиль */
+  .service-card.has-video{position:relative;overflow:hidden;border:1px solid rgba(127,220,255,.14);
+    min-height:210px;padding:0;display:flex;align-items:center;justify-content:center;text-align:center;
+    border-radius:20px;isolation:isolate;transition:transform .4s cubic-bezier(.2,.7,.2,1),box-shadow .4s,border-color .4s;}
+  .service-card.has-video video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;
+    filter:saturate(1.05) brightness(.85);transition:transform .6s ease,filter .4s;}
+  /* strong dark tint so video reads as muted background, text pops */
+  .service-card.has-video::before{content:"";position:absolute;inset:0;z-index:1;
+    background:linear-gradient(180deg,rgba(7,13,22,.58),rgba(6,12,22,.66)),radial-gradient(ellipse at 72% 15%,rgba(56,198,244,.14),transparent 60%);
+    transition:opacity .4s;}
+  .service-card.has-video::after{content:"";position:absolute;left:50%;bottom:16px;transform:translateX(-50%) scaleX(.5);
+    width:44px;height:3px;border-radius:2px;z-index:3;background:linear-gradient(90deg,var(--blue),var(--cyan));
+    transition:transform .45s ease,width .45s;transform-origin:center;}
+  .service-card.has-video .svc-num{position:absolute;top:16px;right:18px;z-index:2;font-family:'Rubik';font-weight:800;
+    font-size:12px;letter-spacing:.14em;color:rgba(127,220,255,.5);}
+  .service-card.has-video .ic{position:absolute;top:16px;left:18px;z-index:2;width:38px;height:38px;border-radius:11px;
+    background:rgba(56,198,244,.14);color:#fff;border:1px solid rgba(127,220,255,.3);backdrop-filter:blur(6px);
+    box-shadow:none;display:flex;align-items:center;justify-content:center;transition:.4s;}
+  .service-card.has-video .ic svg{width:19px;height:19px;}
+  .service-card.has-video h3{position:relative;z-index:2;color:#fff;font-family:'Rubik';font-weight:700;
+    font-size:25px;line-height:1.12;margin:0;padding:0 18px 6px;letter-spacing:-.01em;text-shadow:0 2px 20px rgba(0,0,0,.55);}
+  .service-card.has-video p{display:none;}
+  .service-card.has-video:hover{transform:translateY(-6px);border-color:var(--cyan);
+    box-shadow:0 24px 50px -18px rgba(56,198,244,.5),0 0 0 1px rgba(127,220,255,.35);}
+  .service-card.has-video:hover video{transform:scale(1.07);filter:saturate(1.2) brightness(.92);}
+  .service-card.has-video:hover::before{opacity:.85;}
+  .service-card.has-video:hover::after{transform:translateX(-50%) scaleX(1);width:70px;}
+  .service-card.has-video:hover .ic{background:rgba(56,198,244,.26);border-color:var(--cyan);}
 
   /* ===== PRICES ===== */
   .price-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;}
@@ -482,35 +510,47 @@
       <p class="d2" data-reveal>Занимаемся газовым оборудованием от и до, плюс климат и диагностика. Всё в одном месте, не придётся ездить по разным сервисам.</p>
     </div>
     <div class="services-grid">
-      <div class="glass spot service-card" data-reveal>
-        <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M14 7h4a2 2 0 0 1 2 2v9M6 21V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v16M3 21h18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+      <div class="glass service-card has-video" data-reveal>
+        <video autoplay muted loop playsinline poster="assets/video/service-gbo-install-poster.jpg"><source src="assets/video/service-gbo-install.mp4" type="video/mp4"></video>
+        <span class="svc-num">01</span>
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none"><path d="M14 7h4a2 2 0 0 1 2 2v9M6 21V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v16M3 21h18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></div>
         <h3>Установка ГБО</h3>
-        <p>Монтаж газобаллонного оборудования на пропане и метане с официальным оформлением.</p>
+        <p>Монтаж газобаллонного оборудования на пропане и метане.</p>
       </div>
-      <div class="glass spot service-card" class="d1" data-reveal>
-        <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18v3h3l6.3-6.3a4 4 0 0 0 5.4-5.4L15 12l-3-3 2.7-2.7z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg></div>
-        <h3>Обслуживание и ремонт ГБО</h3>
-        <p>Диагностика, регулировка, замена компонентов, профилактическое обслуживание.</p>
+      <div class="glass service-card has-video" data-reveal>
+        <video autoplay muted loop playsinline poster="assets/video/service-gbo-repair-poster.jpg"><source src="assets/video/service-gbo-repair.mp4" type="video/mp4"></video>
+        <span class="svc-num">02</span>
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18v3h3l6.3-6.3a4 4 0 0 0 5.4-5.4L15 12l-3-3 2.7-2.7z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg></div>
+        <h3>Обслуживание<br>и ремонт ГБО</h3>
+        <p>Диагностика, регулировка, замена компонентов.</p>
       </div>
-      <div class="glass spot service-card" class="d2" data-reveal>
-        <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M9 12l2 2 4-5M12 3l7 3v5c0 5-3.5 8.5-7 10-3.5-1.5-7-5-7-10V6l7-3z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg></div>
+      <div class="glass service-card has-video" data-reveal>
+        <video autoplay muted loop playsinline poster="assets/video/service-registration-poster.jpg"><source src="assets/video/service-registration.mp4" type="video/mp4"></video>
+        <span class="svc-num">03</span>
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none"><path d="M9 12l2 2 4-5M12 3l7 3v5c0 5-3.5 8.5-7 10-3.5-1.5-7-5-7-10V6l7-3z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg></div>
         <h3>Регистрация ГБО</h3>
-        <p>Помощь с оформлением документов и постановкой на учёт в ГИБДД.</p>
+        <p>Оформление документов и постановка на учёт в ГИБДД.</p>
       </div>
-      <div class="glass spot service-card" class="d1" data-reveal>
-        <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M5.6 18.4l2.1-2.1M16.3 7.7l2.1-2.1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="12" cy="12" r="3.2" stroke="currentColor" stroke-width="1.8"/></svg></div>
-        <h3>Климатические системы</h3>
-        <p>Заправка и обслуживание автомобильных кондиционеров, поиск и устранение неисправностей.</p>
+      <div class="glass service-card has-video" data-reveal>
+        <video autoplay muted loop playsinline poster="assets/video/service-climate-poster.jpg"><source src="assets/video/service-climate.mp4" type="video/mp4"></video>
+        <span class="svc-num">04</span>
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M5.6 18.4l2.1-2.1M16.3 7.7l2.1-2.1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="12" cy="12" r="3.2" stroke="currentColor" stroke-width="1.8"/></svg></div>
+        <h3>Климат<br>и кондиционеры</h3>
+        <p>Заправка и обслуживание автомобильных кондиционеров.</p>
       </div>
-      <div class="glass spot service-card" class="d2" data-reveal>
-        <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="13" rx="2" stroke="currentColor" stroke-width="1.8"/><path d="M8 21h8M12 17v4M7 10l2.5 2.5L15 8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <div class="glass service-card has-video" data-reveal>
+        <video autoplay muted loop playsinline poster="assets/video/service-diagnostic-poster.jpg"><source src="assets/video/service-diagnostic.mp4" type="video/mp4"></video>
+        <span class="svc-num">05</span>
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="13" rx="2" stroke="currentColor" stroke-width="1.8"/><path d="M8 21h8M12 17v4M7 10l2.5 2.5L15 8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
         <h3>Диагностика и ТО</h3>
-        <p>Компьютерная диагностика двигателя и плановое техническое обслуживание.</p>
+        <p>Компьютерная диагностика двигателя и техобслуживание.</p>
       </div>
-      <div class="glass spot service-card" data-reveal>
-        <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M13 2L4.5 13H11l-1 9 8.5-11H12l1-9z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg></div>
-        <h3>Автоэлектрика · выезд</h3>
-        <p>Занимаемся всем, что связано с электрикой автомобиля: компьютерная диагностика, поиск неисправностей, ремонт проводки, стартеров, генераторов, освещения. Ставим доп. оборудование. Быстрый ремонт любой сложности, есть выезд к машине.</p>
+      <div class="glass service-card has-video" data-reveal>
+        <video autoplay muted loop playsinline poster="assets/video/service-electric-poster.jpg"><source src="assets/video/service-electric.mp4" type="video/mp4"></video>
+        <span class="svc-num">06</span>
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none"><path d="M13 2L4.5 13H11l-1 9 8.5-11H12l1-9z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg></div>
+        <h3>Автоэлектрика<br>и выезд</h3>
+        <p>Вся электрика авто: диагностика, проводка, стартеры, генераторы. Быстрый ремонт, есть выезд.</p>
       </div>
     </div>
   </div>
