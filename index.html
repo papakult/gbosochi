@@ -391,6 +391,100 @@
   .qr-desc{font-size:12.5px;color:var(--text-muted);line-height:1.5;}
   @media (max-width:420px){.qr-promo-body{flex-direction:column;text-align:center;}}
 
+
+  /* ===== V3 UPGRADES: neon everywhere ===== */
+  /* 1a. "Записаться" — spinning neon like btn-blue */
+  .btn-ghost{background:#0d141e;box-shadow:0 0 0 1px rgba(127,220,255,.22),0 8px 26px -10px rgba(56,198,244,.4);}
+  .btn-ghost::before{content:"";position:absolute;inset:-2px;z-index:-2;border-radius:inherit;padding:0;
+    background:conic-gradient(from 180deg,#38c6f4,#2f7df6,#7fdcff,#5b8cff,#38c6f4);
+    -webkit-mask:none;mask:none;animation:spin 4s linear infinite;}
+  .btn-ghost::after{content:"";position:absolute;inset:2px;z-index:-1;border-radius:inherit;background:#0d141e;}
+  .btn-ghost:hover{background:#0d141e;box-shadow:0 0 0 1px rgba(127,220,255,.5),0 12px 38px -8px rgba(56,198,244,.7);}
+
+  /* 1b. hero stat cards — spinning neon contour */
+  .stat{isolation:isolate;background:transparent;border:none;backdrop-filter:none;}
+  .stat::before{content:"";position:absolute;inset:-2px;z-index:-2;border-radius:inherit;
+    background:conic-gradient(from 90deg,rgba(47,125,246,.05),#2f7df6,#38c6f4,#7fdcff,rgba(47,125,246,.05));
+    animation:spin 7s linear infinite;}
+  .stat::after{content:"";position:absolute;inset:1.5px;z-index:-1;border-radius:16.5px;
+    background:linear-gradient(160deg,rgba(17,27,41,.97),rgba(9,15,24,.97));}
+
+  /* 2. promo cards with video backgrounds (CapCut style) */
+  .promo-card{position:relative;overflow:hidden;border-radius:var(--radius-card);border:1px solid rgba(127,220,255,.14);
+    min-height:235px;padding:24px;display:flex;flex-direction:column;justify-content:flex-end;isolation:isolate;
+    transition:transform .3s cubic-bezier(.2,.7,.2,1),box-shadow .3s ease,border-color .3s ease;background:#0d141e;}
+  .promo-card video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;
+    filter:saturate(.85) brightness(.58);transition:transform .5s ease,filter .4s ease;}
+  .promo-card .shade{position:absolute;inset:0;z-index:1;pointer-events:none;
+    background:linear-gradient(180deg,rgba(8,13,20,.22) 0%,rgba(8,13,20,.5) 45%,rgba(8,13,20,.93) 100%);}
+  .promo-card .ic{position:absolute;top:16px;left:18px;z-index:2;width:38px;height:38px;border-radius:11px;
+    background:rgba(8,13,20,.55);backdrop-filter:blur(4px);box-shadow:inset 0 0 0 1px rgba(56,198,244,.3);
+    display:flex;align-items:center;justify-content:center;color:var(--cyan-soft);}
+  .promo-card .ic svg{width:19px;height:19px;}
+  .promo-card h3{position:relative;z-index:2;color:#fff;font-size:18px;margin-bottom:8px;text-shadow:0 2px 14px rgba(0,0,0,.55);}
+  .promo-card p{position:relative;z-index:2;color:#c8d4e2;font-size:13.5px;line-height:1.55;text-shadow:0 1px 8px rgba(0,0,0,.55);}
+  .promo-card .line{position:absolute;left:50%;bottom:0;z-index:2;transform:translateX(-50%) scaleX(.5);
+    width:54px;height:3px;border-radius:3px 3px 0 0;background:linear-gradient(90deg,var(--blue),var(--cyan));
+    opacity:0;transition:.35s ease;}
+  .promo-card:hover{transform:translateY(-6px);border-color:var(--cyan);box-shadow:0 18px 44px -14px rgba(56,198,244,.42);}
+  .promo-card:hover video{transform:scale(1.07);filter:saturate(1.1) brightness(.68);}
+  .promo-card:hover .line{opacity:1;transform:translateX(-50%) scaleX(1);width:74px;}
+
+  /* 3. brand cards — volumetric filled buttons */
+  .brand-card{background:linear-gradient(180deg,#264a78 0%,#16294a 55%,#0f1e38 100%);
+    border:1px solid rgba(127,220,255,.32);color:#eaf3ff;letter-spacing:.045em;
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.22),inset 0 -8px 16px rgba(4,10,20,.55),0 10px 24px -10px rgba(15,40,90,.55);
+    text-shadow:0 1px 2px rgba(0,0,0,.45);}
+  .brand-card::after{content:"";position:absolute;top:0;left:-70%;width:45%;height:100%;
+    transform:skewX(-20deg);background:linear-gradient(90deg,transparent,rgba(255,255,255,.16),transparent);
+    transition:left .55s ease;}
+  .brand-card:hover{color:#fff;border-color:var(--cyan);transform:translateY(-4px);
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.3),inset 0 -8px 16px rgba(4,10,20,.5),
+      0 0 0 1px rgba(56,198,244,.4),0 16px 36px -12px rgba(56,198,244,.55);}
+  .brand-card:hover::after{left:120%;}
+
+  /* 5. about cards — neon contour + soft bg */
+  .about-card{border:none;background:transparent;isolation:isolate;}
+  .about-card::before{content:"";position:absolute;inset:-2px;z-index:-2;border-radius:inherit;
+    background:conic-gradient(from 0deg,rgba(56,198,244,.1),#2f7df6,#38c6f4,#7fdcff,rgba(56,198,244,.1));
+    animation:spin 8s linear infinite;}
+  .about-card::after{content:"";position:absolute;inset:1.5px;z-index:-1;border-radius:20.5px;
+    background:linear-gradient(180deg,#ffffff 0%,#edf4fc 100%);}
+
+  /* 6. review card + rating pills — neon contour + soft bg */
+  .review-card{border:none;background:transparent;isolation:isolate;}
+  .review-card::before{content:"";position:absolute;inset:-2px;z-index:-2;border-radius:inherit;
+    background:conic-gradient(from 120deg,rgba(56,198,244,.1),#2f7df6,#38c6f4,#7fdcff,rgba(56,198,244,.1));
+    animation:spin 8s linear infinite;}
+  .review-card::after{content:"";position:absolute;inset:1.5px;z-index:-1;border-radius:20.5px;
+    background:linear-gradient(180deg,#ffffff,#edf4fc);}
+  .review-link{position:relative;border:none;background:transparent;isolation:isolate;overflow:hidden;}
+  .review-link::before{content:"";position:absolute;inset:-1.5px;z-index:-2;border-radius:inherit;
+    background:conic-gradient(from 0deg,#2f7df6,#38c6f4,#7fdcff,#2f7df6);animation:spin 5s linear infinite;}
+  .review-link::after{content:"";position:absolute;inset:1.5px;z-index:-1;border-radius:14.5px;
+    background:linear-gradient(180deg,#ffffff,#edf4fc);}
+  .review-link:hover{transform:translateY(-2px);box-shadow:0 10px 26px -10px rgba(56,198,244,.5);}
+
+  /* 7. sticky bottom bar — bold visible buttons */
+  .sticky-bar{gap:10px;padding:8px 12px;background:rgba(255,255,255,.95);}
+  .sticky-bar a{border-radius:999px;padding:13px 0;font-size:14.5px;transition:transform .15s ease,box-shadow .2s ease;}
+  .sticky-bar a:active{transform:scale(.97);}
+  .sticky-bar a.call{background:linear-gradient(135deg,#2f7df6,#1c5fd6);color:#fff;
+    box-shadow:0 6px 18px -6px rgba(47,125,246,.65);}
+  .sticky-bar a.write{background:linear-gradient(135deg,#0aa5db,#38c6f4);color:#fff;
+    box-shadow:0 6px 18px -6px rgba(56,198,244,.65);}
+  .sticky-bar-spacer{height:72px;}
+
+  /* 8. master photo in hero (desktop) */
+  .hero-master{position:absolute;right:0;bottom:0;z-index:1;height:87%;max-height:620px;
+    pointer-events:none;display:none;}
+  .hero-master img{height:100%;width:auto;object-fit:contain;object-position:bottom right;
+    -webkit-mask-image:radial-gradient(115% 105% at 62% 48%,#000 52%,transparent 76%);
+    mask-image:radial-gradient(115% 105% at 62% 48%,#000 52%,transparent 76%);}
+  @media (min-width:1250px){.hero-master{display:block;}}
+  @media (prefers-reduced-motion:reduce){
+    .btn-ghost::before,.stat::before,.about-card::before,.review-card::before,.review-link::before{animation:none;}
+  }
 </style>
   <link rel="canonical" href="https://gbosochi.ru/">
   <meta name="description" content="Установка и обслуживание ГБО в Сочи от 85 000 ₽ с гарантией 3 года. Газ на авто за 1 день, климат, автоэлектрика, диагностика. Скидка 5% по промокоду САЙТ.">
@@ -484,6 +578,7 @@
   <video class="hero-video" autoplay muted loop playsinline poster="assets/video/hero-poster.jpg"><source src="assets/video/hero.mp4" type="video/mp4"></video>
   <div class="hero-bg"></div>
   <div class="hero-grid"></div>
+  <div class="hero-master"><img src="assets/img/master.jpg" alt="Мастер Gaz service"></div>
   <div class="container hero-inner">
     <span class="eyebrow" data-reveal>Сертифицированный автосервис в Сочи</span>
     <h1 class="d1" data-reveal>Газовое оборудование, климат и диагностика <span class="grad">без лишних поездок по сервисам</span></h1>
@@ -597,7 +692,6 @@
       </ul>
     </div>
     <div class="media-frame" class="d1" data-reveal>
-      <div class="media-badge"><span class="dot"></span>ВИДЕО</div>
       <video autoplay muted loop playsinline poster="assets/video/b2b-fleet-poster.jpg"><source src="assets/video/b2b-fleet.mp4" type="video/mp4"></video>
     </div>
   </div>
@@ -628,25 +722,25 @@
       <p class="d2" data-reveal>Действующие акции Gaz service. Уточняйте условия при записи.</p>
     </div>
     <div class="services-grid">
-      <div class="glass spot service-card" data-reveal>
+      <div class="glass promo-card" data-reveal><video autoplay muted loop playsinline poster="assets/video/service-gbo-repair-poster.jpg"><source src="assets/video/service-gbo-repair.mp4" type="video/mp4"></video><div class="shade"></div>
         <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M9 12l2 2 4-4M7.8 4.5a2 2 0 0 1 1.4-.6 2 2 0 0 0 1.4-.6l1-1a2 2 0 0 1 2.8 0l1 1a2 2 0 0 0 1.4.6 2 2 0 0 1 1.9 1.9 2 2 0 0 0 .6 1.4l1 1a2 2 0 0 1 0 2.8l-1 1a2 2 0 0 0-.6 1.4 2 2 0 0 1-1.9 1.9 2 2 0 0 0-1.4.6l-1 1a2 2 0 0 1-2.8 0l-1-1a2 2 0 0 0-1.4-.6 2 2 0 0 1-1.9-1.9 2 2 0 0 0-.6-1.4l-1-1a2 2 0 0 1 0-2.8l1-1A2 2 0 0 0 5.9 6.4 2 2 0 0 1 7.8 4.5z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></div>
         <h3>Скидка на ТО после установки ГБО</h3>
-        <p>Поставили у нас газ — техобслуживание дальше идёт со скидкой.</p>
+        <p>Поставили у нас газ — техобслуживание дальше идёт со скидкой.</p><span class="line"></span>
       </div>
-      <div class="glass spot service-card" data-reveal>
+      <div class="glass promo-card" data-reveal><video autoplay muted loop playsinline poster="assets/video/service-diagnostic-poster.jpg"><source src="assets/video/service-diagnostic.mp4" type="video/mp4"></video><div class="shade"></div>
         <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="13" rx="2" stroke="currentColor" stroke-width="1.8"/><path d="M7 10l2.5 2.5L15 8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
         <h3>Бесплатная диагностика при установке</h3>
-        <p>Перед монтажом ГБО проверяем двигатель бесплатно.</p>
+        <p>Перед монтажом ГБО проверяем двигатель бесплатно.</p><span class="line"></span>
       </div>
-      <div class="glass spot service-card" data-reveal>
+      <div class="glass promo-card" data-reveal><video autoplay muted loop playsinline poster="assets/video/b2b-fleet-poster.jpg"><source src="assets/video/b2b-fleet.mp4" type="video/mp4"></video><div class="shade"></div>
         <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M3 13l2-5a2 2 0 0 1 2-1.3h10A2 2 0 0 1 19 8l2 5v5h-3M3 18v-5m0 5h3m0 0a2 2 0 1 0 4 0m8 0a2 2 0 1 0-4 0" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></div>
         <h3>Спеццена для таксопарков и автопарков</h3>
-        <p>Оборудуем автопарк газом по особым условиям. Считаем под ваш объём.</p>
+        <p>Оборудуем автопарк газом по особым условиям. Считаем под ваш объём.</p><span class="line"></span>
       </div>
-      <div class="glass spot service-card" data-reveal>
+      <div class="glass promo-card" data-reveal><video autoplay muted loop playsinline poster="assets/video/service-climate-poster.jpg"><source src="assets/video/service-climate.mp4" type="video/mp4"></video><div class="shade"></div>
         <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 2v20M12 6l3-3M12 6L9 3M4.5 9l3.5 2M4.5 15l3.5-2M19.5 9L16 11M19.5 15L16 13" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
         <h3>Зимняя заправка кондиционера со скидкой</h3>
-        <p>Сезонное предложение: обслуживаем и заправляем кондиционер зимой дешевле.</p>
+        <p>Сезонное предложение: обслуживаем и заправляем кондиционер зимой дешевле.</p><span class="line"></span>
       </div>
     </div>
   </div>
@@ -685,7 +779,6 @@
     <div class="steps-wrap">
       <div class="steps-media" data-reveal>
         <div class="media-frame" style="aspect-ratio:16/9;">
-          <div class="media-badge"><span class="dot"></span>ВИДЕО</div>
           <video autoplay muted loop playsinline poster="assets/video/install-process-poster.jpg"><source src="assets/video/install-process.mp4" type="video/mp4"></video>
         </div>
       </div>
@@ -823,7 +916,7 @@
 <div class="sticky-bar-spacer"></div>
 <div class="sticky-bar">
   <a href="tel:+79275021415" class="call"><svg viewBox="0 0 24 24" fill="none"><path d="M6.6 10.8C8 13.6 10.4 16 13.2 17.4L15.4 15.2C15.7 14.9 16.1 14.8 16.5 15C17.8 15.5 19.2 15.7 20.6 15.7C21.1 15.7 21.5 16.1 21.5 16.6V20.4C21.5 20.9 21.1 21.3 20.6 21.3C10.6 21.3 2.7 13.4 2.7 3.4C2.7 2.9 3.1 2.5 3.6 2.5H7.4C7.9 2.5 8.3 2.9 8.3 3.4C8.3 4.8 8.5 6.2 9 7.5C9.1 7.9 9 8.3 8.8 8.6L6.6 10.8Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>Позвонить</a>
-  <a href="https://wa.me/79275021415?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%21%20%D0%9F%D0%B8%D1%88%D1%83%20%D1%81%20%D1%81%D0%B0%D0%B9%D1%82%D0%B0%2C%20%D1%85%D0%BE%D1%87%D1%83%20%D1%81%D0%BA%D0%B8%D0%B4%D0%BA%D1%83%205%25%20%D0%BF%D0%BE%20%D0%BF%D1%80%D0%BE%D0%BC%D0%BE%D0%BA%D0%BE%D0%B4%D1%83%20%D0%A1%D0%90%D0%99%D0%A2" target="_blank" rel="noopener" class="write"><svg viewBox="0 0 24 24" fill="none"><path d="M21 11.5a8.4 8.4 0 0 1-8.9 8.4 8.7 8.7 0 0 1-3.6-.7L3 20l1-4.8A8.4 8.4 0 0 1 12.6 3a8.4 8.4 0 0 1 8.4 8.5z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>Написать</a>
+  <a href="mailto:info@gbosochi.ru?subject=%D0%97%D0%B0%D1%8F%D0%B2%D0%BA%D0%B0%20%D1%81%20%D1%81%D0%B0%D0%B9%D1%82%D0%B0%20gbosochi.ru&body=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%21%20%D0%9F%D0%B8%D1%88%D1%83%20%D1%81%20%D1%81%D0%B0%D0%B9%D1%82%D0%B0%20gbosochi.ru%2C%20%D0%BF%D1%80%D0%BE%D0%BC%D0%BE%D0%BA%D0%BE%D0%B4%20%D0%A1%D0%90%D0%99%D0%A2." class="write"><svg viewBox="0 0 24 24" fill="none"><path d="M21 11.5a8.4 8.4 0 0 1-8.9 8.4 8.7 8.7 0 0 1-3.6-.7L3 20l1-4.8A8.4 8.4 0 0 1 12.6 3a8.4 8.4 0 0 1 8.4 8.5z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>Написать</a>
 </div>
 
 <script>
