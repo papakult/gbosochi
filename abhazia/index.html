@@ -3,9 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Gaz service — установка и обслуживание ГБО в Сочи</title>
+<title>ГБО в Абхазии — установка для авто из Сухума, Гагры, Пицунды, Нового Афона | Gaz service</title>
+<meta name="description" content="Установка ГБО для автомобилей из Абхазии. Приезжайте в Сочи утром — уезжаете с готовым газобаллонным оборудованием тем же вечером. Сухум, Гагра, Пицунда, Новый Афон. Гарантия 3 года.">
+<link rel="canonical" href="https://gbosochi.ru/abhazia">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@500;600;700;800&family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"AutoRepair","name":"Gaz service","url":"https://gbosochi.ru/abhazia","telephone":"+79275021415","address":{"@type":"PostalAddress","streetAddress":"ул. Фурманова, 2/2","addressLocality":"Сочи","addressCountry":"RU"},"areaServed":[{"@type":"City","name":"Сухум"},{"@type":"City","name":"Гагра"},{"@type":"City","name":"Пицунда"},{"@type":"City","name":"Новый Афон"}],"aggregateRating":{"@type":"AggregateRating","ratingValue":"5.0","reviewCount":"5"}}
+</script>
 <style>
   :root{
     --bg-deep:#080d14;
@@ -489,49 +494,84 @@
   @media (prefers-reduced-motion:reduce){
     .btn-ghost::before,.about-card::before,.review-card::before,.review-link::before{animation:none;}
   }
+
+  /* ===== ABHAZIA PAGE EXTRAS ===== */
+  .ab-hero{position:relative;background:var(--bg-deep);color:var(--text-white);overflow:hidden;padding:56px 0 48px;}
+  .ab-hero::before{content:"";position:absolute;inset:0;z-index:0;
+    background:radial-gradient(ellipse at 80% 10%,rgba(56,198,244,.16),transparent 55%),
+      radial-gradient(ellipse at 10% 90%,rgba(47,125,246,.14),transparent 52%);}
+  .ab-hero .container{position:relative;z-index:1;}
+  .ab-hero h1{font-size:clamp(28px,4.6vw,44px);font-weight:800;max-width:820px;margin:16px 0 18px;}
+  .ab-hero h1 .grad{background:linear-gradient(100deg,var(--cyan-soft),var(--blue-soft));-webkit-background-clip:text;background-clip:text;color:transparent;}
+  .ab-hero p.lead{font-size:clamp(15px,1.8vw,18px);line-height:1.65;color:#c2cdda;max-width:600px;margin-bottom:28px;}
+  .ab-hero-ctas{display:flex;flex-wrap:wrap;gap:14px;}
+
+  .route-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+  .route-step{display:flex;gap:18px;padding:22px 0;border-bottom:1px solid var(--border-light);}
+  .route-step:last-child{border-bottom:none;}
+  .route-step .step-num{font-family:'Rubik',sans-serif;font-weight:800;font-size:15px;color:#fff;width:44px;height:44px;border-radius:50%;flex-shrink:0;background:linear-gradient(135deg,var(--blue),var(--cyan));display:flex;align-items:center;justify-content:center;box-shadow:0 6px 16px -5px rgba(47,125,246,.6);}
+  .route-step h3{font-size:17px;margin-bottom:6px;color:var(--text-dark);}
+  .route-step p{font-size:14.5px;color:var(--text-dark-muted);line-height:1.6;}
+
+  .city-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;}
+  .city-card{position:relative;border:none;background:transparent;isolation:isolate;padding:26px;border-radius:var(--radius-card);
+    box-shadow:0 18px 36px -16px rgba(21,60,140,.35);}
+  .city-card::before{content:"";position:absolute;inset:-100%;z-index:-2;
+    background:conic-gradient(from 0deg,rgba(56,198,244,.1),#2f7df6,#38c6f4,#7fdcff,rgba(56,198,244,.1));
+    animation:spin 8s linear infinite;}
+  .city-card::after{content:"";position:absolute;inset:1.5px;z-index:-1;border-radius:20.5px;
+    background:linear-gradient(180deg,#ffffff 0%,#e9f1fb 100%);
+    box-shadow:inset 0 1.5px 0 #ffffff,inset 0 -14px 28px rgba(47,125,246,.07);}
+  .city-card h3{font-size:19px;color:var(--text-dark);margin-bottom:6px;}
+  .city-card .dist{font-family:'Rubik',sans-serif;font-weight:700;font-size:14px;color:var(--blue);margin-bottom:10px;}
+  .city-card p{font-size:14px;color:var(--text-dark-muted);line-height:1.55;}
+
+  .faq-list{display:flex;flex-direction:column;gap:12px;}
+  .faq-item{border:1px solid var(--border-light);border-radius:16px;background:var(--card-light);overflow:hidden;}
+  .faq-q{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:20px 24px;cursor:pointer;font-family:'Rubik',sans-serif;font-weight:600;font-size:15.5px;color:var(--text-dark);}
+  .faq-q svg{flex-shrink:0;width:18px;height:18px;color:var(--blue);transition:transform .25s ease;}
+  .faq-item.open .faq-q svg{transform:rotate(180deg);}
+  .faq-a{max-height:0;overflow:hidden;transition:max-height .3s ease;}
+  .faq-item.open .faq-a{max-height:220px;}
+  .faq-a p{padding:0 24px 20px;font-size:14.5px;color:var(--text-dark-muted);line-height:1.65;}
+
+  .why-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;}
+  .why-card{padding:26px;}
+  .why-card .ic{width:46px;height:46px;border-radius:14px;background:linear-gradient(135deg,rgba(47,125,246,.14),rgba(56,198,244,.18));display:flex;align-items:center;justify-content:center;color:var(--blue);margin-bottom:14px;}
+  .why-card h3{font-size:16.5px;color:var(--text-dark);margin-bottom:8px;}
+  .why-card p{font-size:14px;color:var(--text-dark-muted);line-height:1.6;}
+
+  @media (max-width:760px){.route-grid{grid-template-columns:1fr;}}
+
+  .jdm-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;}
+  .jdm-card{border-radius:var(--radius-card);overflow:hidden;background:var(--card-light);border:1px solid var(--border-light);
+    transition:transform .3s cubic-bezier(.2,.7,.2,1),box-shadow .3s ease,border-color .3s ease;}
+  .jdm-card:hover{transform:translateY(-6px);border-color:var(--cyan);box-shadow:0 18px 44px -14px rgba(56,198,244,.32);}
+  .jdm-img{aspect-ratio:16/9;overflow:hidden;}
+  .jdm-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s ease;}
+  .jdm-card:hover .jdm-img img{transform:scale(1.06);}
+  .jdm-body{padding:20px 22px 24px;}
+  .jdm-body h3{font-size:17px;color:var(--text-dark);margin-bottom:8px;}
+  .jdm-body p{font-size:14px;color:var(--text-dark-muted);line-height:1.6;}
 </style>
-  <link rel="canonical" href="https://gbosochi.ru/">
-  <meta name="description" content="Установка и обслуживание ГБО в Сочи от 85 000 ₽ с гарантией 3 года. Газ на авто за 1 день, климат, автоэлектрика, диагностика. Скидка 5% по промокоду САЙТ.">
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="Gaz service — установка ГБО в Сочи">
-  <meta property="og:description" content="Установка и обслуживание ГБО в Сочи от 85 000 ₽ с гарантией 3 года. Скидка 5% по промокоду САЙТ.">
-  <meta property="og:url" content="https://gbosochi.ru/">
-  <meta property="og:site_name" content="Gaz service">
-  <meta property="og:image" content="https://gbosochi.ru/assets/video/hero-poster.jpg">
-  <meta name="twitter:card" content="summary_large_image">
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"AutoRepair",
-    "name":"Gaz service",
-    "description":"Установка и обслуживание ГБО, климатические системы, автоэлектрика в Сочи",
-    "url":"https://gbosochi.ru/",
-    "telephone":"+79275021415",
-    "priceRange":"от 85000 ₽",
-    "address":{"@type":"PostalAddress","streetAddress":"ул. Фурманова, 2/2","addressLocality":"Сочи","addressRegion":"Краснодарский край","postalCode":"354024","addressCountry":"RU"},
-    "openingHours":"Mo-Su 09:00-",
-    "aggregateRating":{"@type":"AggregateRating","ratingValue":"5.0","reviewCount":"5"}
-  }
-  </script>
 </head>
 <body>
 
-<!-- ===== PROMO BAR ===== -->
 <div class="promo-bar">
   <div class="promo-inner">
-    <span class="txt">🎁 Скидка <b>5%</b> на все работы — назовите промокод</span>
+    <span class="promo-text"><svg class="promo-spark" viewBox="0 0 24 24" fill="none"><path d="M12 2l2.4 7.2H22l-6 4.4 2.3 7.2L12 16.4l-6.3 4.4 2.3-7.2-6-4.4h7.6z" fill="currentColor"/></svg>Скидка <b>5%</b> на все работы — назовите промокод</span>
     <span class="promo-code" id="promoCode" title="Нажмите, чтобы скопировать">
       <span class="code">САЙТ</span>
+      <svg class="copy-ic" viewBox="0 0 24 24" fill="none"><rect x="9" y="9" width="12" height="12" rx="2" stroke="currentColor" stroke-width="1.8"/><path d="M5 15V5a2 2 0 0 1 2-2h10" stroke="currentColor" stroke-width="1.8"/></svg>
       <span class="copy">копировать</span>
     </span>
   </div>
 </div>
 
-
 <!-- ===== HEADER ===== -->
 <header>
   <div class="container header-inner">
-    <a href="#top" class="logo">
+    <a href="/" class="logo">
       <span class="logo-mark">
         <svg viewBox="0 0 144 144" fill="none" xmlns="http://www.w3.org/2000/svg">
           <circle cx="72" cy="72" r="60" fill="#0a0f16"/>
@@ -557,267 +597,181 @@
 <div class="nav-overlay" id="navOverlay">
   <div class="nav-panel">
     <div class="nav-card">
-      <a href="#top" class="nav-link active">Главная</a>
-      <div class="nav-link" id="servicesToggle">Услуги
-        <svg class="chevron" width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M6 9L12 15L18 9" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-      </div>
-      <div class="nav-sub" id="servicesSub">
-        <a href="#prices">Установка ГБО</a>
-        <a href="#steps">Обслуживание и ремонт ГБО</a>
-        <a href="#form">Регистрация ГБО</a>
-        <a href="#services">Обслуживание климатических систем</a>
-        <a href="#services">Диагностика и ТО</a>
-        <a href="#services">Автоэлектрика и выезд</a>
-      </div>
-      <a href="#about" class="nav-link">О компании</a>
-      <a href="#promos" class="nav-link">Акции</a>
-      <a href="#reviews" class="nav-link">Отзывы</a>
-      <a href="/abhazia" class="nav-link">Клиентам из Абхазии</a>
-      <a href="#contacts" class="nav-link">Контакты</a>
+      <a href="/" class="nav-link">Главная</a>
+      <a href="/#prices" class="nav-link">Цены</a>
+      <a href="#route" class="nav-link active">Как добраться</a>
+      <a href="#cities" class="nav-link">Города</a>
+      <a href="#faq" class="nav-link">Вопросы</a>
+      <a href="#form" class="nav-link">Записаться</a>
     </div>
   </div>
 </div>
 
 <!-- ===== HERO ===== -->
-<section class="hero" id="top">
-  <video class="hero-video" autoplay muted loop playsinline poster="assets/video/hero-poster.jpg"><source src="assets/video/hero.mp4" type="video/mp4"></video>
-  <div class="hero-bg"></div>
-  <div class="hero-grid"></div>
-  <div class="hero-master"><img src="assets/img/master.jpg" alt="Мастер Gaz service"></div>
-  <div class="container hero-inner">
-    <span class="eyebrow" data-reveal>Сертифицированный автосервис в Сочи</span>
-    <h1 class="d1" data-reveal>Газовое оборудование, климат и диагностика <span class="grad">без лишних поездок по сервисам</span></h1>
-    <p class="lead" class="d2" data-reveal>Ставим и обслуживаем ГБО, чиним автокондиционеры, делаем компьютерную диагностику. Работают мастера с профильным опытом. Приезжайте, посмотрим машину и честно скажем, что нужно.</p>
-    <div class="hero-ctas" class="d3" data-reveal>
-      <a href="#prices" class="btn btn-blue">Смотреть цены</a>
+<section class="ab-hero" id="top">
+  <div class="container">
+    <span class="eyebrow" data-reveal style="color:var(--cyan-soft);">Для автомобилей из Абхазии</span>
+    <h1 class="d1" data-reveal>Установка ГБО для машин из Абхазии <span class="grad">за один день в Сочи</span></h1>
+    <p class="lead d2" data-reveal>Сухум, Гагра, Пицунда, Новый Афон — приезжайте утром, оставляете машину на весь день, вечером уезжаете домой с готовым газобаллонным оборудованием. Гарантия 3 года, официальное оформление в ГАИ.</p>
+    <div class="ab-hero-ctas d3" data-reveal>
+      <a href="/#prices" class="btn btn-blue">Смотреть цены</a>
       <a href="#form" class="btn btn-ghost">Записаться</a>
     </div>
-    <div class="hero-stats" class="d4" data-reveal>
-      <div class="stat"><div class="num" data-count="5"><span class="suffix">,0</span></div><div class="lbl">рейтинг на 2ГИС и Яндексе</div></div>
-      <div class="stat"><div class="num" data-count="3"><span class="suffix"> года</span></div><div class="lbl">гарантия на установку ГБО</div></div>
-      <div class="stat"><div class="num" data-count="1"><span class="suffix"> день</span></div><div class="lbl">на установку под ключ</div></div>
-      <div class="stat"><div class="num" data-count="70"><span class="suffix">%</span></div><div class="lbl">экономия на топливе</div></div>
-    </div>
   </div>
 </section>
 
-<!-- ===== SERVICES ===== -->
-<section id="services">
+<!-- ===== ROUTE / HOW IT WORKS ===== -->
+<section id="route">
   <div class="container">
     <div class="section-head">
-      <span class="eyebrow" data-reveal>Услуги</span>
-      <h2 class="d1" data-reveal>Что мы делаем</h2>
-      <p class="d2" data-reveal>Занимаемся газовым оборудованием от и до, плюс климат и диагностика. Всё в одном месте, не придётся ездить по разным сервисам.</p>
+      <span class="eyebrow" data-reveal>Как это устроено</span>
+      <h2 class="d1" data-reveal>Один день — и вы едете обратно с ГБО</h2>
+      <p class="d2" data-reveal>Никаких выездов мастера в Абхазию — вы приезжаете к нам сами. Многие и так регулярно катаются через границу за покупками, поэтому дорога до Сочи — не проблема. Весь процесс укладывается в световой день, если выехать с утра.</p>
     </div>
-    <div class="services-grid">
-      <div class="glass service-card has-video" data-reveal>
-        <video autoplay muted loop playsinline poster="assets/video/service-gbo-install-poster.jpg"><source src="assets/video/service-gbo-install.mp4" type="video/mp4"></video>
-        <span class="svc-num">01</span>
-        <div class="ic"><svg viewBox="0 0 24 24" fill="none"><path d="M14 7h4a2 2 0 0 1 2 2v9M6 21V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v16M3 21h18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></div>
-        <h3>Установка ГБО</h3>
-        <p>Монтаж газобаллонного оборудования на пропане и метане.</p>
-      </div>
-      <div class="glass service-card has-video" data-reveal>
-        <video autoplay muted loop playsinline poster="assets/video/service-gbo-repair-poster.jpg"><source src="assets/video/service-gbo-repair.mp4" type="video/mp4"></video>
-        <span class="svc-num">02</span>
-        <div class="ic"><svg viewBox="0 0 24 24" fill="none"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18v3h3l6.3-6.3a4 4 0 0 0 5.4-5.4L15 12l-3-3 2.7-2.7z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg></div>
-        <h3>Обслуживание<br>и ремонт ГБО</h3>
-        <p>Диагностика, регулировка, замена компонентов.</p>
-      </div>
-      <div class="glass service-card has-video" data-reveal>
-        <video autoplay muted loop playsinline poster="assets/video/service-registration-poster.jpg"><source src="assets/video/service-registration.mp4" type="video/mp4"></video>
-        <span class="svc-num">03</span>
-        <div class="ic"><svg viewBox="0 0 24 24" fill="none"><path d="M9 12l2 2 4-5M12 3l7 3v5c0 5-3.5 8.5-7 10-3.5-1.5-7-5-7-10V6l7-3z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg></div>
-        <h3>Регистрация ГБО</h3>
-        <p>Оформление документов и постановка на учёт в ГИБДД.</p>
-      </div>
-      <div class="glass service-card has-video" data-reveal>
-        <video autoplay muted loop playsinline poster="assets/video/service-climate-poster.jpg"><source src="assets/video/service-climate.mp4" type="video/mp4"></video>
-        <span class="svc-num">04</span>
-        <div class="ic"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M5.6 18.4l2.1-2.1M16.3 7.7l2.1-2.1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="12" cy="12" r="3.2" stroke="currentColor" stroke-width="1.8"/></svg></div>
-        <h3>Климат<br>и кондиционеры</h3>
-        <p>Заправка и обслуживание автомобильных кондиционеров.</p>
-      </div>
-      <div class="glass service-card has-video" data-reveal>
-        <video autoplay muted loop playsinline poster="assets/video/service-diagnostic-poster.jpg"><source src="assets/video/service-diagnostic.mp4" type="video/mp4"></video>
-        <span class="svc-num">05</span>
-        <div class="ic"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="13" rx="2" stroke="currentColor" stroke-width="1.8"/><path d="M8 21h8M12 17v4M7 10l2.5 2.5L15 8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-        <h3>Диагностика и ТО</h3>
-        <p>Компьютерная диагностика двигателя и техобслуживание.</p>
-      </div>
-      <div class="glass service-card has-video" data-reveal>
-        <video autoplay muted loop playsinline poster="assets/video/service-electric-poster.jpg"><source src="assets/video/service-electric.mp4" type="video/mp4"></video>
-        <span class="svc-num">06</span>
-        <div class="ic"><svg viewBox="0 0 24 24" fill="none"><path d="M13 2L4.5 13H11l-1 9 8.5-11H12l1-9z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg></div>
-        <h3>Автоэлектрика<br>и выезд</h3>
-        <p>Вся электрика авто: диагностика, проводка, стартеры, генераторы. Быстрый ремонт, есть выезд.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== PRICES ===== -->
-<section id="prices" style="background:var(--bg-light);">
-  <div class="container">
-    <div class="section-head">
-      <span class="eyebrow" data-reveal>Цены</span>
-      <h2 class="d1" data-reveal>Установка ГБО в Сочи <span style="color:var(--blue);">от 85 000 ₽</span> с гарантией на 3 года</h2>
-      <p class="d2" data-reveal>Получите независимость от цен на бензин уже сегодня. Ставим ГБО с гарантией и официальным оформлением в ГАИ.</p>
-    </div>
-    <div class="price-grid">
-      <div class="glass price-card" data-reveal>
-        <div class="price-card-media"><video autoplay muted loop playsinline poster="assets/video/car-1-sedan-poster.jpg"><source src="assets/video/car-1-sedan.mp4" type="video/mp4"></video><svg viewBox="0 0 64 64" fill="none"><path d="M6 40h4l4-10a4 4 0 0 1 4-3h28a4 4 0 0 1 4 3l4 10h4v8H6z" stroke="currentColor" stroke-width="2.5"/><circle cx="18" cy="48" r="4" stroke="currentColor" stroke-width="2.5"/><circle cx="46" cy="48" r="4" stroke="currentColor" stroke-width="2.5"/></svg></div>
-        <div class="price-card-body"><div class="label">Автомобили</div><div class="type">с 4-цилиндровым двигателем</div><div class="price">от 85 000 ₽</div></div>
-      </div>
-      <div class="glass price-card" class="d1" data-reveal>
-        <div class="price-card-media"><video autoplay muted loop playsinline poster="assets/video/car-2-crossover-poster.jpg"><source src="assets/video/car-2-crossover.mp4" type="video/mp4"></video><svg viewBox="0 0 64 64" fill="none"><path d="M4 40h4l5-11a4 4 0 0 1 4-2.5h30a4 4 0 0 1 4 2.5l5 11h4v8H4z" stroke="currentColor" stroke-width="2.5"/><circle cx="17" cy="48" r="4" stroke="currentColor" stroke-width="2.5"/><circle cx="47" cy="48" r="4" stroke="currentColor" stroke-width="2.5"/></svg></div>
-        <div class="price-card-body"><div class="label">Автомобили</div><div class="type">с 6-цилиндровым двигателем</div><div class="price">от 110 000 ₽</div></div>
-      </div>
-      <div class="glass price-card" class="d2" data-reveal>
-        <div class="price-card-media"><video autoplay muted loop playsinline poster="assets/video/car-3-suv-poster.jpg"><source src="assets/video/car-3-suv.mp4" type="video/mp4"></video><svg viewBox="0 0 64 64" fill="none"><path d="M3 40h4l5.5-12a4.5 4.5 0 0 1 4-2.5h31a4.5 4.5 0 0 1 4 2.5l5.5 12h4v8H3z" stroke="currentColor" stroke-width="2.5"/><circle cx="16" cy="48" r="4" stroke="currentColor" stroke-width="2.5"/><circle cx="48" cy="48" r="4" stroke="currentColor" stroke-width="2.5"/></svg></div>
-        <div class="price-card-body"><div class="label">Автомобили</div><div class="type">с 8-цилиндровым двигателем</div><div class="price">от 140 000 ₽</div></div>
-      </div>
-    </div>
-    <p class="price-note" data-reveal>Точная стоимость зависит от модели авто и комплекта оборудования. Уточняйте у мастера.</p>
-  </div>
-</section>
-
-<!-- ===== BUSINESS ===== -->
-<section class="business dark-sec" id="business">
-  <div class="container business-grid">
-    <div data-reveal>
-      <span class="eyebrow">Специальные условия</span>
-      <h2 style="margin-top:12px;">Установка ГБО на <em>коммерческий транспорт</em> и спецтехнику по лучшим ценам</h2>
-      <p style="color:#c6d2e2;font-size:15.5px;margin:14px 0 20px;">Gaz service — надёжный партнёр для бизнеса. Помогаем автопаркам экономить на топливе.</p>
-      <ul>
-        <li><svg viewBox="0 0 24 24" fill="none"><path d="M4 12l6 6L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Таксопарки</li>
-        <li><svg viewBox="0 0 24 24" fill="none"><path d="M4 12l6 6L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Автопарки Газелей</li>
-        <li><svg viewBox="0 0 24 24" fill="none"><path d="M4 12l6 6L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Грузовой автотранспорт</li>
-        <li><svg viewBox="0 0 24 24" fill="none"><path d="M4 12l6 6L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Спецтехника</li>
-      </ul>
-    </div>
-    <div class="media-frame" class="d1" data-reveal>
-      <video autoplay muted loop playsinline poster="assets/video/b2b-fleet-poster.jpg"><source src="assets/video/b2b-fleet.mp4" type="video/mp4"></video>
-    </div>
-  </div>
-</section>
-
-<!-- ===== METHANE ===== -->
-<section class="methane" id="methane">
-  <div class="container">
-    <div class="glass methane-box" data-reveal>
-      <span class="eyebrow">Акция</span>
-      <h2 style="margin-top:12px;">Установка ГБО на метане за 1 день <span>экономия до 70% на топливе</span></h2>
-      <div class="methane-list">
-        <div class="methane-item"><div class="check"><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12l6 6L20 6" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></div><p>Метан дешевле любого другого топлива. Обычно установка окупается за 20–30 тысяч км, дальше вы просто экономите на каждой заправке.</p></div>
-        <div class="methane-item"><div class="check"><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12l6 6L20 6" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></div><p>Экологичнее бензина: продукты сгорания метана — углекислый газ и вода.</p></div>
-        <div class="methane-item"><div class="check"><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12l6 6L20 6" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></div><p>Безопаснее бензина и пропана: при утечке метан легче воздуха и быстро выветривается.</p></div>
-      </div>
-      <a href="#form" class="btn btn-blue" style="margin-top:28px;">Оставить заявку</a>
-    </div>
-  </div>
-</section>
-
-<!-- ===== PROMOS / АКЦИИ ===== -->
-<section id="promos">
-  <div class="container">
-    <div class="section-head">
-      <span class="eyebrow" data-reveal>Акции</span>
-      <h2 class="d1" data-reveal>Выгодные предложения</h2>
-      <p class="d2" data-reveal>Действующие акции Gaz service. Уточняйте условия при записи.</p>
-    </div>
-    <div class="services-grid">
-      <div class="glass promo-card" data-reveal><video autoplay muted loop playsinline poster="assets/video/service-gbo-repair-poster.jpg"><source src="assets/video/service-gbo-repair.mp4" type="video/mp4"></video><div class="shade"></div>
-        <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M9 12l2 2 4-4M7.8 4.5a2 2 0 0 1 1.4-.6 2 2 0 0 0 1.4-.6l1-1a2 2 0 0 1 2.8 0l1 1a2 2 0 0 0 1.4.6 2 2 0 0 1 1.9 1.9 2 2 0 0 0 .6 1.4l1 1a2 2 0 0 1 0 2.8l-1 1a2 2 0 0 0-.6 1.4 2 2 0 0 1-1.9 1.9 2 2 0 0 0-1.4.6l-1 1a2 2 0 0 1-2.8 0l-1-1a2 2 0 0 0-1.4-.6 2 2 0 0 1-1.9-1.9 2 2 0 0 0-.6-1.4l-1-1a2 2 0 0 1 0-2.8l1-1A2 2 0 0 0 5.9 6.4 2 2 0 0 1 7.8 4.5z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></div>
-        <h3>Скидка на ТО после установки ГБО</h3>
-        <p>Поставили у нас газ — техобслуживание дальше идёт со скидкой.</p><span class="line"></span>
-      </div>
-      <div class="glass promo-card" data-reveal><video autoplay muted loop playsinline poster="assets/video/service-diagnostic-poster.jpg"><source src="assets/video/service-diagnostic.mp4" type="video/mp4"></video><div class="shade"></div>
-        <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="13" rx="2" stroke="currentColor" stroke-width="1.8"/><path d="M7 10l2.5 2.5L15 8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-        <h3>Бесплатная диагностика при установке</h3>
-        <p>Перед монтажом ГБО проверяем двигатель бесплатно.</p><span class="line"></span>
-      </div>
-      <div class="glass promo-card" data-reveal><video autoplay muted loop playsinline poster="assets/video/b2b-fleet-poster.jpg"><source src="assets/video/b2b-fleet.mp4" type="video/mp4"></video><div class="shade"></div>
-        <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M3 13l2-5a2 2 0 0 1 2-1.3h10A2 2 0 0 1 19 8l2 5v5h-3M3 18v-5m0 5h3m0 0a2 2 0 1 0 4 0m8 0a2 2 0 1 0-4 0" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></div>
-        <h3>Спеццена для таксопарков и автопарков</h3>
-        <p>Оборудуем автопарк газом по особым условиям. Считаем под ваш объём.</p><span class="line"></span>
-      </div>
-      <div class="glass promo-card" data-reveal><video autoplay muted loop playsinline poster="assets/video/service-climate-poster.jpg"><source src="assets/video/service-climate.mp4" type="video/mp4"></video><div class="shade"></div>
-        <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 2v20M12 6l3-3M12 6L9 3M4.5 9l3.5 2M4.5 15l3.5-2M19.5 9L16 11M19.5 15L16 13" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-        <h3>Зимняя заправка кондиционера со скидкой</h3>
-        <p>Сезонное предложение: обслуживаем и заправляем кондиционер зимой дешевле.</p><span class="line"></span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== BRANDS ===== -->
-<section id="brands">
-  <div class="container">
-    <div class="section-head">
-      <span class="eyebrow" data-reveal>Оборудование</span>
-      <h2 class="d1" data-reveal>Работаем только с лучшими</h2>
-      <p class="d2" data-reveal>Ставим проверенные марки ГБО. Ремонтируем оборудование любого производителя.</p>
-    </div>
-    <div class="brands-grid">
-      <div class="brand-card" data-reveal>OMVL</div>
-      <div class="brand-card" data-reveal>DIGITRONIC</div>
-      <div class="brand-card" class="d1" data-reveal>STAG</div>
-      <div class="brand-card" class="d1" data-reveal>Alpha</div>
-      <div class="brand-card" class="d2" data-reveal>LOVATO</div>
-      <div class="brand-card" class="d2" data-reveal>LANDIRENZO</div>
-      <div class="brand-card" data-reveal>TOMASETTO</div>
-      <div class="brand-card" class="d1" data-reveal>ATIKER</div>
-      <div class="brand-card" class="d2" data-reveal>KME</div>
-      <div class="brand-card" class="d3" data-reveal>LPG TECH</div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== STEPS ===== -->
-<section id="steps" style="background:var(--bg-light);">
-  <div class="container">
-    <div class="section-head">
-      <span class="eyebrow" data-reveal>Процесс</span>
-      <h2 class="d1" data-reveal>Установка ГБО за 4 шага</h2>
-    </div>
-    <div class="steps-wrap">
-      <div class="steps-media" data-reveal>
-        <div class="media-frame" style="aspect-ratio:16/9;">
-          <video autoplay muted loop playsinline poster="assets/video/install-process-poster.jpg"><source src="assets/video/install-process.mp4" type="video/mp4"></video>
+    <div class="route-grid">
+      <div>
+        <div class="route-step" data-reveal>
+          <div class="step-num">01</div>
+          <div><h3>Выезжайте утром</h3><p>Чем раньше пересечёте границу — тем больше времени останется в запасе. Дорога от Сухума до Сочи занимает около 2–2,5 часов без учёта границы, от Гагры — около часа.</p></div>
+        </div>
+        <div class="route-step" data-reveal>
+          <div class="step-num">02</div>
+          <div><h3>Пересекаете границу на Псоу</h3><p>Для местных это привычное дело — многие ездят в Сочи запросто, за покупками или в магазин, ничего сложного. Проходите пограничный, затем таможенный контроль — обычно занимает от 15–20 минут в спокойное время до пары часов в сезон и по выходным. С собой — паспорт и документы на машину (СТС, права), загранпаспорт не нужен.</p></div>
         </div>
       </div>
       <div>
-        <div class="step" data-reveal><div class="step-num">01</div><div><h3>Проверка работы двигателя</h3><p>С помощью диагностического оборудования проверяем работу двигателя.</p></div></div>
-        <div class="step" class="d1" data-reveal><div class="step-num">02</div><div><h3>Монтаж газовой подачи</h3><p>Комплект газовой подачи устанавливается в двигатель или в зону под капотом.</p></div></div>
-        <div class="step" class="d2" data-reveal><div class="step-num">03</div><div><h3>Установка баллонов с газом</h3><p>Закрепляем баллонную часть оборудования на иномарки и отечественные автомобили.</p></div></div>
-        <div class="step" class="d3" data-reveal><div class="step-num">04</div><div><h3>Фиксация элементов</h3><p>Ставим элементы для заправки и передвижения газа по системе.</p></div></div>
+        <div class="route-step" data-reveal>
+          <div class="step-num">03</div>
+          <div><h3>Оставляете машину у нас</h3><p>Приезжаете по адресу ул. Фурманова, 2/2 — по предварительной записи, чтобы не ждать своей очереди. Установка ГБО занимает один рабочий день.</p></div>
+        </div>
+        <div class="route-step" data-reveal>
+          <div class="step-num">04</div>
+          <div><h3>Забираете машину вечером</h3><p>Проверяем работу оборудования вместе с вами, оформляем документы. Обратно через границу — уже на газе, с экономией на топливе с первой заправки.</p></div>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ===== ABOUT ===== -->
-<section id="about">
+<!-- ===== WHY HERE ===== -->
+<section style="background:var(--bg-light);">
   <div class="container">
     <div class="section-head">
-      <span class="eyebrow" data-reveal>О компании</span>
-      <h2 class="d1" data-reveal>Автосервис, которому <span class="accent" style="color:var(--blue);">можно доверять</span></h2>
-      <p class="d2" data-reveal>Высококлассный сервис и честный ремонт для вашего автомобиля в Сочи.</p>
+      <span class="eyebrow" data-reveal>Почему ставить здесь</span>
+      <h2 class="d1" data-reveal>Быстрее и дешевле, чем ждать на месте</h2>
+      <p class="d2" data-reveal>Специальных условий для гостей из Абхазии мы не делаем — и так одни из самых доступных цен на побережье, без наценки за то, что вы издалека.</p>
     </div>
-    <div class="about-grid">
-      <div class="glass about-card" data-reveal>
-        <h3>С чего всё началось</h3>
-        <p>Начинали мы с газового оборудования. Для Сочи тема живая, топливо тут недешёвое, и водители быстро считают, сколько уходит на бензин. С этого и пошли, а дальше стали делать климат и диагностику, потому что клиенты сами просили.</p>
+    <div class="why-grid">
+      <div class="glass why-card" data-reveal>
+        <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.8"/><path d="M12 7v5l3 2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+        <h3>Один день, а не неделя ожидания</h3>
+        <p>Оборудование и мастера на месте — не нужно ждать, пока привезут детали или освободится очередь на несколько дней вперёд.</p>
       </div>
-      <div class="glass about-card" class="d1" data-reveal>
-        <h3>Обслуживаем машины любых марок</h3>
-        <p>От бюджетных седанов до премиальных внедорожников — берёмся за любую марку и модель. Так было с самого начала, так работаем и сейчас.</p>
+      <div class="glass why-card" data-reveal>
+        <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M9 12l2 2 4-4M7.8 4.5a2 2 0 0 1 1.4-.6 2 2 0 0 0 1.4-.6l1-1a2 2 0 0 1 2.8 0l1 1a2 2 0 0 0 1.4.6 2 2 0 0 1 1.9 1.9 2 2 0 0 0 .6 1.4l1 1a2 2 0 0 1 0 2.8l-1 1a2 2 0 0 0-.6 1.4 2 2 0 0 1-1.9 1.9 2 2 0 0 0-1.4.6l-1 1a2 2 0 0 1-2.8 0l-1-1a2 2 0 0 0-1.4-.6 2 2 0 0 1-1.9-1.9 2 2 0 0 0-.6-1.4l-1-1a2 2 0 0 1 0-2.8l1-1A2 2 0 0 0 5.9 6.4 2 2 0 0 1 7.8 4.5z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></div>
+        <h3>Гарантия 3 года на установку</h3>
+        <p>Официальное оформление в ГАИ и письменная гарантия — приедете через год, разберёмся с любым вопросом по оборудованию.</p>
+      </div>
+      <div class="glass why-card" data-reveal>
+        <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 2v20M12 6l3-3M12 6L9 3M4.5 9l3.5 2M4.5 15l3.5-2M19.5 9L16 11M19.5 15L16 13" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><circle cx="12" cy="12" r="3.2" stroke="currentColor" stroke-width="1.6"/></svg></div>
+        <h3>Проверенные марки ГБО</h3>
+        <p>Ставим только оборудование известных производителей, которое легко обслужить в дальнейшем в любом сервисе.</p>
+      </div>
+      <div class="glass why-card" data-reveal>
+        <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M3 13l2-5a2 2 0 0 1 2-1.3h10A2 2 0 0 1 19 8l2 5v5h-3M3 18v-5m0 5h3m0 0a2 2 0 1 0 4 0m8 0a2 2 0 1 0-4 0" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></div>
+        <h3>Честная цена без наценок</h3>
+        <p>Цена одна для всех клиентов — из Сочи, из Абхазии или проездом. Стоимость известна заранее, без сюрпризов по итогу.</p>
       </div>
     </div>
-    <div class="mission" class="d1" data-reveal>
-      <h3>Наша миссия</h3>
-      <p>Хотим, чтобы машина не отнимала у вас нервы и деньги. Вовремя проверить, вовремя починить, чтобы вы занимались своими делами, а не стояли в очереди на сервис.</p>
+  </div>
+</section>
+
+<!-- ===== CITIES ===== -->
+<section id="cities">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow" data-reveal>География</span>
+      <h2 class="d1" data-reveal>Работаем с клиентами из всех городов Абхазии</h2>
+      <p class="d2" data-reveal>Расстояние и время в пути до Сочи — чтобы вы могли спланировать день заранее.</p>
+    </div>
+    <div class="city-grid">
+      <div class="city-card" data-reveal>
+        <h3>Сухум</h3>
+        <div class="dist">≈ 95 км до Сочи</div>
+        <p>Самый дальний маршрут из крупных городов — рассчитывайте на 2,5–3 часа в пути без учёта границы. Выезжайте пораньше.</p>
+      </div>
+      <div class="city-card" data-reveal>
+        <h3>Гагра</h3>
+        <div class="dist">≈ 40 км до Сочи</div>
+        <p>Самый близкий и удобный вариант — около часа в пути плюс граница. Многие клиенты успевают обернуться до обеда.</p>
+      </div>
+      <div class="city-card" data-reveal>
+        <h3>Пицунда</h3>
+        <div class="dist">≈ 55 км до Сочи</div>
+        <p>Чуть дальше Гагры, но всё ещё комфортное расстояние для поездки в одну сторону утром.</p>
+      </div>
+      <div class="city-card" data-reveal>
+        <h3>Новый Афон</h3>
+        <div class="dist">≈ 75 км до Сочи</div>
+        <p>Закладывайте около двух часов в пути — маршрут проходит через Гагру и Пицунду вдоль побережья.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== JDM CARS ===== -->
+<section id="jdm" style="background:var(--bg-light);">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow" data-reveal>Знакомые машины</span>
+      <h2 class="d1" data-reveal>Ставим ГБО на любимые в Абхазии японские авто</h2>
+      <p class="d2" data-reveal>Правый руль, надёжные моторы, культовые модели — знаем эти машины и умеем работать с ними без сюрпризов.</p>
+    </div>
+    <div class="jdm-grid">
+      <div class="jdm-card" data-reveal>
+        <div class="jdm-img"><img src="/assets/img/jdm-chaser.jpg" alt="Toyota Chaser — установка ГБО"></div>
+        <div class="jdm-body"><h3>Toyota Chaser / Mark II</h3><p>Один из самых популярных седанов на дорогах Абхазии — надёжный рядный мотор отлично уживается с ГБО.</p></div>
+      </div>
+      <div class="jdm-card" data-reveal>
+        <div class="jdm-img"><img src="/assets/img/jdm-surf.jpg" alt="Toyota Surf — установка ГБО"></div>
+        <div class="jdm-body"><h3>Toyota Hilux Surf</h3><p>Внедорожник на каждый день — для гор и серпантинов, с ГБО экономия на бензине особенно чувствуется.</p></div>
+      </div>
+      <div class="jdm-card" data-reveal>
+        <div class="jdm-img"><img src="/assets/img/jdm-cefiro.jpg" alt="Nissan Cefiro — установка ГБО"></div>
+        <div class="jdm-body"><h3>Nissan Cefiro</h3><p>Комфортный семейный седан — плавный ход, просторный салон, отличный кандидат под газобаллонное оборудование.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FAQ ===== -->
+<section id="faq" style="background:var(--bg-light);">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow" data-reveal>Вопросы</span>
+      <h2 class="d1" data-reveal>Частые вопросы от клиентов из Абхазии</h2>
+    </div>
+    <div class="faq-list" data-reveal>
+      <div class="faq-item">
+        <div class="faq-q">Что нужно для пересечения границы на машине?<svg viewBox="0 0 24 24" fill="none"><path d="M6 9L12 15L18 9" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div>
+        <div class="faq-a"><p>Паспорт гражданина РФ или Абхазии и документы на автомобиль (СТС, права). Загранпаспорт не требуется — граница на Псоу проходится по внутренним документам.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Сколько времени уходит на очередь на границе?<svg viewBox="0 0 24 24" fill="none"><path d="M6 9L12 15L18 9" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div>
+        <div class="faq-a"><p>По-разному: в будни утром может быть быстро, в сезон и по выходным — дольше. Закладывайте запас по времени, особенно летом.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Где ждать, пока делают ГБО?<svg viewBox="0 0 24 24" fill="none"><path d="M6 9L12 15L18 9" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div>
+        <div class="faq-a"><p>Можно подождать на месте — в шаговой доступности есть где перекусить и погулять, — или оставить машину и вернуться к вечеру, погулять по Сочи.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Точно успею за один день?<svg viewBox="0 0 24 24" fill="none"><path d="M6 9L12 15L18 9" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div>
+        <div class="faq-a"><p>Да, если выехать утром. Сама установка ГБО занимает один рабочий день — время в пути и на границе добавляется сверху, поэтому раннего выезда обычно достаточно, чтобы вернуться домой вечером.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Есть ли скидка для клиентов из Абхазии?<svg viewBox="0 0 24 24" fill="none"><path d="M6 9L12 15L18 9" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div>
+        <div class="faq-a"><p>Отдельных условий нет — у нас изначально одни из самых доступных цен на установку ГБО в регионе, без наценки за то, откуда вы приехали.</p></div>
+      </div>
     </div>
   </div>
 </section>
@@ -828,14 +782,15 @@
   <div class="container">
     <div class="form-wrap">
       <span class="eyebrow" data-reveal style="color:var(--cyan-soft);">Заявка</span>
-      <h2 class="d1" data-reveal style="margin-top:12px;">Нужна консультация?</h2>
-      <p class="lead" class="d2" data-reveal>Оставьте заявку и получите бесплатную консультацию специалиста.</p>
+      <h2 class="d1" data-reveal style="margin-top:12px;">Запишитесь на удобный день</h2>
+      <p class="lead d2" data-reveal>Оставьте заявку — согласуем дату и подскажем, что взять с собой на границу.</p>
       <form class="d2" data-reveal onsubmit="event.preventDefault(); this.reset(); alert('Заявка отправлена (демо-форма шаблона).');">
         <div class="field"><label for="carBrand">Марка авто</label><input id="carBrand" type="text" placeholder="Марка авто"></div>
+        <div class="field"><label for="city">Город</label><input id="city" type="text" placeholder="Сухум, Гагра, Пицунда..."></div>
         <div class="field"><label for="phone">Номер телефона</label><input id="phone" type="tel" placeholder="+7 (___) ___-__-__"></div>
         <div class="field"><label for="name">Ваше имя</label><input id="name" type="text" placeholder="Введите имя"></div>
         <p class="consent">Нажимая на кнопку, вы соглашаетесь на обработку <a href="#">персональных данных</a>.</p>
-        <button type="submit" class="btn btn-blue btn-block">Заказать консультацию</button>
+        <button type="submit" class="btn btn-blue btn-block">Записаться на установку</button>
       </form>
     </div>
   </div>
@@ -857,7 +812,7 @@
       <p class="text">Обращался в данный сервис, были проблемы с кондиционером. Оперативно договорились о визите, в течение часа подъехал, заправили кондиционер, проверили систему, выявили и устранили неисправность. Рекомендую!</p>
       <div class="stars">★★★★★ <span>5.0</span></div>
     </div>
-    <div class="review-links" class="d1" data-reveal>
+    <div class="review-links d1" data-reveal>
       <a class="review-link" href="https://2gis.ru/sochi/firm/70000001116706346" target="_blank" rel="noopener">★★★★★ 5.0 · 2ГИС</a>
       <a class="review-link" href="https://yandex.ru/maps/org/gaz_service/71149657998/reviews/" target="_blank" rel="noopener">★★★★★ 5.0 · Яндекс</a>
     </div>
@@ -882,32 +837,7 @@
           <svg class="ic" viewBox="0 0 24 24" fill="none"><path d="M12 22s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12z" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="10" r="2.4" stroke="currentColor" stroke-width="1.8"/></svg>
           <div><div class="lbl">Адрес</div><div class="val">Сочи, ул. Фурманова, 2/2</div></div>
         </div>
-        <div class="contact-row">
-          <svg class="ic" viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.8"/><path d="M3 7l9 6 9-6" stroke="currentColor" stroke-width="1.8"/></svg>
-          <div><div class="lbl">Почта</div><div class="val">info@gbosochi.ru</div></div>
-        </div>
-        <div class="social-row">
-          <a href="#" aria-label="Instagram"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.8"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a>
-          <a href="https://t.me/+79275021415" target="_blank" rel="noopener" aria-label="Telegram"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M21 4L2.5 11.5l6 2 2 6 3-4 4.5 3.5L21 4z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg></a>
-          <a href="https://wa.me/79275021415?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%21%20%D0%9F%D0%B8%D1%88%D1%83%20%D1%81%20%D1%81%D0%B0%D0%B9%D1%82%D0%B0%2C%20%D1%85%D0%BE%D1%87%D1%83%20%D1%81%D0%BA%D0%B8%D0%B4%D0%BA%D1%83%205%25%20%D0%BF%D0%BE%20%D0%BF%D1%80%D0%BE%D0%BC%D0%BE%D0%BA%D0%BE%D0%B4%D1%83%20%D0%A1%D0%90%D0%99%D0%A2" target="_blank" rel="noopener" aria-label="WhatsApp"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M20 12a8 8 0 1 1-15.3-3.3L4 20l11.4-.7A8 8 0 0 1 20 12z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg></a>
-          <a href="#" aria-label="Avito"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.8"/></svg></a>
-          <a href="#max-soon" aria-label="Max (скоро)" title="Max — скоро" style="opacity:.5;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4 20V6l8 7 8-7v14" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg></a>
-        </div>
-        <div class="qr-promo" id="qrPromo">
-          <div class="qr-promo-tabs">
-            <button class="qr-t active" data-qr="whatsapp">WhatsApp</button>
-            <button class="qr-t" data-qr="telegram">Telegram</button>
-            <button class="qr-t" data-qr="email">Почта</button>
-          </div>
-          <div class="qr-promo-body">
-            <img id="qrImg" src="assets/qr-whatsapp.png" alt="QR-код для связи со скидкой 5% по промокоду САЙТ">
-            <div>
-              <div class="qr-title">Скидка 5% по промокоду <b>САЙТ</b></div>
-              <p class="qr-desc" id="qrDesc">Наведите камеру на QR — откроется WhatsApp с готовым сообщением «пишу с сайта». Или назовите промокод при звонке.</p>
-            </div>
-          </div>
-        </div>
-        <a href="#form" class="btn btn-blue btn-block">Оставить заявку</a>
+        <a href="#form" class="btn btn-blue btn-block">Записаться на установку</a>
       </div>
       <div class="map-embed">
         <iframe src="https://www.openstreetmap.org/export/embed.html?bbox=39.7859%2C43.5559%2C39.7959%2C43.5599&layer=mapnik&marker=43.5579%2C39.7909" loading="lazy" title="Карта — Gaz service, ул. Фурманова 2/2, Сочи"></iframe>
@@ -921,7 +851,7 @@
 <div class="sticky-bar-spacer"></div>
 <div class="sticky-bar">
   <a href="tel:+79275021415" class="call"><svg viewBox="0 0 24 24" fill="none"><path d="M6.6 10.8C8 13.6 10.4 16 13.2 17.4L15.4 15.2C15.7 14.9 16.1 14.8 16.5 15C17.8 15.5 19.2 15.7 20.6 15.7C21.1 15.7 21.5 16.1 21.5 16.6V20.4C21.5 20.9 21.1 21.3 20.6 21.3C10.6 21.3 2.7 13.4 2.7 3.4C2.7 2.9 3.1 2.5 3.6 2.5H7.4C7.9 2.5 8.3 2.9 8.3 3.4C8.3 4.8 8.5 6.2 9 7.5C9.1 7.9 9 8.3 8.8 8.6L6.6 10.8Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>Позвонить</a>
-  <a href="mailto:info@gbosochi.ru?subject=%D0%97%D0%B0%D1%8F%D0%B2%D0%BA%D0%B0%20%D1%81%20%D1%81%D0%B0%D0%B9%D1%82%D0%B0%20gbosochi.ru&body=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%21%20%D0%9F%D0%B8%D1%88%D1%83%20%D1%81%20%D1%81%D0%B0%D0%B9%D1%82%D0%B0%20gbosochi.ru%2C%20%D0%BF%D1%80%D0%BE%D0%BC%D0%BE%D0%BA%D0%BE%D0%B4%20%D0%A1%D0%90%D0%99%D0%A2." class="write"><svg viewBox="0 0 24 24" fill="none"><path d="M21 11.5a8.4 8.4 0 0 1-8.9 8.4 8.7 8.7 0 0 1-3.6-.7L3 20l1-4.8A8.4 8.4 0 0 1 12.6 3a8.4 8.4 0 0 1 8.4 8.5z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>Написать</a>
+  <a href="mailto:info@gbosochi.ru?subject=%D0%97%D0%B0%D1%8F%D0%B2%D0%BA%D0%B0%20%D0%B8%D0%B7%20%D0%90%D0%B1%D1%85%D0%B0%D0%B7%D0%B8%D0%B8&body=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%21%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%B7%D0%B0%D0%BF%D0%B8%D1%81%D0%B0%D1%82%D1%8C%D1%81%D1%8F%20%D0%BD%D0%B0%20%D1%83%D1%81%D1%82%D0%B0%D0%BD%D0%BE%D0%B2%D0%BA%D1%83%20%D0%93%D0%91%D041E%2C%20%D0%B5%D0%B4%D1%83%20%D0%B8%D0%B7%20%D0%90%D0%B1%D1%85%D0%B0%D0%B7%D0%B8%D0%B8." class="write"><svg viewBox="0 0 24 24" fill="none"><path d="M21 11.5a8.4 8.4 0 0 1-8.9 8.4 8.7 8.7 0 0 1-3.6-.7L3 20l1-4.8A8.4 8.4 0 0 1 12.6 3a8.4 8.4 0 0 1 8.4 8.5z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>Написать</a>
 </div>
 
 <script>
@@ -929,29 +859,13 @@
   burgerBtn.addEventListener('click',()=>{burgerBtn.classList.toggle('is-open');navOverlay.classList.toggle('is-open');});
   navOverlay.addEventListener('click',e=>{if(e.target===navOverlay){burgerBtn.classList.remove('is-open');navOverlay.classList.remove('is-open');}});
   document.querySelectorAll('.nav-overlay a').forEach(a=>a.addEventListener('click',()=>{burgerBtn.classList.remove('is-open');navOverlay.classList.remove('is-open');}));
-  const st=document.getElementById('servicesToggle'),ss=document.getElementById('servicesSub');
-  st.addEventListener('click',()=>{st.classList.toggle('open');ss.classList.toggle('is-open');});
 
   // scroll reveal
   const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.14});
   document.querySelectorAll('[data-reveal]').forEach(el=>io.observe(el));
 
-  // cursor spotlight
-  document.querySelectorAll('.spot').forEach(c=>{
-    c.addEventListener('pointermove',e=>{const r=c.getBoundingClientRect();c.style.setProperty('--mx',(e.clientX-r.left)+'px');c.style.setProperty('--my',(e.clientY-r.top)+'px');});
-  });
-
-  // count-up
-  const cUp=(el)=>{const t=parseFloat(el.getAttribute('data-count'));let n=0;const step=Math.max(1,Math.ceil(t/28));const suffix=el.querySelector('.suffix')?.outerHTML||'';
-    const tick=()=>{n+=step;if(n>=t){n=t;}el.innerHTML=n+suffix;if(n<t)requestAnimationFrame(tick);};tick();};
-  const io2=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){cUp(e.target);io2.unobserve(e.target);}});},{threshold:.6});
-  document.querySelectorAll('[data-count]').forEach(el=>io2.observe(el));
-</script>
-
-
-<script>
+  // promo code copy
   (function(){
-    // copy promo code
     var pc=document.getElementById('promoCode');
     if(pc){pc.addEventListener('click',function(){
       try{navigator.clipboard&&navigator.clipboard.writeText('САЙТ');}catch(e){}
@@ -959,24 +873,17 @@
       var old=cp.textContent;pc.classList.add('copied');cp.textContent='скопировано ✓';
       setTimeout(function(){pc.classList.remove('copied');cp.textContent=old;},1600);
     });}
-    // QR tabs
-    var qrData={
-      whatsapp:{img:'assets/qr-whatsapp.png',desc:'Наведите камеру на QR — откроется WhatsApp с готовым сообщением «пишу с сайта». Или назовите промокод при звонке.'},
-      telegram:{img:'assets/qr-telegram.png',desc:'QR откроет чат в Telegram. Напишите нам и назовите промокод <b>САЙТ</b> — дадим скидку 5%.'},
-      email:{img:'assets/qr-email.png',desc:'QR откроет готовое письмо с темой «Заявка с сайта». Проверьте адрес почты — он появится после подтверждения.'}
-    };
-    var img=document.getElementById('qrImg'),desc=document.getElementById('qrDesc');
-    document.querySelectorAll('.qr-t').forEach(function(t){
-      t.addEventListener('click',function(){
-        document.querySelectorAll('.qr-t').forEach(function(x){x.classList.remove('active');});
-        t.classList.add('active');
-        var d=qrData[t.getAttribute('data-qr')];
-        if(d&&img){img.src=d.img;desc.innerHTML=d.desc;}
-      });
-    });
   })();
+
+  // FAQ accordion
+  document.querySelectorAll('.faq-q').forEach(q=>{
+    q.addEventListener('click',()=>{
+      const item=q.closest('.faq-item');
+      document.querySelectorAll('.faq-item').forEach(i=>{if(i!==item)i.classList.remove('open');});
+      item.classList.toggle('open');
+    });
+  });
 </script>
 
 </body>
 </html>
-<style>#services .services-grid{grid-template-columns:repeat(3,1fr);}@media (max-width:900px){#services .services-grid{grid-template-columns:repeat(2,1fr);}}@media (max-width:560px){#services .services-grid{grid-template-columns:1fr;}}</style>
