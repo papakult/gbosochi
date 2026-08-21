@@ -278,7 +278,14 @@
 
   /* ===== METHANE ===== */
   .methane{background:var(--bg-light);}
-  .methane-box{padding:40px;}
+  .methane-box{position:relative;padding:40px;border:none;background:transparent;isolation:isolate;overflow:hidden;
+    box-shadow:0 22px 44px -18px rgba(21,60,140,.4),0 6px 14px -8px rgba(21,60,140,.22);}
+  .methane-box::before{content:"";position:absolute;inset:-100%;z-index:-2;
+    background:conic-gradient(from 60deg,rgba(56,198,244,.12),#2f7df6,#38c6f4,#7fdcff,rgba(56,198,244,.12));
+    animation:spin 8s linear infinite;}
+  .methane-box::after{content:"";position:absolute;inset:1.5px;z-index:-1;border-radius:20.5px;
+    background:linear-gradient(180deg,#ffffff,#e9f1fb);
+    box-shadow:inset 0 1.5px 0 #ffffff,inset 0 -14px 28px rgba(47,125,246,.07);}
   .methane h2{font-size:clamp(22px,3.2vw,28px);color:var(--text-dark);}
   .methane h2 span{color:var(--blue);display:block;margin-top:4px;}
   .methane-list{margin-top:24px;display:grid;gap:16px;}
@@ -707,7 +714,7 @@
   <div class="container">
     <div class="glass methane-box" data-reveal>
       <span class="eyebrow">Акция</span>
-      <h2 style="margin-top:12px;">Установка ГБО на метане за 1 день <span>экономия до 70% на топливе</span></h2>
+      <h2 style="margin-top:12px;">Установка ГБО за 1 день <span>экономия до 70% на топливе</span></h2>
       <div class="methane-list">
         <div class="methane-item"><div class="check"><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12l6 6L20 6" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></div><p>Метан дешевле любого другого топлива. Обычно установка окупается за 20–30 тысяч км, дальше вы просто экономите на каждой заправке.</p></div>
         <div class="methane-item"><div class="check"><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 12l6 6L20 6" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></div><p>Экологичнее бензина: продукты сгорания метана — углекислый газ и вода.</p></div>
