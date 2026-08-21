@@ -246,7 +246,14 @@
 
   /* ===== PRICES ===== */
   .price-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;}
-  .price-card{overflow:hidden;}
+  .price-card{position:relative;overflow:hidden;border:none;background:transparent;isolation:isolate;
+    box-shadow:0 18px 40px -18px rgba(21,60,140,.4),0 5px 12px -6px rgba(21,60,140,.2);}
+  .price-card::before{content:"";position:absolute;inset:-100%;z-index:-2;
+    background:conic-gradient(from 0deg,#2f7df6,#38c6f4,#7fdcff,#5b8cff,#2f7df6);
+    animation:spin 6s linear infinite;}
+  .price-card > .price-card-media{margin:2.5px 2.5px 0;border-radius:20px 20px 0 0;}
+  .price-card > .price-card-body{position:relative;z-index:1;margin:0 2.5px 2.5px;border-radius:0 0 20px 20px;
+    background:linear-gradient(180deg,#ffffff,#eef4fc);}
   .price-card-media{aspect-ratio:16/9;position:relative;background:linear-gradient(135deg,#e0ebff,#d6f3ff);display:flex;align-items:center;justify-content:center;overflow:hidden;}
   .price-card-media svg{width:92px;height:92px;color:var(--blue);position:relative;z-index:1;}
   .price-card-media video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:2;}
@@ -493,6 +500,14 @@
     mask-image:linear-gradient(90deg,transparent,#000 24%),linear-gradient(180deg,transparent,#000 18%);
     mask-composite:intersect;}
   @media (min-width:1250px){.hero-master{display:block;}}
+  @media (max-width:1249px){
+    .hero-master{display:block;position:static;height:auto;max-height:none;margin:26px auto 0;pointer-events:none;}
+    .hero-master img{display:block;margin:0 auto;width:min(420px,88vw);height:auto;object-fit:contain;
+      -webkit-mask-image:radial-gradient(85% 85% at 50% 48%,#000 55%,transparent 92%);
+      -webkit-mask-composite:source-over;
+      mask-image:radial-gradient(85% 85% at 50% 48%,#000 55%,transparent 92%);
+      mask-composite:add;}
+  }
   @media (prefers-reduced-motion:reduce){
     .btn-ghost::before,.about-card::before,.review-card::before,.review-link::before{animation:none;}
   }
