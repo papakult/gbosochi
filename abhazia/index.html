@@ -602,7 +602,7 @@
     background:conic-gradient(from 0deg,#2f7df6,#38c6f4,#7fdcff,#5b8cff,#2f7df6);
     animation:spin 6s linear infinite;}
   .price-card-media{aspect-ratio:16/9;position:relative;margin:2.5px 2.5px 0;border-radius:20px 20px 0 0;overflow:hidden;background:linear-gradient(135deg,#e0ebff,#d6f3ff);}
-  .price-card-media video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+  .price-card-media video,.price-card-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
   .price-card-body{position:relative;z-index:1;margin:0 2.5px 2.5px;border-radius:0 0 20px 20px;padding:22px;
     background:linear-gradient(180deg,#ffffff,#eef4fc);}
   .price-card-body .label{font-size:13px;color:var(--text-dark-muted);}
@@ -798,15 +798,15 @@
     </div>
     <div class="price-grid">
       <div class="price-card" data-reveal>
-        <div class="price-card-media"><video autoplay muted loop playsinline poster="/assets/video/car-1-sedan-poster.jpg"><source src="/assets/video/car-1-sedan.mp4" type="video/mp4"></video></div>
+        <div class="price-card-media"><img src="/assets/img/car-de-merc-sedan.jpg" alt="Седан с 4-цилиндровым двигателем"></div>
         <div class="price-card-body"><div class="label">Автомобили</div><div class="type">с 4-цилиндровым двигателем</div><div class="price">от 85 000 ₽</div></div>
       </div>
       <div class="price-card d1" data-reveal>
-        <div class="price-card-media"><video autoplay muted loop playsinline poster="/assets/video/car-2-crossover-poster.jpg"><source src="/assets/video/car-2-crossover.mp4" type="video/mp4"></video></div>
+        <div class="price-card-media"><img src="/assets/img/car-de-bmw-sedan.jpg" alt="Бизнес-седан с 6-цилиндровым двигателем"></div>
         <div class="price-card-body"><div class="label">Автомобили</div><div class="type">с 6-цилиндровым двигателем</div><div class="price">от 110 000 ₽</div></div>
       </div>
       <div class="price-card d2" data-reveal>
-        <div class="price-card-media"><video autoplay muted loop playsinline poster="/assets/video/car-3-suv-poster.jpg"><source src="/assets/video/car-3-suv.mp4" type="video/mp4"></video></div>
+        <div class="price-card-media"><img src="/assets/img/car-de-merc-suv.jpg" alt="Внедорожник с 8-цилиндровым двигателем"></div>
         <div class="price-card-body"><div class="label">Автомобили</div><div class="type">с 8-цилиндровым двигателем</div><div class="price">от 140 000 ₽</div></div>
       </div>
     </div>
