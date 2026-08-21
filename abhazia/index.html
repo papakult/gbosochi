@@ -595,6 +595,21 @@
   .promo-attached b{color:#7fdcff;letter-spacing:.05em;}
   .promo-hint{font-size:12.5px;color:var(--cyan-soft);margin-top:4px;}
 
+  .price-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;}
+  .price-card{position:relative;overflow:hidden;border-radius:var(--radius-card);isolation:isolate;
+    box-shadow:0 18px 40px -18px rgba(21,60,140,.4),0 5px 12px -6px rgba(21,60,140,.2);}
+  .price-card::before{content:"";position:absolute;inset:-100%;z-index:-2;
+    background:conic-gradient(from 0deg,#2f7df6,#38c6f4,#7fdcff,#5b8cff,#2f7df6);
+    animation:spin 6s linear infinite;}
+  .price-card-media{aspect-ratio:16/9;position:relative;margin:2.5px 2.5px 0;border-radius:20px 20px 0 0;overflow:hidden;background:linear-gradient(135deg,#e0ebff,#d6f3ff);}
+  .price-card-media video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+  .price-card-body{position:relative;z-index:1;margin:0 2.5px 2.5px;border-radius:0 0 20px 20px;padding:22px;
+    background:linear-gradient(180deg,#ffffff,#eef4fc);}
+  .price-card-body .label{font-size:13px;color:var(--text-dark-muted);}
+  .price-card-body .type{font-family:'Rubik',sans-serif;font-weight:600;font-size:16px;color:var(--blue);margin:2px 0 14px;}
+  .price-card-body .price{font-family:'Rubik',sans-serif;font-weight:800;font-size:23px;color:var(--text-dark);}
+  .price-note{margin-top:18px;font-size:13px;color:var(--text-dark-muted);}
+
   .jdm-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;}
   .jdm-card{border-radius:var(--radius-card);overflow:hidden;background:var(--card-light);border:1px solid var(--border-light);
     transition:transform .3s cubic-bezier(.2,.7,.2,1),box-shadow .3s ease,border-color .3s ease;}
@@ -650,7 +665,7 @@
   <div class="nav-panel">
     <div class="nav-card">
       <a href="/" class="nav-link">Главная</a>
-      <a href="/#prices" class="nav-link">Цены</a>
+      <a href="#prices" class="nav-link">Цены</a>
       <a href="#route" class="nav-link active">Как добраться</a>
       <a href="#cities" class="nav-link">Города</a>
       <a href="#faq" class="nav-link">Вопросы</a>
@@ -666,7 +681,7 @@
     <h1 class="d1" data-reveal>Установка ГБО для машин из Абхазии <span class="grad">за один день в Сочи</span></h1>
     <p class="lead d2" data-reveal>Сухум, Гагра, Пицунда, Новый Афон — приезжайте утром, оставляете машину на весь день, вечером уезжаете домой с готовым газобаллонным оборудованием. Гарантия 3 года, официальное оформление в ГАИ.</p>
     <div class="ab-hero-ctas d3" data-reveal>
-      <a href="/#prices" class="btn btn-blue">Смотреть цены</a>
+      <a href="#prices" class="btn btn-blue">Смотреть цены</a>
       <a href="#form" class="btn btn-ghost">Записаться</a>
     </div>
     <div class="ab-promo-note d3" data-reveal>&#127873; Скидка 5% по промокоду <b>САЙТ</b> — просто назовите его при записи</div>
@@ -773,28 +788,29 @@
   </div>
 </section>
 
-<!-- ===== JDM CARS ===== -->
-<section id="jdm" style="background:var(--bg-light);">
+<!-- ===== PRICES ===== -->
+<section id="prices">
   <div class="container">
     <div class="section-head">
-      <span class="eyebrow" data-reveal>Знакомые машины</span>
-      <h2 class="d1" data-reveal>Ставим ГБО на любимые в Абхазии японские авто</h2>
-      <p class="d2" data-reveal>Правый руль, надёжные моторы, культовые модели — знаем эти машины и умеем работать с ними без сюрпризов.</p>
+      <span class="eyebrow" data-reveal>Цены</span>
+      <h2 class="d1" data-reveal>Установка ГБО — от 85 000 ₽ с гарантией на 3 года</h2>
+      <p class="d2" data-reveal>Цена одна для всех — из Сочи или из Абхазии. Оплата в рублях, стоимость известна заранее.</p>
     </div>
-    <div class="jdm-grid">
-      <div class="jdm-card" data-reveal>
-        <div class="jdm-img"><img src="/assets/img/jdm-chaser.jpg" alt="Toyota Chaser — установка ГБО"></div>
-        <div class="jdm-body"><h3>Toyota Chaser / Mark II</h3><p>Один из самых популярных седанов на дорогах Абхазии — надёжный рядный мотор отлично уживается с ГБО.</p></div>
+    <div class="price-grid">
+      <div class="price-card" data-reveal>
+        <div class="price-card-media"><video autoplay muted loop playsinline poster="/assets/video/car-1-sedan-poster.jpg"><source src="/assets/video/car-1-sedan.mp4" type="video/mp4"></video></div>
+        <div class="price-card-body"><div class="label">Автомобили</div><div class="type">с 4-цилиндровым двигателем</div><div class="price">от 85 000 ₽</div></div>
       </div>
-      <div class="jdm-card" data-reveal>
-        <div class="jdm-img"><img src="/assets/img/jdm-surf.jpg" alt="Toyota Surf — установка ГБО"></div>
-        <div class="jdm-body"><h3>Toyota Hilux Surf</h3><p>Внедорожник на каждый день — для гор и серпантинов, с ГБО экономия на бензине особенно чувствуется.</p></div>
+      <div class="price-card d1" data-reveal>
+        <div class="price-card-media"><video autoplay muted loop playsinline poster="/assets/video/car-2-crossover-poster.jpg"><source src="/assets/video/car-2-crossover.mp4" type="video/mp4"></video></div>
+        <div class="price-card-body"><div class="label">Автомобили</div><div class="type">с 6-цилиндровым двигателем</div><div class="price">от 110 000 ₽</div></div>
       </div>
-      <div class="jdm-card" data-reveal>
-        <div class="jdm-img"><img src="/assets/img/jdm-cefiro.jpg" alt="Nissan Cefiro — установка ГБО"></div>
-        <div class="jdm-body"><h3>Nissan Cefiro</h3><p>Комфортный семейный седан — плавный ход, просторный салон, отличный кандидат под газобаллонное оборудование.</p></div>
+      <div class="price-card d2" data-reveal>
+        <div class="price-card-media"><video autoplay muted loop playsinline poster="/assets/video/car-3-suv-poster.jpg"><source src="/assets/video/car-3-suv.mp4" type="video/mp4"></video></div>
+        <div class="price-card-body"><div class="label">Автомобили</div><div class="type">с 8-цилиндровым двигателем</div><div class="price">от 140 000 ₽</div></div>
       </div>
     </div>
+    <p class="price-note" data-reveal>Точная стоимость зависит от модели авто и комплекта оборудования. Уточняйте у мастера — не забудьте промокод САЙТ.</p>
   </div>
 </section>
 
