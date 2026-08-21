@@ -506,6 +506,22 @@
   .ab-hero p.lead{font-size:clamp(15px,1.8vw,18px);line-height:1.65;color:#c2cdda;max-width:600px;margin-bottom:28px;}
   .ab-hero-ctas{display:flex;flex-wrap:wrap;gap:14px;}
 
+  .ab-master{position:absolute;right:0;bottom:0;z-index:1;height:90%;max-height:560px;pointer-events:none;display:none;}
+  .ab-master img{height:100%;width:auto;object-fit:contain;object-position:bottom right;
+    -webkit-mask-image:linear-gradient(90deg,transparent,#000 24%),linear-gradient(180deg,transparent,#000 18%);
+    -webkit-mask-composite:source-in;
+    mask-image:linear-gradient(90deg,transparent,#000 24%),linear-gradient(180deg,transparent,#000 18%);
+    mask-composite:intersect;}
+  @media (min-width:1250px){.ab-master{display:block;}}
+  @media (max-width:1249px){
+    .ab-master{display:block;position:static;height:auto;max-height:none;margin:26px auto -10px;}
+    .ab-master img{display:block;margin:0 auto;width:min(400px,86vw);height:auto;
+      -webkit-mask-image:radial-gradient(85% 85% at 50% 48%,#000 55%,transparent 92%);
+      -webkit-mask-composite:source-over;
+      mask-image:radial-gradient(85% 85% at 50% 48%,#000 55%,transparent 92%);
+      mask-composite:add;}
+  }
+
   .route-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
   .route-step{position:relative;display:flex;gap:18px;padding:24px;margin-bottom:20px;border-radius:18px;
     isolation:isolate;overflow:hidden;transition:transform .25s ease,box-shadow .25s ease;
@@ -655,6 +671,7 @@
     </div>
     <div class="ab-promo-note d3" data-reveal>&#127873; Скидка 5% по промокоду <b>САЙТ</b> — просто назовите его при записи</div>
   </div>
+  <div class="ab-master"><img src="/assets/img/master.jpg" alt="Мастер Gaz service"></div>
 </section>
 
 <!-- ===== ROUTE / HOW IT WORKS ===== -->
