@@ -554,7 +554,9 @@
   .faq-a p{padding:0 24px 20px;font-size:14.5px;color:var(--text-dark-muted);line-height:1.65;}
 
   .why-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;}
-  .why-card{padding:26px;}
+  .why-card{position:relative;padding:26px;overflow:hidden;isolation:isolate;}
+  .why-card video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-1;
+    opacity:.15;filter:saturate(.7);pointer-events:none;}
   .why-card .ic{width:46px;height:46px;border-radius:14px;background:linear-gradient(135deg,rgba(47,125,246,.14),rgba(56,198,244,.18));display:flex;align-items:center;justify-content:center;color:var(--blue);margin-bottom:14px;}
   .why-card h3{font-size:16.5px;color:var(--text-dark);margin-bottom:8px;}
   .why-card p{font-size:14px;color:var(--text-dark-muted);line-height:1.6;}
@@ -680,22 +682,22 @@
       <p class="d2" data-reveal>Специальных условий для гостей из Абхазии мы не делаем — и так одни из самых доступных цен на побережье, без наценки за то, что вы издалека.</p>
     </div>
     <div class="why-grid">
-      <div class="glass why-card" data-reveal>
+      <div class="glass why-card" data-reveal><video autoplay muted loop playsinline poster="/assets/video/install-process-poster.jpg"><source src="/assets/video/install-process.mp4" type="video/mp4"></video>
         <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.8"/><path d="M12 7v5l3 2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></div>
         <h3>Один день, а не неделя ожидания</h3>
         <p>Оборудование и мастера на месте — не нужно ждать, пока привезут детали или освободится очередь на несколько дней вперёд.</p>
       </div>
-      <div class="glass why-card" data-reveal>
+      <div class="glass why-card" data-reveal><video autoplay muted loop playsinline poster="/assets/video/service-gbo-repair-poster.jpg"><source src="/assets/video/service-gbo-repair.mp4" type="video/mp4"></video>
         <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M9 12l2 2 4-4M7.8 4.5a2 2 0 0 1 1.4-.6 2 2 0 0 0 1.4-.6l1-1a2 2 0 0 1 2.8 0l1 1a2 2 0 0 0 1.4.6 2 2 0 0 1 1.9 1.9 2 2 0 0 0 .6 1.4l1 1a2 2 0 0 1 0 2.8l-1 1a2 2 0 0 0-.6 1.4 2 2 0 0 1-1.9 1.9 2 2 0 0 0-1.4.6l-1 1a2 2 0 0 1-2.8 0l-1-1a2 2 0 0 0-1.4-.6 2 2 0 0 1-1.9-1.9 2 2 0 0 0-.6-1.4l-1-1a2 2 0 0 1 0-2.8l1-1A2 2 0 0 0 5.9 6.4 2 2 0 0 1 7.8 4.5z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></div>
         <h3>Гарантия 3 года на установку</h3>
         <p>Официальное оформление в ГАИ и письменная гарантия — приедете через год, разберёмся с любым вопросом по оборудованию.</p>
       </div>
-      <div class="glass why-card" data-reveal>
+      <div class="glass why-card" data-reveal><video autoplay muted loop playsinline poster="/assets/video/service-gbo-install-poster.jpg"><source src="/assets/video/service-gbo-install.mp4" type="video/mp4"></video>
         <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 2v20M12 6l3-3M12 6L9 3M4.5 9l3.5 2M4.5 15l3.5-2M19.5 9L16 11M19.5 15L16 13" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><circle cx="12" cy="12" r="3.2" stroke="currentColor" stroke-width="1.6"/></svg></div>
         <h3>Проверенные марки ГБО</h3>
         <p>Ставим только оборудование известных производителей, которое легко обслужить в дальнейшем в любом сервисе.</p>
       </div>
-      <div class="glass why-card" data-reveal>
+      <div class="glass why-card" data-reveal><video autoplay muted loop playsinline poster="/assets/video/service-diagnostic-poster.jpg"><source src="/assets/video/service-diagnostic.mp4" type="video/mp4"></video>
         <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M3 13l2-5a2 2 0 0 1 2-1.3h10A2 2 0 0 1 19 8l2 5v5h-3M3 18v-5m0 5h3m0 0a2 2 0 1 0 4 0m8 0a2 2 0 1 0-4 0" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></div>
         <h3>Честная цена без наценок</h3>
         <p>Цена одна для всех клиентов — из Сочи, из Абхазии или проездом. Стоимость известна заранее, без сюрпризов по итогу.</p>
