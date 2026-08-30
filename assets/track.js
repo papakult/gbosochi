@@ -32,6 +32,19 @@
     document.body.insertBefore(ns, document.body.firstChild);
   });
 
+  /* ClientID забираем заранее и кладём в переменную,
+     чтобы в момент клика уведомление ушло мгновенно, а не через таймаут. */
+  var VISITOR = '—';
+  function grabClientId(attempt) {
+    try {
+      ym(CID, 'getClientID', function (id) { if (id) { VISITOR = id; } });
+    } catch (e) {}
+    if (VISITOR === '—' && (attempt || 0) < 8) {
+      setTimeout(function () { grabClientId((attempt || 0) + 1); }, 700);
+    }
+  }
+  grabClientId(0);
+
   /* ---------- 2. Контекст визита ---------- */
   function qs(name) {
     var m = new RegExp('[?&]' + name + '=([^&#]*)').exec(location.search);
@@ -69,13 +82,6 @@
     return /Mobi|Android|iPhone|iPad/i.test(navigator.userAgent) ? 'телефон' : 'компьютер';
   }
 
-  function clientId(cb) {
-    try {
-      ym(CID, 'getClientID', function (id) { cb(id || '—'); });
-      setTimeout(function () { cb('—'); }, 800);
-    } catch (e) { cb('—'); }
-  }
-
   /* ---------- 3. Скрытое уведомление в Telegram ---------- */
   function dedupOk(channel) {
     try {
@@ -89,24 +95,20 @@
 
   function notify(channelName, channelKey) {
     if (!dedupOk(channelKey)) { return; }
-    clientId(function (cid) {
-      if (notify['done_' + channelKey]) { return; }
-      notify['done_' + channelKey] = true;
-      var t = new Date().toLocaleString('ru-RU', { timeZone: 'Europe/Moscow' });
-      var msg =
-        '🔥 ОБРАЩЕНИЕ С САЙТА\n\n' +
-        'Канал: ' + channelName + '\n' +
-        'Страница: ' + pageLabel() + '\n' +
-        'Адрес: ' + location.host + location.pathname + '\n' +
-        'Источник: ' + sourceLabel() + '\n' +
-        'Устройство: ' + device() + '\n' +
-        'Время (МСК): ' + t + '\n' +
-        'ID посетителя: ' + cid + '\n\n' +
-        'Промокод САЙТ — спросить у мастера, дошёл ли клиент.';
-      var url = 'https://api.telegram.org/bot' + TG_TOKEN + '/sendMessage?chat_id=' +
-                TG_CHAT + '&disable_web_page_preview=1&text=' + encodeURIComponent(msg);
-      try { new Image().src = url; } catch (e) {}
-    });
+    var t = new Date().toLocaleString('ru-RU', { timeZone: 'Europe/Moscow' });
+    var msg =
+      '🔥 ОБРАЩЕНИЕ С САЙТА\n\n' +
+      'Канал: ' + channelName + '\n' +
+      'Страница: ' + pageLabel() + '\n' +
+      'Адрес: ' + location.host + location.pathname + '\n' +
+      'Источник: ' + sourceLabel() + '\n' +
+      'Устройство: ' + device() + '\n' +
+      'Время (МСК): ' + t + '\n' +
+      'ID посетителя: ' + VISITOR + '\n\n' +
+      'Промокод САЙТ — спросить у мастера, дошёл ли клиент.';
+    var url = 'https://api.telegram.org/bot' + TG_TOKEN + '/sendMessage?chat_id=' +
+              TG_CHAT + '&disable_web_page_preview=1&text=' + encodeURIComponent(msg);
+    try { new Image().src = url; } catch (e) {}
   }
 
   /* ---------- 4. Цели Метрики + уведомления ---------- */
