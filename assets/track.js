@@ -1,4 +1,5 @@
 /* Gaz service — единый трекинг: Яндекс.Метрика + скрытые уведомления о лидах.
+   Плюс подстановка текста обращения в ссылки Telegram.
    Подключается на всех страницах сайта одной строкой. */
 (function () {
   'use strict';
@@ -82,7 +83,48 @@
     return /Mobi|Android|iPhone|iPad/i.test(navigator.userAgent) ? 'телефон' : 'компьютер';
   }
 
-  /* ---------- 3. Скрытое уведомление в Telegram ---------- */
+  /* ---------- 3. Текст обращения для Telegram ----------
+     Telegram официально поддерживает параметр ?text= и для ссылок вида
+     t.me/+<номер>, и для t.me/<username> — он подставляет текст в поле ввода
+     (core.telegram.org/api/links). Отправку клиент делает сам, это защита Telegram.
+     В вёрстке этот параметр не проставлен ни на одной из 28 страниц —
+     поэтому в WhatsApp текст подставлялся, а в Telegram нет. Чиним здесь,
+     чтобы не переписывать 28 файлов. */
+  function greetingText() {
+    var label = pageLabel();
+    var where = (label && label !== 'Главная') ? ', страница «' + label + '»' : '';
+    return 'Здравствуйте! Пишу с сайта gbosochi.ru' + where +
+           '. Промокод САЙТ — скидка 5%.\n\nМоя машина: ';
+  }
+
+  function isTelegramLink(href) {
+    return /^https?:\/\/(t|telegram)\.me\//i.test(href);
+  }
+
+  function withGreeting(href) {
+    if (!isTelegramLink(href) || /[?&]text=/.test(href)) { return href; }
+    // не трогаем служебные ссылки Telegram
+    if (/t\.me\/(share|joinchat|proxy|addstickers|socks)/i.test(href)) { return href; }
+    return href + (href.indexOf('?') > -1 ? '&' : '?') +
+           'text=' + encodeURIComponent(greetingText());
+  }
+
+  function patchTelegramLinks() {
+    var links = document.querySelectorAll('a[href*="t.me/"], a[href*="telegram.me/"]');
+    for (var i = 0; i < links.length; i++) {
+      var h = links[i].getAttribute('href') || '';
+      var n = withGreeting(h);
+      if (n !== h) { links[i].setAttribute('href', n); }
+    }
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', patchTelegramLinks);
+  } else {
+    patchTelegramLinks();
+  }
+
+  /* ---------- 4. Скрытое уведомление в Telegram ---------- */
   function dedupOk(channel) {
     try {
       var key = 'gbo_lead_' + channel;
@@ -111,7 +153,7 @@
     try { new Image().src = url; } catch (e) {}
   }
 
-  /* ---------- 4. Цели Метрики + уведомления ---------- */
+  /* ---------- 5. Цели Метрики + уведомления ---------- */
   function goal(name) { try { ym(CID, 'reachGoal', name); } catch (e) {} }
 
   function lead(goalName, channelName, channelKey) {
@@ -127,7 +169,10 @@
 
     if (href.indexOf('wa.me') > -1 || href.indexOf('whatsapp') > -1) {
       lead('wa_click', 'WhatsApp', 'wa');
-    } else if (href.indexOf('t.me/') > -1 || href.indexOf('telegram.me/') > -1) {
+    } else if (isTelegramLink(href)) {
+      // подстраховка: если ссылка появилась после загрузки страницы
+      var patched = withGreeting(href);
+      if (patched !== href) { a.setAttribute('href', patched); }
       lead('tg_click', 'Telegram', 'tg');
     } else if (href.indexOf('mailto:') === 0) {
       lead('mail_click', 'Почта', 'mail');
