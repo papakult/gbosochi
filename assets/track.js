@@ -9,6 +9,24 @@
   var TG_CHAT  = '7630274922';
   var DEDUP_MIN = 30;               // не слать повторное уведомление по тому же каналу N минут
 
+  /* ---------- 0. Иконка сайта в выдаче и во вкладке ----------
+     В вёрстке ни на одной из 28 страниц нет тега <link rel="icon">,
+     а /favicon.ico в корне отсутствует. Поэтому Яндекс не находил
+     иконку и показывал сайт в выдаче без неё. Файл /favicon.svg лежит
+     в корне — здесь на него проставляется ссылка. */
+  (function () {
+    try {
+      if (document.querySelector('link[rel~="icon"]')) { return; }
+      var head = document.head || document.getElementsByTagName('head')[0];
+      if (!head) { return; }
+      var svg = document.createElement('link');
+      svg.rel = 'icon';
+      svg.type = 'image/svg+xml';
+      svg.href = '/favicon.svg';
+      head.appendChild(svg);
+    } catch (e) {}
+  })();
+
   /* ---------- 1. Яндекс.Метрика ---------- */
   (function (m, e, t, r, i, k, a) {
     m[i] = m[i] || function () { (m[i].a = m[i].a || []).push(arguments); };
@@ -83,7 +101,7 @@
     return /Mobi|Android|iPhone|iPad/i.test(navigator.userAgent) ? 'телефон' : 'компьютер';
   }
 
-  /* ---------- 3. Текст обращения для Telegram ----------
+  /* ---------- 3.텍ст обращения для Telegram ----------
      Telegram официально поддерживает параметр ?text= и для ссылок вида
      t.me/+<номер>, и для t.me/<username> — он подставляет текст в поле ввода
      (core.telegram.org/api/links). Отправку клиент делает сам, это защита Telegram.
