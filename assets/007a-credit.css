@@ -45,19 +45,121 @@
 }
 
 /* ===================================================================
+   ВОССТАНОВЛЕНИЕ ЦВЕТОВ (02.09.2026)
+
+   В основных стилях страницы у 144 цветов пропала запятая перед
+   прозрачностью: вместо rgba(127,220,255,.09) записано
+   rgba(127,220,255.09). Браузер читает такую запись как цвет без
+   прозрачности — полностью непрозрачный.
+
+   Отсюда: яркая сетка на первом экране вместо еле заметной, грубые
+   рамки у карточек, плотные тёмные подложки и пропавшие мягкие тени.
+
+   Ниже — те же правила с корректными значениями. Файл подключается
+   после основных стилей, поэтому эти значения побеждают.
+   =================================================================== */
+
+.btn-blue{box-shadow:0 0 0 1px rgba(127,220,255,.3), 0 8px 30px -8px rgba(56,198,244,.5)}
+.btn-blue:hover{box-shadow:0 0 0 1px rgba(127,220,255,.5), 0 12px 38px -8px rgba(56,198,244,.7)}
+.btn-ghost:hover{background:rgba(56,198,244,.1)}
+header{background:rgba(8,13,20,.72);border-bottom:1px solid rgba(255,255,255,.06)}
+.logo-mark{box-shadow:0 0 0 1px rgba(127,220,255,.18),0 6px 18px -6px rgba(47,125,246,.5)}
+.icon-btn::after{box-shadow:0 0 0 0 rgba(56,198,244,.6)}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(56,198,244,.5)}70%{box-shadow:0 0 0 12px rgba(56,198,244,0)}100%{box-shadow:0 0 0 0 rgba(56,198,244,0)}}
+.nav-overlay{background:rgba(6,10,15,.7)}
+.nav-card{background:rgba(18,27,39,.9);border:1px solid rgba(127,220,255,.12)}
+.nav-link:hover{background:rgba(255,255,255,.04)}
+.nav-sub a:hover{background:rgba(56,198,244,.06)}
+.hero-bg{background:
+      linear-gradient(180deg, rgba(8,13,20,.5) 0%, rgba(8,13,20,.82) 62%, rgba(8,13,20,1) 100%),
+      radial-gradient(ellipse at 75% 15%, rgba(56,198,244,.18), transparent 55%),
+      radial-gradient(ellipse at 15% 85%, rgba(47,125,246,.16), transparent 52%)}
+.hero-grid{background-image:linear-gradient(rgba(127,220,255,.09) 1px,transparent 1px),linear-gradient(90deg,rgba(127,220,255,.09) 1px,transparent 1px)}
+.stat{background:rgba(255,255,255,.045);border:1px solid rgba(127,220,255,.14)}
+.stat::after{background:linear-gradient(90deg,transparent,rgba(127,220,255,.6),transparent)}
+.sticky-bar{background:rgba(255,255,255,.92);box-shadow:0 -6px 24px rgba(9,20,40,.1)}
+.promo-bar{border-bottom:1px solid rgba(127,220,255,.16)}
+.promo-bar::before{background:radial-gradient(ellipse at 15% 50%,rgba(56,198,244,.16),transparent 55%)}
+.promo-code{border:1px dashed rgba(127,220,255,.5);background:rgba(56,198,244,.08)}
+.promo-code:hover{background:rgba(56,198,244,.18)}
+.discount-card{border:1px solid rgba(127,220,255,.16);background:linear-gradient(135deg,rgba(18,27,39,.95),rgba(12,26,45,.95))}
+.code-chip{background:rgba(56,198,244,.1)}
+.code-chip:hover{background:rgba(56,198,244,.2)}
+.discount-right{background:rgba(255,255,255,.03);border-left:1px solid rgba(127,220,255,.1)}
+.qr-tab{background:rgba(255,255,255,.04)}
+@media (max-width:760px){.discount-right{border-top:1px solid rgba(127,220,255,.1)}}
+.glass{transition:transform .3s cubic-bezier(.2,.7,.2,1), box-shadow .3s ease, border-color .3s ease}
+.glass:hover{box-shadow:0 18px 40px -14px rgba(21,60,140,.28)}
+.spot::before{background:radial-gradient(240px circle at var(--mx,50%) var(--my,50%),rgba(56,198,244,.14),transparent 60%)}
+.service-card .ic{background:linear-gradient(135deg,rgba(47,125,246,.14),rgba(56,198,244,.18));box-shadow:inset 0 0 0 1px rgba(56,198,244,.15)}
+.service-card.has-video{border:1px solid rgba(127,220,255,.14);transition:transform .4s cubic-bezier(.2,.7,.2,1),box-shadow .4s,border-color .4s}
+.service-card.has-video::before{background:linear-gradient(180deg,rgba(7,13,22,.58),rgba(6,12,22,.66)),radial-gradient(ellipse at 72% 15%,rgba(56,198,244,.14),transparent 60%)}
+.service-card.has-video .svc-num{color:rgba(127,220,255,.5)}
+.service-card.has-video .ic{background:rgba(56,198,244,.14);border:1px solid rgba(127,220,255,.3)}
+.service-card.has-video h3{text-shadow:0 2px 20px rgba(0,0,0,.55)}
+.service-card.has-video:hover{box-shadow:0 24px 50px -18px rgba(56,198,244,.5),0 0 0 1px rgba(127,220,255,.35)}
+.service-card.has-video:hover .ic{background:rgba(56,198,244,.26)}
+.price-card{box-shadow:0 18px 40px -18px rgba(21,60,140,.4),0 5px 12px -6px rgba(21,60,140,.2)}
+.price-card-media::after{background:radial-gradient(circle at 70% 20%,rgba(255,255,255,.7),transparent 55%)}
+.media-frame{border:1px solid rgba(127,220,255,.14)}
+.media-badge{background:rgba(8,13,20,.6);border:1px solid rgba(127,220,255,.2)}
+.methane-box{box-shadow:0 22px 44px -18px rgba(21,60,140,.4),0 6px 14px -8px rgba(21,60,140,.22)}
+.methane-box::before{background:conic-gradient(from 60deg,rgba(56,198,244,.12),#2f7df6,#38c6f4,#7fdcff,rgba(56,198,244,.12))}
+.methane-box::after{box-shadow:inset 0 1.5px 0 #ffffff,inset 0 -14px 28px rgba(47,125,246,.07)}
+.methane-item .check{box-shadow:0 4px 12px -3px rgba(47,125,246,.6)}
+.brand-card:hover{box-shadow:0 12px 26px -12px rgba(21,60,140,.3)}
+.dark-sec .step{border-color:rgba(255,255,255,.08)}
+.step-num{box-shadow:0 6px 16px -5px rgba(47,125,246,.6)}
+.mission{border:1px solid rgba(127,220,255,.14);background:linear-gradient(135deg, rgba(8,13,20,.78), rgba(15,30,60,.9)),url('https://images.unsplash.com/photo-1487754180451-c456f719a1fc?q=80&w=1400&auto=format&fit=crop') center/cover}
+.form-section .fs-bg{background:linear-gradient(160deg, rgba(8,13,20,.82), rgba(10,20,40,.95)),url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=1600&auto=format&fit=crop') center/cover}
+.field input{border:1px solid rgba(255,255,255,.16);background:rgba(255,255,255,.055)}
+.field input:focus{box-shadow:0 0 0 3px rgba(56,198,244,.18);background:rgba(255,255,255,.08)}
+.cc{border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.055)}
+.cc:hover{background:rgba(56,198,244,.10);box-shadow:0 10px 30px rgba(47,125,246,.18)}
+.avatar{box-shadow:0 6px 16px -5px rgba(47,125,246,.6)}
+.contacts-grid{border:1px solid rgba(127,220,255,.14)}
+.social-row a{background:rgba(255,255,255,.06)}
+.social-row a:hover{background:rgba(56,198,244,.16);border-color:rgba(127,220,255,.3)}
+.promo-code.copied{background:rgba(30,158,106,.22)}
+.qr-promo{background:rgba(56,198,244,.06);border:1px solid rgba(127,220,255,.16)}
+.qr-t{background:rgba(255,255,255,.04)}
+.btn-ghost{box-shadow:0 0 0 1px rgba(127,220,255,.22),0 8px 26px -10px rgba(56,198,244,.4)}
+.btn-ghost:hover{box-shadow:0 0 0 1px rgba(127,220,255,.5),0 12px 38px -8px rgba(56,198,244,.7)}
+.stat{background:linear-gradient(160deg,rgba(19,30,46,.88),rgba(9,15,24,.92));border:1px solid rgba(96,190,255,.38);box-shadow:0 0 20px -6px rgba(56,198,244,.4),0 10px 26px -14px rgba(0,0,0,.6),inset 0 1px 0 rgba(255,255,255,.07)}
+.promo-card{border:1px solid rgba(127,220,255,.14);transition:transform .3s cubic-bezier(.2,.7,.2,1),box-shadow .3s ease,border-color .3s ease}
+.promo-card .shade{background:linear-gradient(180deg,rgba(8,13,20,.22) 0%,rgba(8,13,20,.5) 45%,rgba(8,13,20,.93) 100%)}
+.promo-card .ic{background:rgba(8,13,20,.55);box-shadow:inset 0 0 0 1px rgba(56,198,244,.3)}
+.promo-card h3{text-shadow:0 2px 14px rgba(0,0,0,.55)}
+.promo-card p{text-shadow:0 1px 8px rgba(0,0,0,.55)}
+.promo-card:hover{box-shadow:0 18px 44px -14px rgba(56,198,244,.42)}
+.brand-card{border:1px solid rgba(127,220,255,.32);box-shadow:inset 0 1px 0 rgba(255,255,255,.22),inset 0 -8px 16px rgba(4,10,20,.55),0 10px 24px -10px rgba(15,40,90,.55);text-shadow:0 1px 2px rgba(0,0,0,.45)}
+.brand-card::after{background:linear-gradient(90deg,transparent,rgba(255,255,255,.16),transparent)}
+.brand-card:hover{box-shadow:inset 0 1px 0 rgba(255,255,255,.3),inset 0 -8px 16px rgba(4,10,20,.5),
+      0 0 0 1px rgba(56,198,244,.4),0 16px 36px -12px rgba(56,198,244,.55)}
+.about-card{box-shadow:0 22px 44px -18px rgba(21,60,140,.4),0 6px 14px -8px rgba(21,60,140,.22)}
+.about-card:hover{box-shadow:0 28px 54px -18px rgba(38,110,220,.45),0 8px 18px -8px rgba(21,60,140,.28)}
+.about-card::before{background:conic-gradient(from 0deg,rgba(56,198,244,.1),#2f7df6,#38c6f4,#7fdcff,rgba(56,198,244,.1))}
+.about-card::after{box-shadow:inset 0 1.5px 0 #ffffff,inset 0 -14px 28px rgba(47,125,246,.07)}
+.review-card{box-shadow:0 22px 44px -18px rgba(21,60,140,.4),0 6px 14px -8px rgba(21,60,140,.22)}
+.review-card::before{background:conic-gradient(from 120deg,rgba(56,198,244,.1),#2f7df6,#38c6f4,#7fdcff,rgba(56,198,244,.1))}
+.review-card::after{box-shadow:inset 0 1.5px 0 #ffffff,inset 0 -14px 28px rgba(47,125,246,.07)}
+.review-link:hover{box-shadow:0 10px 26px -10px rgba(56,198,244,.5)}
+.sticky-bar{background:rgba(255,255,255,.95)}
+.sticky-bar a.call{box-shadow:0 6px 18px -6px rgba(47,125,246,.65)}
+.sticky-bar a.write{box-shadow:0 6px 18px -6px rgba(56,198,244,.65)}
+
+/* ===================================================================
    ИСПРАВЛЕНИЕ ВИДИМОСТИ КОНТЕНТА (02.09.2026)
 
    Было: 67 блоков на главной висели с opacity:0 и не показывались.
    Две независимые причины:
-     1. transition в основных стилях содержит cubic-bezier(.2.7.2,1) —
-        пропущены запятые, значение невалидно, переход не работает;
+     1. transition содержал cubic-bezier(.2.7.2,1) — пропущены запятые,
+        значение невалидно, переход не работал;
      2. класс .in, который должен снимать прозрачность, не проставлялся
         обработчиком прокрутки, и блоки оставались невидимыми навсегда.
 
    Стало: появление сделано чистой CSS-анимацией. Она отрабатывает
    сама, без участия скриптов, поэтому контент виден при любом сбое JS.
-   Файл подключён после основных стилей, поэтому правила ниже их
-   перекрывают.
    =================================================================== */
 
 @keyframes gsRevealIn {
@@ -77,15 +179,12 @@
 [data-reveal].d3 { animation-delay: 0.24s; }
 [data-reveal].d4 { animation-delay: 0.32s; }
 
-/* если скрипт всё же отработал — блок просто остаётся видимым */
 [data-reveal].in {
   opacity: 1;
   transform: none;
   animation: none;
 }
 
-/* страховка: даже если анимации отключены на уровне системы или
-   браузера, контент обязан быть виден */
 @media (prefers-reduced-motion: reduce) {
   [data-reveal] {
     opacity: 1 !important;
@@ -125,7 +224,6 @@ video {
   max-width: 100%;
 }
 
-/* последний рубеж: страница не должна прокручиваться вбок */
 html,
 body {
   max-width: 100%;
