@@ -1,6 +1,7 @@
 /* Гео-страницы ссылались на ./assets/007a-credit.css, которого не было (404).
-   Здесь: подключение + правка сломанного rgba и защита от горизонтального скролла. */
+   Здесь: подключение + правка сломанного rgba.
+   overflow-x:hidden убран намеренно — он делает body отдельным
+   контейнером прокрутки и ломает position:sticky. */
 img{max-width:100%;height:auto}
 video,iframe,canvas,svg{max-width:100%}
-html,body{max-width:100%;overflow-x:hidden}
 .btn-outline:hover{background:rgba(56,198,244,.1)}
