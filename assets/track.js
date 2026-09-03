@@ -5,8 +5,7 @@
   'use strict';
 
   var CID = 112092303;              // Яндекс.Метрика
-  var TG_TOKEN = '8979049073:AAHd13Bd-RQvo7lc8-igs2H1y5xs3lAnH_E';
-  var TG_CHAT  = '7630274922';
+  var LEAD_URL = 'https://gbo-sochi.ru/api/lead';
   var DEDUP_MIN = 30;               // не слать повторное уведомление по тому же каналу N минут
 
   /* ---------- 0. Иконка сайта в выдаче и во вкладке ----------
@@ -101,7 +100,7 @@
     return /Mobi|Android|iPhone|iPad/i.test(navigator.userAgent) ? 'телефон' : 'компьютер';
   }
 
-  /* ---------- 3.텍ст обращения для Telegram ----------
+  /* ---------- 3. Текст обращения для Telegram ----------
      Telegram официально поддерживает параметр ?text= и для ссылок вида
      t.me/+<номер>, и для t.me/<username> — он подставляет текст в поле ввода
      (core.telegram.org/api/links). Отправку клиент делает сам, это защита Telegram.
@@ -155,20 +154,18 @@
 
   function notify(channelName, channelKey) {
     if (!dedupOk(channelKey)) { return; }
-    var t = new Date().toLocaleString('ru-RU', { timeZone: 'Europe/Moscow' });
-    var msg =
-      '🔥 ОБРАЩЕНИЕ С САЙТА\n\n' +
-      'Канал: ' + channelName + '\n' +
-      'Страница: ' + pageLabel() + '\n' +
-      'Адрес: ' + location.host + location.pathname + '\n' +
-      'Источник: ' + sourceLabel() + '\n' +
-      'Устройство: ' + device() + '\n' +
-      'Время (МСК): ' + t + '\n' +
-      'ID посетителя: ' + VISITOR + '\n\n' +
-      'Промокод САЙТ — спросить у мастера, дошёл ли клиент.';
-    var url = 'https://api.telegram.org/bot' + TG_TOKEN + '/sendMessage?chat_id=' +
-              TG_CHAT + '&disable_web_page_preview=1&text=' + encodeURIComponent(msg);
-    try { new Image().src = url; } catch (e) {}
+    /* Уведомление уходит не напрямую в Telegram, а через свой эндпоинт
+       на gbo-sochi.ru. Причина: api.telegram.org недоступен из России —
+       из браузера посетителя запрос отдавал 503, и ни одно обращение
+       не доходило. Заодно токен бота больше не лежит в открытом js. */
+    var q = '?c=' + encodeURIComponent(channelName) +
+            '&p=' + encodeURIComponent(pageLabel()) +
+            '&u=' + encodeURIComponent(location.host + location.pathname) +
+            '&s=' + encodeURIComponent(sourceLabel()) +
+            '&d=' + encodeURIComponent(device()) +
+            '&v=' + encodeURIComponent(VISITOR) +
+            '&t=' + Date.now();
+    try { new Image().src = LEAD_URL + q; } catch (e) {}
   }
 
   /* ---------- 5. Цели Метрики + уведомления ---------- */
