@@ -35,8 +35,13 @@
     k.async = 1; k.src = r; a.parentNode.insertBefore(k, a);
   })(window, document, 'script', 'https://mc.yandex.ru/metrika/tag.js', 'ym');
 
+  /* 04.09.2026: тут стоял ssr:true — режим "ручной отправки хитов" для SPA,
+     где разработчик сам вызывает ym(id,'hit',url) на каждый переход.
+     Сайт обычный многостраничный, такого вызова нигде не было —
+     из-за этого счётчик молча не отправлял НИ ОДНОГО визита с момента
+     установки. За месяц реального трафика (клики из Директа, живые
+     обращения) записался 1 визит. Убрано. */
   ym(CID, 'init', {
-    ssr: true,
     webvisor: true,
     clickmap: true,
     trackLinks: true,
