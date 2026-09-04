@@ -466,6 +466,19 @@
   .uf-badge:hover{background:var(--blue);color:#fff;}
   .uf-badge.muted{color:var(--text-dark-muted);background:rgba(13,20,32,.06);}
   .uf-badge.muted:hover{background:var(--text-dark-muted);color:#fff;}
+  .useful-modal{position:fixed;inset:0;z-index:300;display:none;}
+  .useful-modal.is-open{display:block;}
+  .useful-modal .um-backdrop{position:absolute;inset:0;background:rgba(8,13,20,.72);backdrop-filter:blur(6px);}
+  .useful-modal .um-panel{position:relative;max-width:980px;margin:40px auto;max-height:calc(100vh - 80px);overflow-y:auto;background:var(--bg-light);border-radius:22px;-webkit-overflow-scrolling:touch;}
+  .useful-modal .um-panel-head{position:sticky;top:0;display:flex;justify-content:flex-end;padding:16px 20px 0;background:var(--bg-light);z-index:2;border-radius:22px 22px 0 0;}
+  .um-close{width:44px;height:44px;border-radius:999px;background:var(--card-light);box-shadow:0 4px 16px rgba(13,20,32,.16);border:none;cursor:pointer;font-size:18px;color:var(--text-dark);display:flex;align-items:center;justify-content:center;}
+  .useful-modal .container{padding-top:8px;}
+  .useful-modal [data-reveal]{opacity:1 !important;transform:none !important;}
+  @media (max-width:640px){
+    .useful-modal .um-panel{margin:0;max-height:100vh;border-radius:0;}
+    .useful-modal .um-panel-head{border-radius:0;}
+  }
+  body.useful-open{overflow:hidden;}
   .promo-card h3{position:relative;z-index:2;color:#fff;font-size:18px;margin-bottom:8px;text-shadow:0 2px 14px rgba(0,0,0.55);}
   .promo-card p{position:relative;z-index:2;color:#c8d4e2;font-size:13.5px;line-height:1.55;text-shadow:0 1px 8px rgba(0,0,0.55);}
   .promo-card .line{position:absolute;left:50%;bottom:0;z-index:2;transform:translateX(-50%) scaleX(.5);
@@ -653,10 +666,202 @@
       </div>
       <a href="#about" class="nav-link">О компании</a>
       <a href="#promos" class="nav-link">Акции</a>
-      <a href="#useful" class="nav-link">Полезное</a>
+      <div class="nav-link" id="usefulOpenBtn">Полезное</div>
       <a href="#reviews" class="nav-link">Отзывы</a>
       <a href="/abhazia" class="nav-link">Клиентам из Абхазии</a>
       <a href="#contacts" class="nav-link">Контакты</a>
+    </div>
+  </div>
+</div>
+
+<div class="useful-modal" id="usefulModal">
+  <div class="um-backdrop"></div>
+  <div class="um-panel">
+    <div class="um-panel-head">
+      <button class="um-close" id="usefulClose" aria-label="Закрыть">✕</button>
+    </div>
+    <div class="container">
+      <div class="section-head">
+      <span class="eyebrow" data-reveal>Полезная информация</span>
+      <h2 class="d1" data-reveal>Что нужно знать про ГБО</h2>
+      <p class="d2" data-reveal>Короткие ответы на вопросы, которые чаще всего задают в Сочи и Адлере — окупаемость, обслуживание, регистрация и особенности местных маршрутов. Материалы также выходят на профильных площадках — ссылка на публикацию есть в каждой карточке.</p>
+    </div>
+      <div class="uf-grid">
+      <div class="glass uf-card" data-reveal>
+        <div class="uf-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="4" y="3" width="16" height="18" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="M8 7h8M8 11h2M12 11h2M16 11h0M8 15h2M12 15h2M16 15h0" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></div>
+        <h3>За сколько отбивается газ на разных пробегах</h3>
+        <p class="uf-text">Комплект на четыре цилиндра с установкой и регистрацией стоит 80-90 тысяч рублей. При пяти тысячах километров в год он не отбивается вообще, при четырёх тысячах в месяц окупается уже за первый сезон. Разница не в марке машины, а в том, сколько вы реально ездите.</p>
+        <a class="uf-badge" href="https://insurance-news.ru/Fedoris/gaz-okupaetsya-za-sem-mesyacev-ili-za-chetyre-goda-schitaem-krbb.html" target="_blank" rel="noopener">Публикация · insurance-news.ru ↗</a>
+      </div>
+      <div class="glass uf-card" data-reveal>
+        <div class="uf-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="8.5" stroke="currentColor" stroke-width="1.6"/><path d="M12 7.5v9M9.5 9.5c0-1 1-1.7 2.5-1.7s2.5.6 2.5 1.6c0 2.2-5 1-5 3.2 0 1 1 1.7 2.5 1.7s2.5-.7 2.5-1.7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+        <h3>Пропан дешевле бензина вдвое, а экономия выходит меньше</h3>
+        <p class="uf-text">На газе расход топлива выше бензинового на 10-15 процентов, поэтому чистая выгода получается не в два раза, а около 40 процентов. Вторая половина разницы уходит именно на этот перерасход. Это не повод отказываться от ГБО, просто честная арифметика.</p>
+        <a class="uf-badge" href="https://fetch-soft.ru/propan-vdvoe-deshevle-benzina-a-v-koshelke-ostajots-0ll44/" target="_blank" rel="noopener">Публикация · fetch-soft.ru ↗</a>
+      </div>
+      <div class="glass uf-card" data-reveal>
+        <div class="uf-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4 16V12l1.8-4.5A2 2 0 0 1 7.7 6h8.6a2 2 0 0 1 1.9 1.5L20 12v4M4 16h16M4 16v2a1 1 0 0 0 1 1h1a1 1 0 0 0 1-1v-1M20 16v2a1 1 0 0 1-1 1h-1a1 1 0 0 1-1-1v-1" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><circle cx="7.5" cy="16" r="1.4" stroke="currentColor" stroke-width="1.4"/><circle cx="16.5" cy="16" r="1.4" stroke="currentColor" stroke-width="1.4"/></svg></div>
+        <h3>Как таксопарк считает выгоду от перевода машин на газ</h3>
+        <p class="uf-text">У автопарка решение принимают не по ощущениям, а по одной таблице: годовой пробег, средний расход, цена топлива. При интенсивной работе комплект окупается за один сезон, дальше это уже чистая экономия на каждой смене. Поэтому таксопарки переводят машины на газ пачками, а не по одной.</p>
+        <a class="uf-badge" href="https://skfo-inform.ru/2026/09/03/26107-pyat-mashin-v-transfere-kak-avtopark-schitaet-okup-g1hou/" target="_blank" rel="noopener">Публикация · skfo-inform.ru ↗</a>
+      </div>
+      <div class="glass uf-card" data-reveal>
+        <div class="uf-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M14.7 6.3a4 4 0 0 0-5.4 4.7L4 16.3 7.7 20l5.3-5.3a4 4 0 0 0 4.7-5.4l-2.8 2.8-2.1-2.1 2.8-2.7Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg></div>
+        <h3>Что ГБО реально добавляет в обслуживание машины</h3>
+        <p class="uf-text">К обычному регламенту добавляется всего два пункта: замена газового фильтра и слив конденсата из баллона раз в год. Остальные страшилки про газ и мотор придуманы теми, кто ставил оборудование криво. При нормальной установке двигатель обслуживается так же, как на бензине.</p>
+        <a class="uf-badge" href="https://urfo-inform.ru/2026/09/03/gazovaya-mashina-v-obsluzhivanii-chto-real-5bm/" target="_blank" rel="noopener">Публикация · urfo-inform.ru ↗</a>
+      </div>
+      <div class="glass uf-card" data-reveal>
+        <div class="uf-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4 16V12l1.8-4.5A2 2 0 0 1 7.7 6h8.6a2 2 0 0 1 1.9 1.5L20 12v4M4 16h16M4 16v2a1 1 0 0 0 1 1h1a1 1 0 0 0 1-1v-1M20 16v2a1 1 0 0 1-1 1h-1a1 1 0 0 1-1-1v-1" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><circle cx="7.5" cy="16" r="1.4" stroke="currentColor" stroke-width="1.4"/><circle cx="16.5" cy="16" r="1.4" stroke="currentColor" stroke-width="1.4"/></svg></div>
+        <h3>Влияет ли газ на цену машины при продаже</h3>
+        <p class="uf-text">Зарегистрированное ГБО с документами почти не снижает цену, а иногда даже плюс для покупателя, который считает экономию. Проблема начинается с гаражной установки без документов, снять её перед продажей сложнее, чем кажется. Если продавать планируете в течение года, спешить с установкой смысла нет.</p>
+        <a class="uf-badge" href="https://sfo-inform.ru/2026/09/03/prodajote-mashinu-cherez-dva-goda-imeet-li-smysl-stavit-gaz-h56/" target="_blank" rel="noopener">Публикация · sfo-inform.ru ↗</a>
+      </div>
+      <div class="glass uf-card" data-reveal>
+        <div class="uf-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.5"/><path d="M12 3v2.2M12 18.8V21M21 12h-2.2M5.2 12H3M18 6l-1.5 1.5M7.5 16.5 6 18M18 18l-1.5-1.5M7.5 7.5 6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+        <h3>Из чего состоит комплект ГБО четвёртого поколения</h3>
+        <p class="uf-text">Редуктор, форсунки, мультиклапан, электронный блок управления, баллон, проводка и датчики. Каждый узел отвечает за свою задачу, и ломается обычно не самый дорогой из них, а тот, что хуже настроен при монтаже. Знать хотя бы примерно, что где стоит, полезно, когда обсуждаете смету с мастером.</p>
+        <a class="uf-badge" href="https://commercerealtynet.ru/aktualnye-novosti/vosem-uzlov-v-gbo-chetvjortogo-pokoleniya-chto-stoit-p-3wd3/" target="_blank" rel="noopener">Публикация · commercerealtynet.ru ↗</a>
+      </div>
+      <div class="glass uf-card" data-reveal>
+        <div class="uf-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="6" y="5" width="12" height="14" rx="6" stroke="currentColor" stroke-width="1.5"/><path d="M9 9h6M9 13h6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></div>
+        <h3>Тороидальный баллон или цилиндрический: что выбрать</h3>
+        <p class="uf-text">Тор встаёт в нишу под запаску и не занимает багажник, но заправки хватает на меньшее расстояние. Цилиндр вместительнее, только съедает часть багажа. Выбор обычно упирается в один вопрос: готовы ли вы остаться без места под запасное колесо.</p>
+        <a class="uf-badge" href="https://startup-cases.ru/cases/ballon-v-nishu-zapaski-ili-v-bagazhnik-ka-j1/" target="_blank" rel="noopener">Публикация · startup-cases.ru ↗</a>
+      </div>
+      <div class="glass uf-card" data-reveal>
+        <div class="uf-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.5"/><path d="M12 2v3.2M12 18.8V22M2 12h3.2M18.8 12H22" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+        <h3>Редуктор, форсунки, мультиклапан: кто за что отвечает</h3>
+        <p class="uf-text">Редуктор переводит газ из жидкого состояния в газообразное и снижает давление. Форсунки дозируют подачу в цилиндры. Мультиклапан стоит прямо на баллоне и следит, чтобы заправка не превысила безопасный уровень. Три детали, три разные задачи, и если барахлит одна, остальные две тут ни при чём.</p>
+        <a class="uf-badge" href="https://dfo-inform.ru/2026/09/03/reduktor-forsunki-i-multiklapan-kto-iz-n-9e/" target="_blank" rel="noopener">Публикация · dfo-inform.ru ↗</a>
+      </div>
+      <div class="glass uf-card" data-reveal>
+        <div class="uf-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 3c1 3-2 4-2 7a2 2 0 0 0 4 0c2 1 3 3 3 5a5 5 0 1 1-10 0c0-3 2-4 2-7 1 1 1 2 1 2s.5-4 2-7Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg></div>
+        <h3>Правда о прогоревших клапанах на газе</h3>
+        <p class="uf-text">Сам по себе пропан не агрессивнее к клапанам, чем бензин. Прогар почти всегда следствие неверно выставленного угла опережения зажигания или экономии на редукторе. То есть виновата не газовая система как таковая, а качество конкретной установки.</p>
+        <a class="uf-badge" href="https://szfo-inform.ru/2026/09/03/post-progorevshie-klapany-na-gaze-kto-na-samom-dele-vinovat-fkq9/" target="_blank" rel="noopener">Публикация · szfo-inform.ru ↗</a>
+      </div>
+      <div class="glass uf-card" data-reveal>
+        <div class="uf-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4 15a8 8 0 1 1 16 0" stroke="currentColor" stroke-width="1.6"/><path d="M12 15l4-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><circle cx="12" cy="15" r="1.2" fill="currentColor"/></svg></div>
+        <h3>Сколько мощности теряет машина на газе</h3>
+        <p class="uf-text">После перехода на пропан двигатель теряет 5-7 процентов мощности, это особенность самого топлива, а не признак плохого монтажа. На городской езде разница почти не ощущается, на затяжном подъёме с полной загрузкой заметнее. Знать об этом заранее полезнее, чем удивляться потом.</p>
+        <a class="uf-badge" href="https://pfo-inform.ru/2026/09/03/skolko-motor-realno-teryaet-v-moshhnosti-posle-ustanovki-gbo-h2uj/" target="_blank" rel="noopener">Публикация · pfo-inform.ru ↗</a>
+      </div>
+      <div class="glass uf-card" data-reveal>
+        <div class="uf-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 2v20M4.5 6.5l15 11M19.5 6.5l-15 11" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></div>
+        <h3>Почему зимой машина заводится на бензине</h3>
+        <p class="uf-text">Испаряемость газа падает на морозе, и запустить холодный двигатель напрямую на пропане сложнее. Поэтому система стартует на бензине, прогревает мотор и через минуту-две сама переключается на газ. Это штатная работа оборудования, а не повод для беспокойства.</p>
+        <a class="uf-badge" href="https://modern-qa.ru/novosti-otrasli/statya-gaz-zimojj-pochemu-mashina-vsegda-startuet-n-yh/" target="_blank" rel="noopener">Публикация · modern-qa.ru ↗</a>
+      </div>
+      <div class="glass uf-card" data-reveal>
+        <div class="uf-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="4" y="5" width="16" height="15" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M4 9.5h16M8 3v3.5M16 3v3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+        <h3>Что и когда менять при обслуживании ГБО</h3>
+        <p class="uf-text">Газовый фильтр меняют каждые 10-15 тысяч километров, конденсат из баллона сливают раз в год, а полную ревизию редуктора делают в районе 80-100 тысяч км пробега на газе. Расписание простое, и если его не срывать, крупный ремонт почти никогда не понадобится.</p>
+        <a class="uf-badge" href="https://shared-estates.ru/biz/reglament-obsluzhivaniya-gbo-chto-i-cherez-skolko-tysyach-menya-m8r88/" target="_blank" rel="noopener">Публикация · shared-estates.ru ↗</a>
+      </div>
+      <div class="glass uf-card" data-reveal>
+        <div class="uf-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M3 9c2-2 4-2 6 0s4 2 6 0 4-2 6 0M3 15c2-2 4-2 6 0s4 2 6 0 4-2 6 0" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+        <h3>Девять причин, почему плавают обороты на газе</h3>
+        <p class="uf-text">Чаще всего дело в засорённом фильтре или севшей настройке редуктора, реже в проблемах с зажиганием, которые просто ярче проявляются именно на газе. Провалы на холостых почти никогда не лечатся заменой всей системы, обычно хватает диагностики и точечной настройки. Тянуть с визитом к мастеру не стоит: чем дольше катаетесь с провалами, тем выше шанс задеть что-то ещё.</p>
+        <a class="uf-badge" href="https://markthedate.ru/resources/plavayut-oboroty-i-provaly-na-gaze-devyat-prich-9c2e/" target="_blank" rel="noopener">Публикация · markthedate.ru ↗</a>
+      </div>
+      <div class="glass uf-card" data-reveal>
+        <div class="uf-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 3 2 20h20L12 3Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M12 10v4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="12" cy="17" r="1" fill="currentColor"/></svg></div>
+        <h3>Признаки, что редуктору пора на диагностику</h3>
+        <p class="uf-text">Свист или шипение при наборе оборотов, нестабильный холостой ход, чуть более резкий запах газа в моторном отсеке. Любой из этих признаков сам по себе не катастрофа, но откладывать визит на сервис не стоит. Раннее вмешательство почти всегда дешевле, чем ремонт по факту поломки.</p>
+        <a class="uf-badge" href="https://buildestatenews.ru/2026/09/03/5363366-reduktor-prosit-vnimaniya-priznaki-kotorye-voditel-lo-0p/" target="_blank" rel="noopener">Публикация · buildestatenews.ru ↗</a>
+      </div>
+      <div class="glass uf-card" data-reveal>
+        <div class="uf-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="6" y="5" width="12" height="14" rx="6" stroke="currentColor" stroke-width="1.5"/><path d="M9 9h6M9 13h6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></div>
+        <h3>Зачем баллон переосвидетельствуют и как часто</h3>
+        <p class="uf-text">Газовый баллон рассчитан на определённый срок службы, обычно это несколько лет, после чего его проверяют на прочность и герметичность. Без свежего переосвидетельствования заправка на многих станциях просто откажет. Дата обычно выбита на самом баллоне, проверить легко.</p>
+        <a class="uf-badge" href="https://youthrise.ru/educate/skolko-zhivjot-gazovyjj-ballon-i-zachem-ego-pereosvidetelstvuyut-d67h/" target="_blank" rel="noopener">Публикация · youthrise.ru ↗</a>
+      </div>
+      <div class="glass uf-card" data-reveal>
+        <div class="uf-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.5"/><path d="M8 12.5l2.6 2.6L16.5 9" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <h3>Регистрация ГБО в 2026 году по шагам</h3>
+        <p class="uf-text">Сначала техническая экспертиза автомобиля, потом сама установка в сервисе с правом на такие работы, дальше проверка безопасности готовой конструкции и в конце внесение изменений в документы на машину. Четыре шага, ни одного лишнего, и пропустить любой из них означает получить оборудование, которое нельзя законно эксплуатировать.</p>
+        <a class="uf-badge" href="https://business-methods.ru/all/registraciya-gbo-v-godu-chetyre-shaga-i-ni-odnogo-lishnego-fmdf/" target="_blank" rel="noopener">Публикация · business-methods.ru ↗</a>
+      </div>
+      <div class="glass uf-card" data-reveal>
+        <div class="uf-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 3 2 20h20L12 3Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M12 10v4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="12" cy="17" r="1" fill="currentColor"/></svg></div>
+        <h3>Чем заканчивается экономия на регистрации ГБО</h3>
+        <p class="uf-text">Незарегистрированный газ означает штраф при проверке и гарантированный отказ в техосмотре. Разница в стоимости между установкой с документами и без обычно не так велика, как кажется на старте. Экономия здесь почти всегда временная, а проблемы потом долгие.</p>
+        <a class="uf-badge" href="https://ekatevent.ru/novosti/novost-gaz-bez-bumag-chem-zakanchivaetsya-ekonomiya-na-registracii-s6e/" target="_blank" rel="noopener">Публикация · ekatevent.ru ↗</a>
+      </div>
+      <div class="glass uf-card" data-reveal>
+        <div class="uf-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4 20V10l8-5 8 5v10" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M8 20v-6h8v6" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg></div>
+        <h3>Почему гаражный газ невозможно поставить на учёт</h3>
+        <p class="uf-text">Регистрация требует именно цепочки документов от сертифицированного сервиса: экспертиза, акт установки, проверка безопасности. Гаражная установка выпадает из этой цепочки полностью, и задним числом её не восстановить, даже если работа сделана аккуратно. Единственный рабочий вариант, переустановка в сервисе с полным циклом.</p>
+        <a class="uf-badge" href="https://spb-go.ru/segodnya-v-peterburge/publikaciya-garazhnyjj-gaz-pochemu-takoe-oborudovanie-n-6ppq/" target="_blank" rel="noopener">Публикация · spb-go.ru ↗</a>
+      </div>
+      <div class="glass uf-card" data-reveal>
+        <div class="uf-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.5"/><path d="M8 12.5l2.6 2.6L16.5 9" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <h3>Что проверяют на техосмотре у машины на газе</h3>
+        <p class="uf-text">Оператора интересует герметичность системы, срок годности баллона и соответствие оборудования записи в документах. Смотрят придирчивее, чем у бензиновой машины, но при исправной и зарегистрированной системе это формальность на несколько минут. Проблемы возникают только у тех, кто когда-то сэкономил на регистрации.</p>
+        <a class="uf-badge" href="https://ufo-inform.ru/2026/09/03/post-tekhosmotr-mashiny-na-gaze-chto-realno-proveryayut-na-pl-5e9l/" target="_blank" rel="noopener">Публикация · ufo-inform.ru ↗</a>
+      </div>
+      <div class="glass uf-card" data-reveal>
+        <div class="uf-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M5 19c9 1 14-4 14-14C9 5 5 10 5 19Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M5 19c3-4 6-6 10-9" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></div>
+        <h3>Сколько экологии в выхлопе на газе на самом деле</h3>
+        <p class="uf-text">На пропане на 10-15 процентов меньше углекислого газа, почти нет сажи и заметно меньше серы по сравнению с бензином. Цифры не революционные, но для города с плотным трафиком суммарный эффект от тысяч машин чувствуется. Это скорее разумный аргумент, чем рекламный лозунг.</p>
+        <a class="uf-badge" href="https://ratemetr.ru/2026/09/03/720548-vykhlop-na-gaze-skolko-tam-realnojj-eko-q608t/" target="_blank" rel="noopener">Публикация · ratemetr.ru ↗</a>
+      </div>
+      <div class="glass uf-card" data-reveal>
+        <div class="uf-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M9 3 4 21M15 3l5 18M12 6v2.5M12 12v2.5M12 18v2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+        <h3>Газ, электричка или гибрид: что реально работает вне столиц</h3>
+        <p class="uf-text">В крупном городе выбор шире, электромобиль и общественный транспорт снимают часть вопросов сами. За пределами столиц инфраструктура для электромобилей редкая, а газовых заправок при этом хватает почти везде. Поэтому ГБО остаётся самым практичным способом сэкономить на топливе там, где живёт большинство.</p>
+        <a class="uf-badge" href="https://spaceid.ru/Fedoris/gaz-elektrichka-ili-gibrid-chto-iz-etogo-rabotaet-za-predelami-s-4158q.html" target="_blank" rel="noopener">Публикация · spaceid.ru ↗</a>
+      </div>
+      <div class="glass uf-card" data-reveal>
+        <div class="uf-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.5"/><path d="M8 12.5l2.6 2.6L16.5 9" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <h3>Почему переход на газ никто не тормозит</h3>
+        <p class="uf-text">Пропан-бутан и метан добывают внутри страны, поэтому цена на них устойчивее бензиновой. Выхлоп на газе чище, сеть заправок давно не редкость, а порядок регистрации оборудования отработан и понятен. Все три фактора складываются в сторону поддержки, а не запретов.</p>
+        <a class="uf-badge" href="https://www.ekbpr.ru/any/pochemu-perekhod-mashin-na-gaz-podderzhivayut-a-ne-me-22qa/" target="_blank" rel="noopener">Публикация · ekbpr.ru ↗</a>
+      </div>
+      <div class="glass uf-card" data-reveal>
+        <div class="uf-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="4" y="3" width="16" height="18" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="M8 7h8M8 11h2M12 11h2M16 11h0M8 15h2M12 15h2M16 15h0" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></div>
+        <h3>Кому газ окупится за сезон, а кому нет</h3>
+        <p class="uf-text">Решает не марка машины, а годовой пробег. При активной ежедневной езде комплект возвращает вложенное за один сезон. При редких поездках выходного дня окупаемость растягивается на годы, и тогда есть смысл сначала честно прикинуть цифры, а потом уже ставить оборудование.</p>
+        <a class="uf-badge" href="https://www.music-stories.ru/komu-gaz-okupitsya-za-sezon-a-komu-ne-okupitsya-voobshhe-6j1/" target="_blank" rel="noopener">Публикация · music-stories.ru ↗</a>
+      </div>
+      <div class="glass uf-card" data-reveal>
+        <div class="uf-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M14.7 6.3a4 4 0 0 0-5.4 4.7L4 16.3 7.7 20l5.3-5.3a4 4 0 0 0 4.7-5.4l-2.8 2.8-2.1-2.1 2.8-2.7Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg></div>
+        <h3>Как выбрать сервис для установки, а не просто мастера</h3>
+        <p class="uf-text">Первый вопрос при звонке простой: работаете по полному циклу с постановкой на учёт или только ставите железо. Второй, что входит в цену и нет ли скрытых доплат за настройку и расходники. Ответы на эти два вопроса отсеивают большинство неудачных вариантов ещё до записи.</p>
+        <a class="uf-badge" href="https://business-top.info/?p=617361" target="_blank" rel="noopener">Публикация · business-top.info ↗</a>
+      </div>
+      <div class="glass uf-card" data-reveal>
+        <div class="uf-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="8.5" stroke="currentColor" stroke-width="1.6"/><path d="M12 7.5v9M9.5 9.5c0-1 1-1.7 2.5-1.7s2.5.6 2.5 1.6c0 2.2-5 1-5 3.2 0 1 1 1.7 2.5 1.7s2.5-.7 2.5-1.7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+        <h3>Почему дешёвый комплект ГБО не всегда выгоднее</h3>
+        <p class="uf-text">Экономия на старте обычно означает более простой редуктор и форсунки без развитой сервисной сети. Первое время разницы не видно, она проявляется через год-два в виде нестабильной подачи газа или дефицита запчастей. Итоговая стоимость владения нередко выравнивается, только конфликт случается позже и внезапнее.</p>
+        <a class="uf-badge" href="https://www.start-partnership.com/deshjovyjj-komplekt-gbo-protiv-brendovogo-chem-4os2/" target="_blank" rel="noopener">Публикация · start-partnership.com ↗</a>
+      </div>
+      <div class="glass uf-card" data-reveal>
+        <div class="uf-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 3l7 3v6c0 5-3 7.5-7 9-4-1.5-7-4-7-9V6l7-3Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <h3>Что происходит с гарантией дилера после установки ГБО</h3>
+        <p class="uf-text">По закону дилер не может снять с гарантии всю машину только из-за факта установки газа. Гарантия сохраняется на узлы, не связанные с ГБО, споры возникают лишь если поломка касается именно топливной системы. Хранить документы на установку в этом случае не формальность, а реальная защита от необоснованного отказа.</p>
+        <a class="uf-badge" href="https://stars-puls.ru/biznes-uspehi/novost-garantiya-dilera-i-gbo-chto-realno-prois-cje/" target="_blank" rel="noopener">Публикация · stars-puls.ru ↗</a>
+      </div>
+      <div class="glass uf-card" data-reveal>
+        <div class="uf-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M2 19 9 8l4 6 2-3 7 8H2Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg></div>
+        <h3>Почему в Сочи газ окупается быстрее среднего</h3>
+        <p class="uf-text">Серпантины, постоянные подъёмы и круглогодичный кондиционер поднимают расход топлива заметно выше, чем на равнине. Чем выше расход на бензине, тем быстрее разница между бензином и газом складывается в ощутимую сумму. Поэтому для местных маршрутов расчёт окупаемости обычно выходит оптимистичнее среднероссийского.</p>
+        <a class="uf-badge" href="https://www.stroitelstvo-domov.net/articles/novost-gbo-v-sochi-pochemu-na-poberezhe-gaz-okupaetsya-b-12/" target="_blank" rel="noopener">Публикация · stroitelstvo-domov.net ↗</a>
+      </div>
+      <div class="glass uf-card" data-reveal>
+        <div class="uf-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M9 3 4 21M15 3l5 18M12 6v2.5M12 12v2.5M12 18v2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+        <h3>Где заправиться газом по трассе Джубга, Сочи, Адлер</h3>
+        <p class="uf-text">Заправки с пропаном на побережье встречаются в среднем через 30-50 километров, реже, чем бензиновые, но вполне рабочий интервал для бака на 40-50 литров. Перед дальней поездкой стоит заранее отметить для себя ближайшие города с заправкой, а не рассчитывать на удачу между ними.</p>
+        <a class="uf-badge" href="https://parnas.info/gde-zapravitsya-propanom-na-trasse-ot-dzhubgi-do-adlera-f08y/" target="_blank" rel="noopener">Публикация · parnas.info ↗</a>
+      </div>
+      <div class="glass uf-card" data-reveal>
+        <div class="uf-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M2 19 9 8l4 6 2-3 7 8H2Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg></div>
+        <h3>Особенности ГБО на внедорожниках в горах Красной Поляны</h3>
+        <p class="uf-text">На затяжном подъёме редуктор работает под постоянной нагрузкой, а не короткими импульсами, как в городе, и это серьёзнее испытывает дешёвые модели. Для тяжёлых полноприводных машин с частыми поездками в горы разумнее не экономить на классе оборудования и не затягивать плановое обслуживание.</p>
+        <a class="uf-badge" href="https://www.vse-pishut.ru/3137197-gbo-dlya-vnedorozhnikov-na-gornykh-marshrutakh-krasnojj-polyany-096/" target="_blank" rel="noopener">Публикация · vse-pishut.ru ↗</a>
+      </div>
+    </div>
     </div>
   </div>
 </div>
@@ -880,193 +1085,6 @@
   </div>
 </section>
 
-<!-- ===== ПОЛЕЗНАЯ ИНФОРМАЦИЯ / НАС ПУБЛИКУЮТ ===== -->
-<section id="useful" style="background:var(--bg-light);">
-  <div class="container">
-    <div class="section-head">
-      <span class="eyebrow" data-reveal>Полезная информация</span>
-      <h2 class="d1" data-reveal>Что нужно знать про ГБО</h2>
-      <p class="d2" data-reveal>Короткие ответы на вопросы, которые чаще всего задают в Сочи и Адлере — окупаемость, обслуживание, регистрация и особенности местных маршрутов. Материалы также выходят на профильных площадках — ссылка на публикацию есть в каждой карточке.</p>
-    </div>
-    <div class="uf-grid">
-      <div class="glass uf-card" data-reveal>
-        <div class="uf-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="4" y="3" width="16" height="18" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="M8 7h8M8 11h2M12 11h2M16 11h0M8 15h2M12 15h2M16 15h0" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></div>
-        <h3>За сколько отбивается газ на разных пробегах</h3>
-        <p class="uf-text">Комплект на четыре цилиндра с установкой и регистрацией стоит 80-90 тысяч рублей. При пяти тысячах километров в год он не отбивается вообще, при четырёх тысячах в месяц окупается уже за первый сезон. Разница не в марке машины, а в том, сколько вы реально ездите.</p>
-        <a class="uf-badge" href="https://insurance-news.ru/Fedoris/gaz-okupaetsya-za-sem-mesyacev-ili-za-chetyre-goda-schitaem-krbb.html" target="_blank" rel="noopener">Публикация · insurance-news.ru ↗</a>
-      </div>
-      <div class="glass uf-card" data-reveal>
-        <div class="uf-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="8.5" stroke="currentColor" stroke-width="1.6"/><path d="M12 7.5v9M9.5 9.5c0-1 1-1.7 2.5-1.7s2.5.6 2.5 1.6c0 2.2-5 1-5 3.2 0 1 1 1.7 2.5 1.7s2.5-.7 2.5-1.7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div>
-        <h3>Пропан дешевле бензина вдвое, а экономия выходит меньше</h3>
-        <p class="uf-text">На газе расход топлива выше бензинового на 10-15 процентов, поэтому чистая выгода получается не в два раза, а около 40 процентов. Вторая половина разницы уходит именно на этот перерасход. Это не повод отказываться от ГБО, просто честная арифметика.</p>
-        <a class="uf-badge" href="https://fetch-soft.ru/propan-vdvoe-deshevle-benzina-a-v-koshelke-ostajots-0ll44/" target="_blank" rel="noopener">Публикация · fetch-soft.ru ↗</a>
-      </div>
-      <div class="glass uf-card" data-reveal>
-        <div class="uf-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4 16V12l1.8-4.5A2 2 0 0 1 7.7 6h8.6a2 2 0 0 1 1.9 1.5L20 12v4M4 16h16M4 16v2a1 1 0 0 0 1 1h1a1 1 0 0 0 1-1v-1M20 16v2a1 1 0 0 1-1 1h-1a1 1 0 0 1-1-1v-1" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><circle cx="7.5" cy="16" r="1.4" stroke="currentColor" stroke-width="1.4"/><circle cx="16.5" cy="16" r="1.4" stroke="currentColor" stroke-width="1.4"/></svg></div>
-        <h3>Как таксопарк считает выгоду от перевода машин на газ</h3>
-        <p class="uf-text">У автопарка решение принимают не по ощущениям, а по одной таблице: годовой пробег, средний расход, цена топлива. При интенсивной работе комплект окупается за один сезон, дальше это уже чистая экономия на каждой смене. Поэтому таксопарки переводят машины на газ пачками, а не по одной.</p>
-        <a class="uf-badge" href="https://skfo-inform.ru/2026/09/03/26107-pyat-mashin-v-transfere-kak-avtopark-schitaet-okup-g1hou/" target="_blank" rel="noopener">Публикация · skfo-inform.ru ↗</a>
-      </div>
-      <div class="glass uf-card" data-reveal>
-        <div class="uf-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M14.7 6.3a4 4 0 0 0-5.4 4.7L4 16.3 7.7 20l5.3-5.3a4 4 0 0 0 4.7-5.4l-2.8 2.8-2.1-2.1 2.8-2.7Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg></div>
-        <h3>Что ГБО реально добавляет в обслуживание машины</h3>
-        <p class="uf-text">К обычному регламенту добавляется всего два пункта: замена газового фильтра и слив конденсата из баллона раз в год. Остальные страшилки про газ и мотор придуманы теми, кто ставил оборудование криво. При нормальной установке двигатель обслуживается так же, как на бензине.</p>
-        <a class="uf-badge" href="https://urfo-inform.ru/2026/09/03/gazovaya-mashina-v-obsluzhivanii-chto-real-5bm/" target="_blank" rel="noopener">Публикация · urfo-inform.ru ↗</a>
-      </div>
-      <div class="glass uf-card" data-reveal>
-        <div class="uf-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4 16V12l1.8-4.5A2 2 0 0 1 7.7 6h8.6a2 2 0 0 1 1.9 1.5L20 12v4M4 16h16M4 16v2a1 1 0 0 0 1 1h1a1 1 0 0 0 1-1v-1M20 16v2a1 1 0 0 1-1 1h-1a1 1 0 0 1-1-1v-1" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><circle cx="7.5" cy="16" r="1.4" stroke="currentColor" stroke-width="1.4"/><circle cx="16.5" cy="16" r="1.4" stroke="currentColor" stroke-width="1.4"/></svg></div>
-        <h3>Влияет ли газ на цену машины при продаже</h3>
-        <p class="uf-text">Зарегистрированное ГБО с документами почти не снижает цену, а иногда даже плюс для покупателя, который считает экономию. Проблема начинается с гаражной установки без документов, снять её перед продажей сложнее, чем кажется. Если продавать планируете в течение года, спешить с установкой смысла нет.</p>
-        <a class="uf-badge" href="https://sfo-inform.ru/2026/09/03/prodajote-mashinu-cherez-dva-goda-imeet-li-smysl-stavit-gaz-h56/" target="_blank" rel="noopener">Публикация · sfo-inform.ru ↗</a>
-      </div>
-      <div class="glass uf-card" data-reveal>
-        <div class="uf-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.5"/><path d="M12 3v2.2M12 18.8V21M21 12h-2.2M5.2 12H3M18 6l-1.5 1.5M7.5 16.5 6 18M18 18l-1.5-1.5M7.5 7.5 6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div>
-        <h3>Из чего состоит комплект ГБО четвёртого поколения</h3>
-        <p class="uf-text">Редуктор, форсунки, мультиклапан, электронный блок управления, баллон, проводка и датчики. Каждый узел отвечает за свою задачу, и ломается обычно не самый дорогой из них, а тот, что хуже настроен при монтаже. Знать хотя бы примерно, что где стоит, полезно, когда обсуждаете смету с мастером.</p>
-        <a class="uf-badge" href="https://commercerealtynet.ru/aktualnye-novosti/vosem-uzlov-v-gbo-chetvjortogo-pokoleniya-chto-stoit-p-3wd3/" target="_blank" rel="noopener">Публикация · commercerealtynet.ru ↗</a>
-      </div>
-      <div class="glass uf-card" data-reveal>
-        <div class="uf-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="6" y="5" width="12" height="14" rx="6" stroke="currentColor" stroke-width="1.5"/><path d="M9 9h6M9 13h6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></div>
-        <h3>Тороидальный баллон или цилиндрический: что выбрать</h3>
-        <p class="uf-text">Тор встаёт в нишу под запаску и не занимает багажник, но заправки хватает на меньшее расстояние. Цилиндр вместительнее, только съедает часть багажа. Выбор обычно упирается в один вопрос: готовы ли вы остаться без места под запасное колесо.</p>
-        <a class="uf-badge" href="https://startup-cases.ru/cases/ballon-v-nishu-zapaski-ili-v-bagazhnik-ka-j1/" target="_blank" rel="noopener">Публикация · startup-cases.ru ↗</a>
-      </div>
-      <div class="glass uf-card" data-reveal>
-        <div class="uf-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.5"/><path d="M12 2v3.2M12 18.8V22M2 12h3.2M18.8 12H22" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div>
-        <h3>Редуктор, форсунки, мультиклапан: кто за что отвечает</h3>
-        <p class="uf-text">Редуктор переводит газ из жидкого состояния в газообразное и снижает давление. Форсунки дозируют подачу в цилиндры. Мультиклапан стоит прямо на баллоне и следит, чтобы заправка не превысила безопасный уровень. Три детали, три разные задачи, и если барахлит одна, остальные две тут ни при чём.</p>
-        <a class="uf-badge" href="https://dfo-inform.ru/2026/09/03/reduktor-forsunki-i-multiklapan-kto-iz-n-9e/" target="_blank" rel="noopener">Публикация · dfo-inform.ru ↗</a>
-      </div>
-      <div class="glass uf-card" data-reveal>
-        <div class="uf-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 3c1 3-2 4-2 7a2 2 0 0 0 4 0c2 1 3 3 3 5a5 5 0 1 1-10 0c0-3 2-4 2-7 1 1 1 2 1 2s.5-4 2-7Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg></div>
-        <h3>Правда о прогоревших клапанах на газе</h3>
-        <p class="uf-text">Сам по себе пропан не агрессивнее к клапанам, чем бензин. Прогар почти всегда следствие неверно выставленного угла опережения зажигания или экономии на редукторе. То есть виновата не газовая система как таковая, а качество конкретной установки.</p>
-        <a class="uf-badge" href="https://szfo-inform.ru/2026/09/03/post-progorevshie-klapany-na-gaze-kto-na-samom-dele-vinovat-fkq9/" target="_blank" rel="noopener">Публикация · szfo-inform.ru ↗</a>
-      </div>
-      <div class="glass uf-card" data-reveal>
-        <div class="uf-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4 15a8 8 0 1 1 16 0" stroke="currentColor" stroke-width="1.6"/><path d="M12 15l4-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><circle cx="12" cy="15" r="1.2" fill="currentColor"/></svg></div>
-        <h3>Сколько мощности теряет машина на газе</h3>
-        <p class="uf-text">После перехода на пропан двигатель теряет 5-7 процентов мощности, это особенность самого топлива, а не признак плохого монтажа. На городской езде разница почти не ощущается, на затяжном подъёме с полной загрузкой заметнее. Знать об этом заранее полезнее, чем удивляться потом.</p>
-        <a class="uf-badge" href="https://pfo-inform.ru/2026/09/03/skolko-motor-realno-teryaet-v-moshhnosti-posle-ustanovki-gbo-h2uj/" target="_blank" rel="noopener">Публикация · pfo-inform.ru ↗</a>
-      </div>
-      <div class="glass uf-card" data-reveal>
-        <div class="uf-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 2v20M4.5 6.5l15 11M19.5 6.5l-15 11" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></div>
-        <h3>Почему зимой машина заводится на бензине</h3>
-        <p class="uf-text">Испаряемость газа падает на морозе, и запустить холодный двигатель напрямую на пропане сложнее. Поэтому система стартует на бензине, прогревает мотор и через минуту-две сама переключается на газ. Это штатная работа оборудования, а не повод для беспокойства.</p>
-        <a class="uf-badge" href="https://modern-qa.ru/novosti-otrasli/statya-gaz-zimojj-pochemu-mashina-vsegda-startuet-n-yh/" target="_blank" rel="noopener">Публикация · modern-qa.ru ↗</a>
-      </div>
-      <div class="glass uf-card" data-reveal>
-        <div class="uf-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="4" y="5" width="16" height="15" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M4 9.5h16M8 3v3.5M16 3v3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div>
-        <h3>Что и когда менять при обслуживании ГБО</h3>
-        <p class="uf-text">Газовый фильтр меняют каждые 10-15 тысяч километров, конденсат из баллона сливают раз в год, а полную ревизию редуктора делают в районе 80-100 тысяч км пробега на газе. Расписание простое, и если его не срывать, крупный ремонт почти никогда не понадобится.</p>
-        <a class="uf-badge" href="https://shared-estates.ru/biz/reglament-obsluzhivaniya-gbo-chto-i-cherez-skolko-tysyach-menya-m8r88/" target="_blank" rel="noopener">Публикация · shared-estates.ru ↗</a>
-      </div>
-      <div class="glass uf-card" data-reveal>
-        <div class="uf-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M3 9c2-2 4-2 6 0s4 2 6 0 4-2 6 0M3 15c2-2 4-2 6 0s4 2 6 0 4-2 6 0" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div>
-        <h3>Девять причин, почему плавают обороты на газе</h3>
-        <p class="uf-text">Чаще всего дело в засорённом фильтре или севшей настройке редуктора, реже в проблемах с зажиганием, которые просто ярче проявляются именно на газе. Провалы на холостых почти никогда не лечатся заменой всей системы, обычно хватает диагностики и точечной настройки. Тянуть с визитом к мастеру не стоит: чем дольше катаетесь с провалами, тем выше шанс задеть что-то ещё.</p>
-        <a class="uf-badge" href="https://markthedate.ru/resources/plavayut-oboroty-i-provaly-na-gaze-devyat-prich-9c2e/" target="_blank" rel="noopener">Публикация · markthedate.ru ↗</a>
-      </div>
-      <div class="glass uf-card" data-reveal>
-        <div class="uf-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 3 2 20h20L12 3Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M12 10v4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="12" cy="17" r="1" fill="currentColor"/></svg></div>
-        <h3>Признаки, что редуктору пора на диагностику</h3>
-        <p class="uf-text">Свист или шипение при наборе оборотов, нестабильный холостой ход, чуть более резкий запах газа в моторном отсеке. Любой из этих признаков сам по себе не катастрофа, но откладывать визит на сервис не стоит. Раннее вмешательство почти всегда дешевле, чем ремонт по факту поломки.</p>
-        <a class="uf-badge" href="https://buildestatenews.ru/2026/09/03/5363366-reduktor-prosit-vnimaniya-priznaki-kotorye-voditel-lo-0p/" target="_blank" rel="noopener">Публикация · buildestatenews.ru ↗</a>
-      </div>
-      <div class="glass uf-card" data-reveal>
-        <div class="uf-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="6" y="5" width="12" height="14" rx="6" stroke="currentColor" stroke-width="1.5"/><path d="M9 9h6M9 13h6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></div>
-        <h3>Зачем баллон переосвидетельствуют и как часто</h3>
-        <p class="uf-text">Газовый баллон рассчитан на определённый срок службы, обычно это несколько лет, после чего его проверяют на прочность и герметичность. Без свежего переосвидетельствования заправка на многих станциях просто откажет. Дата обычно выбита на самом баллоне, проверить легко.</p>
-        <a class="uf-badge" href="https://youthrise.ru/educate/skolko-zhivjot-gazovyjj-ballon-i-zachem-ego-pereosvidetelstvuyut-d67h/" target="_blank" rel="noopener">Публикация · youthrise.ru ↗</a>
-      </div>
-      <div class="glass uf-card" data-reveal>
-        <div class="uf-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.5"/><path d="M8 12.5l2.6 2.6L16.5 9" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-        <h3>Регистрация ГБО в 2026 году по шагам</h3>
-        <p class="uf-text">Сначала техническая экспертиза автомобиля, потом сама установка в сервисе с правом на такие работы, дальше проверка безопасности готовой конструкции и в конце внесение изменений в документы на машину. Четыре шага, ни одного лишнего, и пропустить любой из них означает получить оборудование, которое нельзя законно эксплуатировать.</p>
-        <a class="uf-badge" href="https://business-methods.ru/all/registraciya-gbo-v-godu-chetyre-shaga-i-ni-odnogo-lishnego-fmdf/" target="_blank" rel="noopener">Публикация · business-methods.ru ↗</a>
-      </div>
-      <div class="glass uf-card" data-reveal>
-        <div class="uf-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 3 2 20h20L12 3Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M12 10v4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="12" cy="17" r="1" fill="currentColor"/></svg></div>
-        <h3>Чем заканчивается экономия на регистрации ГБО</h3>
-        <p class="uf-text">Незарегистрированный газ означает штраф при проверке и гарантированный отказ в техосмотре. Разница в стоимости между установкой с документами и без обычно не так велика, как кажется на старте. Экономия здесь почти всегда временная, а проблемы потом долгие.</p>
-        <a class="uf-badge" href="https://ekatevent.ru/novosti/novost-gaz-bez-bumag-chem-zakanchivaetsya-ekonomiya-na-registracii-s6e/" target="_blank" rel="noopener">Публикация · ekatevent.ru ↗</a>
-      </div>
-      <div class="glass uf-card" data-reveal>
-        <div class="uf-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4 20V10l8-5 8 5v10" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M8 20v-6h8v6" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg></div>
-        <h3>Почему гаражный газ невозможно поставить на учёт</h3>
-        <p class="uf-text">Регистрация требует именно цепочки документов от сертифицированного сервиса: экспертиза, акт установки, проверка безопасности. Гаражная установка выпадает из этой цепочки полностью, и задним числом её не восстановить, даже если работа сделана аккуратно. Единственный рабочий вариант, переустановка в сервисе с полным циклом.</p>
-        <a class="uf-badge" href="https://spb-go.ru/segodnya-v-peterburge/publikaciya-garazhnyjj-gaz-pochemu-takoe-oborudovanie-n-6ppq/" target="_blank" rel="noopener">Публикация · spb-go.ru ↗</a>
-      </div>
-      <div class="glass uf-card" data-reveal>
-        <div class="uf-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.5"/><path d="M8 12.5l2.6 2.6L16.5 9" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-        <h3>Что проверяют на техосмотре у машины на газе</h3>
-        <p class="uf-text">Оператора интересует герметичность системы, срок годности баллона и соответствие оборудования записи в документах. Смотрят придирчивее, чем у бензиновой машины, но при исправной и зарегистрированной системе это формальность на несколько минут. Проблемы возникают только у тех, кто когда-то сэкономил на регистрации.</p>
-        <a class="uf-badge" href="https://ufo-inform.ru/2026/09/03/post-tekhosmotr-mashiny-na-gaze-chto-realno-proveryayut-na-pl-5e9l/" target="_blank" rel="noopener">Публикация · ufo-inform.ru ↗</a>
-      </div>
-      <div class="glass uf-card" data-reveal>
-        <div class="uf-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M5 19c9 1 14-4 14-14C9 5 5 10 5 19Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M5 19c3-4 6-6 10-9" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></div>
-        <h3>Сколько экологии в выхлопе на газе на самом деле</h3>
-        <p class="uf-text">На пропане на 10-15 процентов меньше углекислого газа, почти нет сажи и заметно меньше серы по сравнению с бензином. Цифры не революционные, но для города с плотным трафиком суммарный эффект от тысяч машин чувствуется. Это скорее разумный аргумент, чем рекламный лозунг.</p>
-        <a class="uf-badge" href="https://ratemetr.ru/2026/09/03/720548-vykhlop-na-gaze-skolko-tam-realnojj-eko-q608t/" target="_blank" rel="noopener">Публикация · ratemetr.ru ↗</a>
-      </div>
-      <div class="glass uf-card" data-reveal>
-        <div class="uf-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M9 3 4 21M15 3l5 18M12 6v2.5M12 12v2.5M12 18v2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div>
-        <h3>Газ, электричка или гибрид: что реально работает вне столиц</h3>
-        <p class="uf-text">В крупном городе выбор шире, электромобиль и общественный транспорт снимают часть вопросов сами. За пределами столиц инфраструктура для электромобилей редкая, а газовых заправок при этом хватает почти везде. Поэтому ГБО остаётся самым практичным способом сэкономить на топливе там, где живёт большинство.</p>
-        <a class="uf-badge" href="https://spaceid.ru/Fedoris/gaz-elektrichka-ili-gibrid-chto-iz-etogo-rabotaet-za-predelami-s-4158q.html" target="_blank" rel="noopener">Публикация · spaceid.ru ↗</a>
-      </div>
-      <div class="glass uf-card" data-reveal>
-        <div class="uf-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.5"/><path d="M8 12.5l2.6 2.6L16.5 9" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-        <h3>Почему переход на газ никто не тормозит</h3>
-        <p class="uf-text">Пропан-бутан и метан добывают внутри страны, поэтому цена на них устойчивее бензиновой. Выхлоп на газе чище, сеть заправок давно не редкость, а порядок регистрации оборудования отработан и понятен. Все три фактора складываются в сторону поддержки, а не запретов.</p>
-        <a class="uf-badge" href="https://www.ekbpr.ru/any/pochemu-perekhod-mashin-na-gaz-podderzhivayut-a-ne-me-22qa/" target="_blank" rel="noopener">Публикация · ekbpr.ru ↗</a>
-      </div>
-      <div class="glass uf-card" data-reveal>
-        <div class="uf-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="4" y="3" width="16" height="18" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="M8 7h8M8 11h2M12 11h2M16 11h0M8 15h2M12 15h2M16 15h0" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></div>
-        <h3>Кому газ окупится за сезон, а кому нет</h3>
-        <p class="uf-text">Решает не марка машины, а годовой пробег. При активной ежедневной езде комплект возвращает вложенное за один сезон. При редких поездках выходного дня окупаемость растягивается на годы, и тогда есть смысл сначала честно прикинуть цифры, а потом уже ставить оборудование.</p>
-        <a class="uf-badge" href="https://www.music-stories.ru/komu-gaz-okupitsya-za-sezon-a-komu-ne-okupitsya-voobshhe-6j1/" target="_blank" rel="noopener">Публикация · music-stories.ru ↗</a>
-      </div>
-      <div class="glass uf-card" data-reveal>
-        <div class="uf-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M14.7 6.3a4 4 0 0 0-5.4 4.7L4 16.3 7.7 20l5.3-5.3a4 4 0 0 0 4.7-5.4l-2.8 2.8-2.1-2.1 2.8-2.7Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg></div>
-        <h3>Как выбрать сервис для установки, а не просто мастера</h3>
-        <p class="uf-text">Первый вопрос при звонке простой: работаете по полному циклу с постановкой на учёт или только ставите железо. Второй, что входит в цену и нет ли скрытых доплат за настройку и расходники. Ответы на эти два вопроса отсеивают большинство неудачных вариантов ещё до записи.</p>
-        <a class="uf-badge" href="https://business-top.info/?p=617361" target="_blank" rel="noopener">Публикация · business-top.info ↗</a>
-      </div>
-      <div class="glass uf-card" data-reveal>
-        <div class="uf-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="8.5" stroke="currentColor" stroke-width="1.6"/><path d="M12 7.5v9M9.5 9.5c0-1 1-1.7 2.5-1.7s2.5.6 2.5 1.6c0 2.2-5 1-5 3.2 0 1 1 1.7 2.5 1.7s2.5-.7 2.5-1.7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div>
-        <h3>Почему дешёвый комплект ГБО не всегда выгоднее</h3>
-        <p class="uf-text">Экономия на старте обычно означает более простой редуктор и форсунки без развитой сервисной сети. Первое время разницы не видно, она проявляется через год-два в виде нестабильной подачи газа или дефицита запчастей. Итоговая стоимость владения нередко выравнивается, только конфликт случается позже и внезапнее.</p>
-        <a class="uf-badge" href="https://www.start-partnership.com/deshjovyjj-komplekt-gbo-protiv-brendovogo-chem-4os2/" target="_blank" rel="noopener">Публикация · start-partnership.com ↗</a>
-      </div>
-      <div class="glass uf-card" data-reveal>
-        <div class="uf-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 3l7 3v6c0 5-3 7.5-7 9-4-1.5-7-4-7-9V6l7-3Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-        <h3>Что происходит с гарантией дилера после установки ГБО</h3>
-        <p class="uf-text">По закону дилер не может снять с гарантии всю машину только из-за факта установки газа. Гарантия сохраняется на узлы, не связанные с ГБО, споры возникают лишь если поломка касается именно топливной системы. Хранить документы на установку в этом случае не формальность, а реальная защита от необоснованного отказа.</p>
-        <a class="uf-badge" href="https://stars-puls.ru/biznes-uspehi/novost-garantiya-dilera-i-gbo-chto-realno-prois-cje/" target="_blank" rel="noopener">Публикация · stars-puls.ru ↗</a>
-      </div>
-      <div class="glass uf-card" data-reveal>
-        <div class="uf-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M2 19 9 8l4 6 2-3 7 8H2Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg></div>
-        <h3>Почему в Сочи газ окупается быстрее среднего</h3>
-        <p class="uf-text">Серпантины, постоянные подъёмы и круглогодичный кондиционер поднимают расход топлива заметно выше, чем на равнине. Чем выше расход на бензине, тем быстрее разница между бензином и газом складывается в ощутимую сумму. Поэтому для местных маршрутов расчёт окупаемости обычно выходит оптимистичнее среднероссийского.</p>
-        <a class="uf-badge" href="https://www.stroitelstvo-domov.net/articles/novost-gbo-v-sochi-pochemu-na-poberezhe-gaz-okupaetsya-b-12/" target="_blank" rel="noopener">Публикация · stroitelstvo-domov.net ↗</a>
-      </div>
-      <div class="glass uf-card" data-reveal>
-        <div class="uf-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M9 3 4 21M15 3l5 18M12 6v2.5M12 12v2.5M12 18v2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div>
-        <h3>Где заправиться газом по трассе Джубга, Сочи, Адлер</h3>
-        <p class="uf-text">Заправки с пропаном на побережье встречаются в среднем через 30-50 километров, реже, чем бензиновые, но вполне рабочий интервал для бака на 40-50 литров. Перед дальней поездкой стоит заранее отметить для себя ближайшие города с заправкой, а не рассчитывать на удачу между ними.</p>
-        <a class="uf-badge" href="https://parnas.info/gde-zapravitsya-propanom-na-trasse-ot-dzhubgi-do-adlera-f08y/" target="_blank" rel="noopener">Публикация · parnas.info ↗</a>
-      </div>
-      <div class="glass uf-card" data-reveal>
-        <div class="uf-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M2 19 9 8l4 6 2-3 7 8H2Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg></div>
-        <h3>Особенности ГБО на внедорожниках в горах Красной Поляны</h3>
-        <p class="uf-text">На затяжном подъёме редуктор работает под постоянной нагрузкой, а не короткими импульсами, как в городе, и это серьёзнее испытывает дешёвые модели. Для тяжёлых полноприводных машин с частыми поездками в горы разумнее не экономить на классе оборудования и не затягивать плановое обслуживание.</p>
-        <a class="uf-badge" href="https://www.vse-pishut.ru/3137197-gbo-dlya-vnedorozhnikov-na-gornykh-marshrutakh-krasnojj-polyany-096/" target="_blank" rel="noopener">Публикация · vse-pishut.ru ↗</a>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- ===== ABOUT ===== -->
 <section id="about">
   <div class="container">
@@ -1245,6 +1263,13 @@
   const burgerBtn=document.getElementById('burgerBtn'),navOverlay=document.getElementById('navOverlay');
   burgerBtn.addEventListener('click',()=>{burgerBtn.classList.toggle('is-open');navOverlay.classList.toggle('is-open');});
   navOverlay.addEventListener('click',e=>{if(e.target===navOverlay){burgerBtn.classList.remove('is-open');navOverlay.classList.remove('is-open');}});
+  const usefulModal=document.getElementById('usefulModal'), usefulOpenBtn=document.getElementById('usefulOpenBtn'), usefulClose=document.getElementById('usefulClose');
+  function openUseful(){usefulModal.classList.add('is-open');document.body.classList.add('useful-open');burgerBtn.classList.remove('is-open');navOverlay.classList.remove('is-open');}
+  function closeUseful(){usefulModal.classList.remove('is-open');document.body.classList.remove('useful-open');}
+  if(usefulOpenBtn){usefulOpenBtn.addEventListener('click',openUseful);}
+  if(usefulClose){usefulClose.addEventListener('click',closeUseful);}
+  usefulModal.addEventListener('click',function(e){if(e.target===usefulModal||e.target.classList.contains('um-backdrop')){closeUseful();}});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'){closeUseful();}});
   document.querySelectorAll('.nav-overlay a').forEach(a=>a.addEventListener('click',()=>{burgerBtn.classList.remove('is-open');navOverlay.classList.remove('is-open');}));
   const st=document.getElementById('servicesToggle'),ss=document.getElementById('servicesSub');
   st.addEventListener('click',()=>{st.classList.toggle('open');ss.classList.toggle('is-open');});
